@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leon Cordts – IT Solutions</title>
+  <meta name="description" content="Leon Cordts – IT-Infrastruktur, Event-Support und Freelance FISI aus Köln. Professionelle IT-Lösungen für Ihr Unternehmen." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Syne (headings) + JetBrains Mono (code/accents) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#020b18',
+              900: '#050d1a',
+              800: '#071422',
+              700: '#0a1c2e',
+              600: '#0e2640',
+            },
+            azure: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            },
+            cyan: {
+              glow: '#00d4ff',
+            }
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'monospace'],
+            body:    ['DM Sans', 'sans-serif'],
+          },
+          animation: {
+            'fade-up':    'fadeUp 0.7s ease forwards',
+            'fade-in':    'fadeIn 1s ease forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4,0,0.6,1) infinite',
+            'line-draw':  'lineDraw 1.5s ease forwards',
+            'blink':      'blink 1.2s step-end infinite',
+          },
+          keyframes: {
+            fadeUp:   { '0%': { opacity: 0, transform: 'translateY(24px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+            fadeIn:   { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            lineDraw: { '0%': { width: '0%' }, '100%': { width: '100%' } },
+            blink:    { '0%,100%': { opacity: 1 }, '50%': { opacity: 0 } },
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #020b18;
+      color: #cbd5e1;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── Grid background ── */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(14,165,233,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14,165,233,0.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── Glow effects ── */
+    .glow-text  { text-shadow: 0 0 40px rgba(0,212,255,0.45), 0 0 80px rgba(0,212,255,0.15); }
+    .glow-box   { box-shadow: 0 0 0 1px rgba(14,165,233,0.25), 0 8px 48px rgba(14,165,233,0.08); }
+    .glow-box:hover { box-shadow: 0 0 0 1px rgba(0,212,255,0.5), 0 8px 64px rgba(0,212,255,0.18); }
+    .btn-glow   { box-shadow: 0 0 24px rgba(14,165,233,0.4); }
+    .btn-glow:hover { box-shadow: 0 0 40px rgba(0,212,255,0.65); }
+
+    /* ── Scan-line overlay ── */
+    .scanlines::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    }
+
+    /* ── Noise texture ── */
+    .noise {
+      position: relative;
+    }
+    .noise::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Nav link underline ── */
+    .nav-link {
+      position: relative; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; letter-spacing: 0.08em;
+      color: #94a3b8; transition: color 0.25s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: -3px;
+      height: 1px; width: 0; background: #00d4ff;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #e2e8f0; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Service card ── */
+    .service-card {
+      background: linear-gradient(135deg, #071422 0%, #050d1a 100%);
+      border: 1px solid rgba(14,165,233,0.18);
+      border-radius: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,212,255,0.45);
+      box-shadow: 0 12px 60px rgba(0,212,255,0.12);
+    }
+    .service-card .icon-wrap {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(0,212,255,0.08));
+      border: 1px solid rgba(14,165,233,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #38bdf8;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover .icon-wrap {
+      background: linear-gradient(135deg, rgba(14,165,233,0.35), rgba(0,212,255,0.15));
+      box-shadow: 0 0 20px rgba(0,212,255,0.3);
+    }
+
+    /* ── Skill tag ── */
+    .skill-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.06em;
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.25);
+      color: #38bdf8; border-radius: 4px;
+      padding: 3px 10px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .skill-tag:hover {
+      background: rgba(14,165,233,0.2);
+      border-color: rgba(0,212,255,0.5);
+    }
+
+    /* ── Terminal block ── */
+    .terminal {
+      background: #030c17;
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+    }
+    .terminal-bar {
+      background: #071422;
+      border-bottom: 1px solid rgba(14,165,233,0.15);
+      border-radius: 10px 10px 0 0;
+      padding: 10px 16px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+
+    /* ── Form inputs ── */
+    .form-input {
+      background: #071422;
+      border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 8px; color: #e2e8f0;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      padding: 12px 16px; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: rgba(0,212,255,0.55);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+    }
+    .form-input::placeholder { color: #475569; }
+
+    /* ── Divider line ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(14,165,233,0.3) 30%, rgba(0,212,255,0.4) 50%, rgba(14,165,233,0.3) 70%, transparent);
+      margin: 0 auto;
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── Cursor blink ── */
+    .cursor::after {
+      content: '|';
+      animation: blink 1.2s step-end infinite;
+      color: #00d4ff;
+    }
+
+    /* ── Hero gradient orb ── */
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
+    }
+
+    /* ── Mobile nav ── */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* ── Notification ── */
+    #toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+      background: #071422; border: 1px solid rgba(0,212,255,0.4);
+      color: #38bdf8; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem; padding: 12px 20px; border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,212,255,0.15);
+      transform: translateY(20px); opacity: 0;
+      transition: all 0.3s ease; pointer-events: none;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+
+<body class="noise">
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-azure-500 to-cyan-400 flex items-center justify-center text-white font-display font-bold text-sm"
+             style="box-shadow: 0 0 18px rgba(0,212,255,0.35);">LC</div>
+        <span class="font-display font-semibold text-white text-sm tracking-wide hidden sm:block">Leon Cordts</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#leistungen" class="nav-link">./leistungen</a>
+        <a href="#ueber-mich"  class="nav-link">./über-mich</a>
+        <a href="#kontakt"     class="nav-link">./kontakt</a>
+        <a href="#kontakt" class="ml-2 px-4 py-2 rounded-lg text-xs font-mono font-medium
+           bg-gradient-to-r from-azure-600 to-azure-500 text-white
+           hover:from-azure-500 hover:to-cyan-400
+           transition-all duration-300 btn-glow">
+          <i class="fa-solid fa-terminal mr-2"></i>Kontakt
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="hamburger" class="md:hidden text-slate-400 hover:text-white transition-colors p-2">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden flex-col gap-1 px-6 pb-4 bg-navy-900/98 backdrop-blur-lg border-b border-azure-500/10">
+      <a href="#leistungen" class="nav-link block py-3 border-b border-white/5">./leistungen</a>
+      <a href="#ueber-mich"  class="nav-link block py-3 border-b border-white/5">./über-mich</a>
+      <a href="#kontakt"     class="nav-link block py-3">./kontakt</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center grid-bg scanlines overflow-hidden">
+
+    <!-- Ambient orbs -->
+    <div class="orb w-96 h-96 top-20 -left-32 opacity-20" style="background: radial-gradient(circle, #0ea5e9, transparent 70%);"></div>
+    <div class="orb w-80 h-80 bottom-20 -right-24 opacity-15" style="background: radial-gradient(circle, #00d4ff, transparent 70%);"></div>
+    <div class="orb w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10" style="background: radial-gradient(circle, #0284c7, transparent 70%);"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 text-center">
+
+      <!-- Status badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8
+                  bg-azure-500/10 border border-azure-500/25 text-azure-400
+                  font-mono text-xs tracking-wider
+                  animate-fade-in" style="animation-delay:0.1s; opacity:0; animation-fill-mode:forwards;">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow"></span>
+        Verfügbar für neue Projekte
+      </div>
+
+      <!-- Name -->
+      <h1 class="font-display font-extrabold leading-none mb-4
+                 text-5xl sm:text-7xl lg:text-8xl
+                 text-white glow-text
+                 animate-fade-up" style="animation-delay:0.25s; opacity:0; animation-fill-mode:forwards;">
+        Leon Cordts
+      </h1>
+
+      <!-- Tagline -->
+      <div class="font-mono text-azure-400 text-lg sm:text-2xl mb-6 tracking-widest uppercase
+                  animate-fade-up" style="animation-delay:0.4s; opacity:0; animation-fill-mode:forwards;">
+        IT-Infrastruktur &amp; Event-Support
+      </div>
+
+      <!-- Sub-description -->
+      <p class="max-w-xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed mb-10
+                animate-fade-up" style="animation-delay:0.55s; opacity:0; animation-fill-mode:forwards;">
+        Fachinformatiker für Systemintegration aus Köln — ich plane, integriere und betreibe
+        IT-Systeme für Unternehmen und Großveranstaltungen.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4
+                  animate-fade-up" style="animation-delay:0.7s; opacity:0; animation-fill-mode:forwards;">
+        <a href="#kontakt"
+           class="px-7 py-3.5 rounded-xl font-display font-semibold text-sm text-white
+                  bg-gradient-to-r from-azure-600 to-azure-500
+                  hover:from-azure-500 hover:to-[#00d4ff]
+                  transition-all duration-300 btn-glow flex items-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i> Kontakt aufnehmen
+        </a>
+        <a href="#leistungen"
+           class="px-7 py-3.5 rounded-xl font-display font-semibold text-sm
+                  text-slate-300 hover:text-white
+                  border border-slate-700 hover:border-azure-500/50
+                  transition-all duration-300 flex items-center gap-2">
+          <i class="fa-solid fa-chevron-down text-xs"></i> Leistungen ansehen
+        </a>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="mt-20 flex justify-center animate-fade-in" style="animation-delay:1.4s; opacity:0; animation-fill-mode:forwards;">
+        <div class="flex flex-col items-center gap-2 text-slate-600 text-xs font-mono">
+          <span>scroll</span>
+          <div class="w-px h-10 bg-gradient-to-b from-azure-500/40 to-transparent animate-pulse-slow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION DIVIDER
+  ═══════════════════════════════════════════ -->
+  <div class="section-divider max-w-4xl w-full mx-auto"></div>
+
+  <!-- ═══════════════════════════════════════════
+       LEISTUNGEN
+  ═══════════════════════════════════════════ -->
+  <section id="leistungen" class="py-28 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section header -->
+      <div class="mb-16 reveal">
+        <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
+          <span class="text-slate-600">01 /</span> Leistungen
+        </div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          Was ich für Sie tue
+        </h2>
+        <p class="mt-3 text-slate-400 max-w-lg">
+          Drei Kernbereiche — präzise umgesetzt mit jahrelanger Erfahrung in der IT-Branche.
+        </p>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <div class="service-card p-7 reveal reveal-delay-1">
+          <div class="icon-wrap mb-6">
+            <i class="fa-solid fa-server"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-3">IT-Infrastruktur</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Planung, Aufbau und Betrieb skalierbarer IT-Systeme — von der Netzwerkinfrastruktur bis zur Server-Administration.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Netzwerkplanung &amp; -aufbau
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Server-Administration (Windows/Linux)
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Systemintegration &amp; Virtualisierung
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Backup &amp; Monitoring-Konzepte
+            </li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">LAN/WAN</span>
+            <span class="skill-tag">VMware</span>
+            <span class="skill-tag">Active Directory</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card p-7 reveal reveal-delay-2 relative overflow-hidden">
+          <!-- Featured badge -->
+          <div class="absolute top-4 right-4 font-mono text-[10px] text-azure-400
+                      bg-azure-500/10 border border-azure-500/25 px-2 py-1 rounded-full tracking-wider">
+            FEATURED
+          </div>
+          <div class="icon-wrap mb-6">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-3">Event-Support</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Technischer On-Site-Support für Großveranstaltungen — zuverlässig, schnell und erfahren mit den Anforderungen von Live-Events.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              E-Sports-Turniere &amp; Gaming-Events
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Live-Event-Infrastruktur (LAN-Setup)
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Echtzeit-Troubleshooting vor Ort
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Hardware-Bereitstellung &amp; -Support
+            </li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">E-Sports</span>
+            <span class="skill-tag">Live-Events</span>
+            <span class="skill-tag">LAN-Setup</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card p-7 reveal reveal-delay-3">
+          <div class="icon-wrap mb-6">
+            <i class="fa-solid fa-code-branch"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl text-white mb-3">Freelance FISI</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6">
+            Flexible Projektunterstützung als Fachinformatiker Systemintegration — ich verstärke Ihr Team genau da, wo Sie es brauchen.
+          </p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              IT-Projektunterstützung (remote/vor Ort)
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Rollout &amp; Migration
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              IT-Dokumentation &amp; Konzeption
+            </li>
+            <li class="flex items-start gap-2 text-sm text-slate-300">
+              <i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i>
+              Kurzfristige Engpass-Abdeckung
+            </li>
+          </ul>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Projektarbeit</span>
+            <span class="skill-tag">Rollout</span>
+            <span class="skill-tag">Remote</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-4xl w-full mx-auto"></div>
+
+  <!-- ═══════════════════════════════════════════
+       ÜBER MICH
+  ═══════════════════════════════════════════ -->
+  <section id="ueber-mich" class="py-28 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: Text -->
+        <div class="reveal">
+          <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
+            <span class="text-slate-600">02 /</span> Über mich
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">
+            Mensch hinter den Systemen
+          </h2>
+          <div class="space-y-4 text-slate-400 leading-relaxed">
+            <p>
+              Ich bin <span class="text-white font-medium">Leon Cordts</span>, Fachinformatiker für Systemintegration
+              aus <span class="text-azure-400">Köln</span>. Mit meinem Einzelunternehmen biete ich maßgeschneiderte
+              IT-Lösungen für Unternehmen jeder Größe — von der Planung bis zur Umsetzung.
+            </p>
+            <p>
+              Mein Fokus liegt auf zuverlässiger IT-Infrastruktur, die wirklich funktioniert — auch unter
+              den anspruchsvollen Bedingungen von Live-Events und Großveranstaltungen.
+            </p>
+            <p>
+              Als Freelancer schätzen meine Kunden vor allem: schnelle Auffassungsgabe, saubere
+              Dokumentation und die Fähigkeit, auch in stressigen Situationen die Ruhe zu bewahren.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mt-8">
+            <span class="skill-tag">Netzwerktechnik</span>
+            <span class="skill-tag">Windows Server</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Virtualisierung</span>
+            <span class="skill-tag">IT-Security Basics</span>
+            <span class="skill-tag">Cisco</span>
+            <span class="skill-tag">PowerShell</span>
+            <span class="skill-tag">E-Sports</span>
+          </div>
+
+          <!-- Location -->
+          <div class="flex items-center gap-2 mt-8 text-sm text-slate-500 font-mono">
+            <i class="fa-solid fa-location-dot text-azure-400"></i>
+            Köln, Nordrhein-Westfalen, Deutschland
+          </div>
+        </div>
+
+        <!-- Right: Terminal -->
+        <div class="reveal reveal-delay-2">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="dot bg-red-500/70"></div>
+              <div class="dot bg-yellow-500/70"></div>
+              <div class="dot bg-green-500/70"></div>
+              <span class="text-slate-600 text-xs ml-2">leon@it-solutions ~ profile.sh</span>
+            </div>
+            <div class="p-6 space-y-2 text-sm">
+              <p><span class="text-azure-400">$</span> <span class="text-slate-300">whoami</span></p>
+              <p class="text-green-400 pl-4">Leon Cordts – IT Solutions</p>
+              <p class="mt-3"><span class="text-azure-400">$</span> <span class="text-slate-300">cat profile.json</span></p>
+              <div class="pl-4 mt-1 text-slate-400 space-y-0.5">
+                <p><span class="text-azure-400">{</span></p>
+                <p class="pl-4"><span class="text-purple-400">"role"</span><span class="text-white">:</span> <span class="text-amber-300">"Fachinformatiker FISI"</span><span class="text-white">,</span></p>
+                <p class="pl-4"><span class="text-purple-400">"location"</span><span class="text-white">:</span> <span class="text-amber-300">"Köln, DE"</span><span class="text-white">,</span></p>
+                <p class="pl-4"><span class="text-purple-400">"status"</span><span class="text-white">:</span> <span class="text-green-400">"available"</span><span class="text-white">,</span></p>
+                <p class="pl-4"><span class="text-purple-400">"focus"</span><span class="text-white">: [</span></p>
+                <p class="pl-8"><span class="text-amber-300">"IT-Infrastruktur"</span><span class="text-white">,</span></p>
+                <p class="pl-8"><span class="text-amber-300">"Event-Support"</span><span class="text-white">,</span></p>
+                <p class="pl-8"><span class="text-amber-300">"Freelance FISI"</span></p>
+                <p class="pl-4"><span class="text-white">],</span></p>
+                <p class="pl-4"><span class="text-purple-400">"coffee"</span><span class="text-white">:</span> <span class="text-green-400">true</span></p>
+                <p><span class="text-azure-400">}</span></p>
+              </div>
+              <p class="mt-3"><span class="text-azure-400">$</span> <span class="text-slate-300 cursor">_</span></p>
+            </div>
+          </div>
+
+          <!-- Stats row -->
+          <div class="grid grid-cols-3 gap-4 mt-5">
+            <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
+              <div class="font-display font-bold text-2xl text-white">3+</div>
+              <div class="font-mono text-xs text-slate-500 mt-1">Jahre Erfahrung</div>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
+              <div class="font-display font-bold text-2xl text-white">50+</div>
+              <div class="font-mono text-xs text-slate-500 mt-1">Events betreut</div>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
+              <div class="font-display font-bold text-2xl text-white">100%</div>
+              <div class="font-mono text-xs text-slate-500 mt-1">Zuverlässig</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-4xl w-full mx-auto"></div>
+
+  <!-- ═══════════════════════════════════════════
+       KONTAKT
+  ═══════════════════════════════════════════ -->
+  <section id="kontakt" class="py-28 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: info -->
+        <div class="reveal">
+          <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
+            <span class="text-slate-600">03 /</span> Kontakt
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">
+            Projekt in Sicht?<br/>
+            <span class="text-azure-400">Melden Sie sich.</span>
+          </h2>
+          <p class="text-slate-400 leading-relaxed mb-10">
+            Ob Infrastruktur-Projekt, Event-Support oder kurzfristige Verstärkung — ich freue mich
+            auf Ihre Anfrage und melde mich in der Regel innerhalb von 24 Stunden.
+          </p>
+
+          <!-- Contact info cards -->
+          <div class="space-y-4">
+            <a href="mailto:info@leon-cordts-it.de"
+               class="flex items-center gap-4 p-4 rounded-xl
+                      bg-navy-800/60 border border-azure-500/15
+                      hover:border-azure-500/40 transition-all duration-300 group glow-box">
+              <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20
+                          flex items-center justify-center text-azure-400
+                          group-hover:bg-azure-500/20 transition-colors">
+                <i class="fa-solid fa-envelope text-sm"></i>
+              </div>
+              <div>
+                <div class="font-mono text-xs text-slate-500 mb-0.5">E-Mail</div>
+                <div class="text-sm text-slate-200">info@leon-cordts-it.de</div>
+              </div>
+              <i class="fa-solid fa-arrow-right ml-auto text-slate-700 group-hover:text-azure-400 transition-colors text-xs"></i>
+            </a>
+
+            <div class="flex items-center gap-4 p-4 rounded-xl
+                        bg-navy-800/60 border border-azure-500/15">
+              <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20
+                          flex items-center justify-center text-azure-400">
+                <i class="fa-solid fa-location-dot text-sm"></i>
+              </div>
+              <div>
+                <div class="font-mono text-xs text-slate-500 mb-0.5">Standort</div>
+                <div class="text-sm text-slate-200">Köln, NRW — Remote &amp; vor Ort</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 p-4 rounded-xl
+                        bg-navy-800/60 border border-azure-500/15">
+              <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20
+                          flex items-center justify-center text-azure-400">
+                <i class="fa-solid fa-clock text-sm"></i>
+              </div>
+              <div>
+                <div class="font-mono text-xs text-slate-500 mb-0.5">Reaktionszeit</div>
+                <div class="text-sm text-slate-200">In der Regel &lt; 24 Stunden</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal reveal-delay-2">
+          <form id="contact-form" onsubmit="handleSubmit(event)"
+                class="glow-box rounded-2xl p-8 bg-navy-800/40 border border-azure-500/20 space-y-5">
+
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Vorname</label>
+                <input type="text" name="vorname" placeholder="Max" class="form-input" required />
+              </div>
+              <div>
+                <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Nachname</label>
+                <input type="text" name="nachname" placeholder="Mustermann" class="form-input" required />
+              </div>
+            </div>
+
+            <div>
+              <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">E-Mail</label>
+              <input type="email" name="email" placeholder="max@firma.de" class="form-input" required />
+            </div>
+
+            <div>
+              <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Betreff</label>
+              <select name="betreff" class="form-input" style="appearance:none; cursor:pointer;">
+                <option value="" disabled selected>Bitte wählen…</option>
+                <option>IT-Infrastruktur</option>
+                <option>Event-Support</option>
+                <option>Freelance FISI</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Nachricht</label>
+              <textarea name="nachricht" rows="5"
+                        placeholder="Beschreiben Sie kurz Ihr Projekt oder Anliegen…"
+                        class="form-input resize-none" required></textarea>
+            </div>
+
+            <!-- Privacy note -->
+            <label class="flex items-start gap-3 cursor-pointer group">
+              <div class="relative mt-0.5">
+                <input type="checkbox" id="privacy" class="sr-only peer" required />
+                <div class="w-4 h-4 rounded border border-slate-600 peer-checked:border-azure-500
+                            peer-checked:bg-azure-500/20 transition-colors"></div>
+                <i class="fa-solid fa-check absolute top-0 left-0 w-4 h-4 text-azure-400 text-[10px]
+                          flex items-center justify-center opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+              </div>
+              <span class="text-xs text-slate-500 leading-relaxed">
+                Ich habe die <a href="#datenschutz" class="text-azure-400 hover:underline">Datenschutzerklärung</a>
+                gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.
+              </span>
+            </label>
+
+            <button type="submit"
+                    class="w-full py-3.5 rounded-xl font-display font-semibold text-sm text-white
+                           bg-gradient-to-r from-azure-600 to-azure-500
+                           hover:from-azure-500 hover:to-[#00d4ff]
+                           transition-all duration-300 btn-glow flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              Nachricht senden
+            </button>
+
+            <p class="text-center font-mono text-xs text-slate-600">
+              Dieses Formular ist rein visuell — bitte schreiben Sie direkt an<br/>
+              <a href="mailto:info@leon-cordts-it.de" class="text-azure-400 hover:underline">info@leon-cordts-it.de</a>
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="border-t border-white/5 bg-navy-900/60 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-azure-500 to-cyan-400
+                        flex items-center justify-center text-white font-display font-bold text-sm"
+                 style="box-shadow: 0 0 14px rgba(0,212,255,0.3);">LC</div>
+            <span class="font-display font-semibold text-white">Leon Cordts</span>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            IT Solutions · Einzelunternehmen<br/>
+            Köln, Nordrhein-Westfalen
+          </p>
+          <div class="flex gap-3 mt-5">
+            <a href="#" aria-label="LinkedIn"
+               class="w-9 h-9 rounded-lg bg-white/5 border border-white/10
+                      flex items-center justify-center text-slate-500 hover:text-azure-400
+                      hover:border-azure-500/30 transition-all duration-200 text-sm">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="#" aria-label="GitHub"
+               class="w-9 h-9 rounded-lg bg-white/5 border border-white/10
+                      flex items-center justify-center text-slate-500 hover:text-azure-400
+                      hover:border-azure-500/30 transition-all duration-200 text-sm">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:info@leon-cordts-it.de" aria-label="E-Mail"
+               class="w-9 h-9 rounded-lg bg-white/5 border border-white/10
+                      flex items-center justify-center text-slate-500 hover:text-azure-400
+                      hover:border-azure-500/30 transition-all duration-200 text-sm">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <h4 class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="#home"       class="text-sm text-slate-400 hover:text-azure-400 transition-colors">Home</a></li>
+            <li><a href="#leistungen" class="text-sm text-slate-400 hover:text-azure-400 transition-colors">Leistungen</a></li>
+            <li><a href="#ueber-mich" class="text-sm text-slate-400 hover:text-azure-400 transition-colors">Über mich</a></li>
+            <li><a href="#kontakt"    class="text-sm text-slate-400 hover:text-azure-400 transition-colors">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal – important for Germany -->
+        <div>
+          <h4 class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-4">Rechtliches</h4>
+          <ul class="space-y-2">
+            <li>
+              <a href="#impressum" id="impressum"
+                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-file-lines text-xs text-slate-600"></i>
+                Impressum
+              </a>
+            </li>
+            <li>
+              <a href="#datenschutz" id="datenschutz"
+                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-xs text-slate-600"></i>
+                Datenschutzerklärung
+              </a>
+            </li>
+            <li>
+              <a href="#agb"
+                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-scale-balanced text-xs text-slate-600"></i>
+                AGB
+              </a>
+            </li>
+          </ul>
+          <div class="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
+            <p class="font-mono text-xs text-amber-500/70">
+              ⚠ Impressum &amp; Datenschutz sind Pflichtangaben gemäß §5 TMG / DSGVO.
+              Bitte mit einem Anwalt befüllen.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-mono text-xs text-slate-600">
+          © <span id="year"></span> Leon Cordts – IT Solutions · Alle Rechte vorbehalten
+        </p>
+        <p class="font-mono text-xs text-slate-600">
+          Made in <span class="text-azure-400">Köln</span> · <span class="text-green-400/60">v1.0.0</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div id="toast">
+    <i class="fa-solid fa-check-circle mr-2"></i>
+    Nachricht empfangen — ich melde mich bald!
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script>
+    // ── Year ──
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar.style.background = 'rgba(5,13,26,0.95)';
+        navbar.style.backdropFilter = 'blur(16px)';
+        navbar.style.borderBottom = '1px solid rgba(14,165,233,0.1)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = 'none';
+      }
+    });
+
+    // ── Mobile menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      const icon = hamburger.querySelector('i');
+      icon.className = mobileMenu.classList.contains('open')
+        ? 'fa-solid fa-xmark text-lg'
+        : 'fa-solid fa-bars text-lg';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.querySelector('i').className = 'fa-solid fa-bars text-lg';
+      });
+    });
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Contact form ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3500);
+      e.target.reset();
+    }
+
+    // ── Active nav highlight ──
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.style.color = '');
+          const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+          if (active) active.style.color = '#38bdf8';
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+
+</body>
+</html>

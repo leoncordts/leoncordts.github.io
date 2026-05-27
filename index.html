@@ -647,7 +647,7 @@
 
           <!-- Contact info cards -->
           <div class="space-y-4">
-            <a href="mailto:info@leon-cordts-it.de"
+            <a href="mailto:kontakt@leoncordts.de"
                class="flex items-center gap-4 p-4 rounded-xl
                       bg-navy-800/60 border border-azure-500/15
                       hover:border-azure-500/40 transition-all duration-300 group glow-box">
@@ -658,7 +658,7 @@
               </div>
               <div>
                 <div class="font-mono text-xs text-slate-500 mb-0.5">E-Mail</div>
-                <div class="text-sm text-slate-200">info@leon-cordts-it.de</div>
+                <div class="text-sm text-slate-200">kontakt@leoncordts.de</div>
               </div>
               <i class="fa-solid fa-arrow-right ml-auto text-slate-700 group-hover:text-azure-400 transition-colors text-xs"></i>
             </a>
@@ -691,39 +691,45 @@
 
         <!-- Right: Form -->
         <div class="reveal reveal-delay-2">
-          <form id="contact-form" onsubmit="handleSubmit(event)"
+          <form action="https://formsubmit.co/kontakt@leoncordts.de" method="POST"
                 class="glow-box rounded-2xl p-8 bg-navy-800/40 border border-azure-500/20 space-y-5">
+
+            <!-- Formsubmit hidden config -->
+            <input type="hidden" name="_next"        value="https://leoncordts.github.io" />
+            <input type="hidden" name="_captcha"     value="false" />
+            <input type="hidden" name="_subject"     value="Neue Kontaktanfrage – leoncordts.de" />
+            <input type="hidden" name="_template"    value="table" />
 
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
                 <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Vorname</label>
-                <input type="text" name="vorname" placeholder="Max" class="form-input" required />
+                <input type="text" name="Vorname" placeholder="Max" class="form-input" required />
               </div>
               <div>
                 <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Nachname</label>
-                <input type="text" name="nachname" placeholder="Mustermann" class="form-input" required />
+                <input type="text" name="Nachname" placeholder="Mustermann" class="form-input" />
               </div>
             </div>
 
             <div>
               <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">E-Mail</label>
-              <input type="email" name="email" placeholder="max@firma.de" class="form-input" required />
+              <input type="email" name="Email" placeholder="max@firma.de" class="form-input" required />
             </div>
 
             <div>
               <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Betreff</label>
-              <select name="betreff" class="form-input" style="appearance:none; cursor:pointer;">
+              <select name="Betreff" class="form-input" style="appearance:none; cursor:pointer;" required>
                 <option value="" disabled selected>Bitte wählen…</option>
-                <option>IT-Infrastruktur</option>
+                <option>Zuhause &amp; Privat-IT</option>
+                <option>Klein- &amp; Mittelstands-IT</option>
                 <option>Event-Support</option>
-                <option>Freelance FISI</option>
                 <option>Sonstiges</option>
               </select>
             </div>
 
             <div>
               <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">Nachricht</label>
-              <textarea name="nachricht" rows="5"
+              <textarea name="Nachricht" rows="5"
                         placeholder="Beschreiben Sie kurz Ihr Projekt oder Anliegen…"
                         class="form-input resize-none" required></textarea>
             </div>
@@ -731,14 +737,15 @@
             <!-- Privacy note -->
             <label class="flex items-start gap-3 cursor-pointer group">
               <div class="relative mt-0.5">
-                <input type="checkbox" id="privacy" class="sr-only peer" required />
+                <input type="checkbox" id="privacy" name="_datenschutz" value="akzeptiert" class="sr-only peer" required />
                 <div class="w-4 h-4 rounded border border-slate-600 peer-checked:border-azure-500
                             peer-checked:bg-azure-500/20 transition-colors"></div>
                 <i class="fa-solid fa-check absolute top-0 left-0 w-4 h-4 text-azure-400 text-[10px]
                           flex items-center justify-center opacity-0 peer-checked:opacity-100 transition-opacity"></i>
               </div>
               <span class="text-xs text-slate-500 leading-relaxed">
-                Ich habe die <a href="#datenschutz" class="text-azure-400 hover:underline">Datenschutzerklärung</a>
+                Ich habe die <button type="button" onclick="openModal('modal-datenschutz')"
+                  class="text-azure-400 hover:underline">Datenschutzerklärung</button>
                 gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.
               </span>
             </label>
@@ -752,10 +759,6 @@
               Nachricht senden
             </button>
 
-            <p class="text-center font-mono text-xs text-slate-600">
-              Dieses Formular ist rein visuell — bitte schreiben Sie direkt an<br/>
-              <a href="mailto:info@leon-cordts-it.de" class="text-azure-400 hover:underline">info@leon-cordts-it.de</a>
-            </p>
           </form>
         </div>
 
@@ -1142,15 +1145,6 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // ── Contact form ──
-    function handleSubmit(e) {
-      e.preventDefault();
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3500);
-      e.target.reset();
-    }
 
     // ── Active nav highlight ──
     const sections = document.querySelectorAll('section[id]');

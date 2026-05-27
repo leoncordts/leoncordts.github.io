@@ -234,6 +234,23 @@
       position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
     }
 
+    /* ── Expertise badge (Grau-Akzent, abgesetzt von Event-Badges) ── */
+    .expertise-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(100, 116, 139, 0.28);
+      color: #94a3b8; border-radius: 999px;
+      padding: 6px 14px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .expertise-badge:hover {
+      background: rgba(30, 41, 59, 0.95);
+      border-color: rgba(148, 163, 184, 0.5);
+      color: #e2e8f0;
+      box-shadow: 0 0 14px rgba(100, 116, 139, 0.12);
+    }
+
     /* ── Event badge ── */
     .event-badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -576,13 +593,13 @@
 
         <!-- Bild 1 — volle Breite, Querformat -->
         <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[21/9] w-full">
-          <img src="event-1.jpg" alt="Esports World Cup 2025"
+          <img src="event1.jpg" alt="Esports World Cup 2025"
                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <!-- Permanente Bildunterschrift unten -->
           <div class="absolute bottom-0 left-0 right-0 px-5 py-4
                       bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
             <p class="font-mono text-xs text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-            <p class="font-display font-semibold text-white text-base sm:text-lg leading-tight">Esports World Cup Riyadh 2025</p>
+            <p class="font-display font-semibold text-white text-base sm:text-lg leading-tight">Esports World Cup 2025</p>
           </div>
           <!-- Cyan glow ring on hover -->
           <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -593,24 +610,24 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
 
           <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-video">
-            <img src="event-2.jpg" alt="Dreamhack Atlanta 2025"
+            <img src="event2.jpg" alt="Dreamhack Atlanta 2025"
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-3
                         bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
               <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-              <p class="font-display font-semibold text-white text-sm leading-tight">gamescom 2024</p>
+              <p class="font-display font-semibold text-white text-sm leading-tight">Dreamhack Atlanta 2025</p>
             </div>
             <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                  style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 40px rgba(0,212,255,0.12);"></div>
           </div>
 
           <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-video">
-            <img src="event-3.jpg" alt="gamescom 2024"
+            <img src="event3.jpg" alt="gamescom 2024"
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-3
                         bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
               <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-              <p class="font-display font-semibold text-white text-sm leading-tight">gamescom 2023</p>
+              <p class="font-display font-semibold text-white text-sm leading-tight">gamescom 2024</p>
             </div>
             <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                  style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 40px rgba(0,212,255,0.12);"></div>
@@ -622,7 +639,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
 
           <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
-            <img src="event-4.jpg" alt="Intel Extreme Masters Katowice 2025"
+            <img src="event4.jpg" alt="Intel Extreme Masters Katowice 2025"
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-3
                         bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
@@ -634,7 +651,7 @@
           </div>
 
           <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
-            <img src="event-5.jpg" alt="Intel Extreme Masters Cologne 2024"
+            <img src="event5.jpg" alt="Intel Extreme Masters Cologne 2024"
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-3
                         bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
@@ -646,12 +663,12 @@
           </div>
 
           <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
-            <img src="event-6.jpg" alt="Clash of Clans Last Chance Qualifier Katowice 2023"
+            <img src="event6.jpg" alt="Clash of Clans Last Chance Qualifier Katowice 2023"
                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-3
                         bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
               <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-              <p class="font-display font-semibold text-white text-xs leading-snug">Clash World Finals at Dreamhack Atlanta 2025</p>
+              <p class="font-display font-semibold text-white text-xs leading-snug">Clash of Clans Last Chance Qualifier Katowice 2023</p>
             </div>
             <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                  style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 35px rgba(0,212,255,0.12);"></div>
@@ -661,32 +678,69 @@
 
       </div>
 
-      <!-- Event badge cloud -->
-      <div class="mt-10 reveal reveal-delay-2">
-        <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-4">Events &amp; Referenzen</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="event-badge">
-            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Cologne 2024 &amp; 2025
-          </span>
-          <span class="event-badge">
-            <i class="fa-solid fa-gamepad text-azure-400 text-[10px]"></i> gamescom 2023, 2024 &amp; 2025
-          </span>
-          <span class="event-badge">
-            <i class="fa-solid fa-globe text-azure-400 text-[10px]"></i> Esports World Cup 2025
-          </span>
-          <span class="event-badge">
-            <i class="fa-solid fa-bolt text-azure-400 text-[10px]"></i> Dreamhack Atlanta 2025
-          </span>
-          <span class="event-badge">
-            <i class="fa-solid fa-flag text-azure-400 text-[10px]"></i> ESL Pro League Season 19 Malta
-          </span>
-          <span class="event-badge">
-            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Katowice 2025
-          </span>
-          <span class="event-badge">
-            <i class="fa-solid fa-crosshairs text-azure-400 text-[10px]"></i> Clash of Clans Last Chance Qualifier Katowice 2023
-          </span>
+      <!-- Badge cloud — Event-Referenzen & Expertise -->
+      <div class="mt-10 reveal reveal-delay-2 space-y-6">
+
+        <!-- A) Event-Referenzen -->
+        <div>
+          <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-calendar-days text-azure-400/50"></i> Event-Referenzen
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="event-badge">
+              <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Cologne 2024 &amp; 2025
+            </span>
+            <span class="event-badge">
+              <i class="fa-solid fa-gamepad text-azure-400 text-[10px]"></i> gamescom 2023, 2024 &amp; 2025
+            </span>
+            <span class="event-badge">
+              <i class="fa-solid fa-globe text-azure-400 text-[10px]"></i> Esports World Cup 2025
+            </span>
+            <span class="event-badge">
+              <i class="fa-solid fa-bolt text-azure-400 text-[10px]"></i> Dreamhack Atlanta 2025
+            </span>
+            <span class="event-badge">
+              <i class="fa-solid fa-flag text-azure-400 text-[10px]"></i> ESL Pro League Season 19 Malta
+            </span>
+            <span class="event-badge">
+              <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Katowice 2025
+            </span>
+            <span class="event-badge">
+              <i class="fa-solid fa-crosshairs text-azure-400 text-[10px]"></i> Clash of Clans Last Chance Qualifier Katowice 2023
+            </span>
+          </div>
         </div>
+
+        <!-- Divider -->
+        <div class="section-divider w-full max-w-full"></div>
+
+        <!-- B) Expertise & Qualifikationen -->
+        <div>
+          <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-microchip text-slate-500/60"></i> Expertise &amp; Qualifikationen
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="expertise-badge">
+              <i class="fa-solid fa-graduation-cap text-[10px]"></i> Fachinformatiker Systemintegration (i.A. @ ESL FACEIT Group)
+            </span>
+            <span class="expertise-badge">
+              <i class="fa-solid fa-network-wired text-[10px]"></i> IT-Integration &amp; Infrastruktur-Support
+            </span>
+            <span class="expertise-badge">
+              <i class="fa-brands fa-python text-[10px]"></i> Python Automation (Admin-Skripte)
+            </span>
+            <span class="expertise-badge">
+              <i class="fa-solid fa-sitemap text-[10px]"></i> Network Engineering (VLAN, Routing, Switching)
+            </span>
+            <span class="expertise-badge">
+              <i class="fa-solid fa-cloud text-[10px]"></i> Microsoft 365 &amp; Google Workspace Administration
+            </span>
+            <span class="expertise-badge">
+              <i class="fa-solid fa-earth-americas text-[10px]"></i> English — Fluent (US High School &amp; Work/Travel)
+            </span>
+          </div>
+        </div>
+
       </div>
 
     </div>

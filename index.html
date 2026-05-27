@@ -572,110 +572,91 @@
       </div>
 
       <!-- Photo grid -->
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 reveal">
+      <div class="grid grid-cols-1 gap-3 sm:gap-4 reveal">
 
-        <!-- Bild 1 — groß, linke Spalte oben, 2 Zeilen hoch -->
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer row-span-2 col-span-1
-                    aspect-[3/4] md:aspect-auto">
-          <img src="event-1.jpg" alt="EWC 25 Eingang"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end p-4"
-               style="box-shadow: inset 0 0 0 1px rgba(0,212,255,0.25);">
-            <div>
-              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Event</span>
-              <p class="font-display font-semibold text-white text-sm mt-0.5">EWC 25 Eingang</p>
-            </div>
+        <!-- Bild 1 — volle Breite, Querformat -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[21/9] w-full">
+          <img src="event1.jpg" alt="Esports World Cup 2025"
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <!-- Permanente Bildunterschrift unten -->
+          <div class="absolute bottom-0 left-0 right-0 px-5 py-4
+                      bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
+            <p class="font-mono text-xs text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
+            <p class="font-display font-semibold text-white text-base sm:text-lg leading-tight">Esports World Cup 2025</p>
           </div>
-          <!-- Cyan border glow on hover -->
+          <!-- Cyan glow ring on hover -->
           <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 50px rgba(0,212,255,0.12);"></div>
         </div>
 
-        <!-- Bild 2 — rechts oben -->
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer
-                    aspect-video md:aspect-[4/3]">
-          <img src="event-2.jpg" alt="Hardware Setup / Switches"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end p-4">
-            <div>
-              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Setup</span>
-              <p class="font-display font-semibold text-white text-sm mt-0.5">Hardware Setup / Switches</p>
+        <!-- Zeile 2 — 2er Split -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-video">
+            <img src="event2.jpg" alt="Dreamhack Atlanta 2025"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3
+                        bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
+              <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
+              <p class="font-display font-semibold text-white text-sm leading-tight">Dreamhack Atlanta 2025</p>
             </div>
+            <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                 style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 40px rgba(0,212,255,0.12);"></div>
           </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-video">
+            <img src="event3.jpg" alt="gamescom 2024"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3
+                        bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
+              <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
+              <p class="font-display font-semibold text-white text-sm leading-tight">gamescom 2024</p>
+            </div>
+            <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                 style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 40px rgba(0,212,255,0.12);"></div>
+          </div>
+
         </div>
 
-        <!-- Bild 3 -->
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer
-                    aspect-video md:aspect-[4/3]">
-          <img src="event-3.jpg" alt="Action Shot / Infrastrukturbau"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end p-4">
-            <div>
-              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Build</span>
-              <p class="font-display font-semibold text-white text-sm mt-0.5">Infrastrukturbau</p>
-            </div>
-          </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
-        </div>
+        <!-- Zeile 3 — 3er Split -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
 
-        <!-- Bild 4 — breit, 2 Spalten -->
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer
-                    col-span-2 md:col-span-2 aspect-video">
-          <img src="event-4.jpg" alt="Arena Panorama / IEM Katowice"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end p-5">
-            <div>
-              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Arena</span>
-              <p class="font-display font-semibold text-white text-base mt-0.5">IEM Katowice — Arena Panorama</p>
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
+            <img src="event4.jpg" alt="Intel Extreme Masters Katowice 2025"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3
+                        bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
+              <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
+              <p class="font-display font-semibold text-white text-xs leading-snug">Intel Extreme Masters Katowice 2025</p>
             </div>
+            <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                 style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 35px rgba(0,212,255,0.12);"></div>
           </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 40px rgba(0,212,255,0.15);"></div>
-        </div>
 
-        <!-- Bild 5 -->
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer
-                    aspect-video md:aspect-[4/3]">
-          <img src="event-5.jpg" alt="IT Crew in der Halle"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end p-4">
-            <div>
-              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Crew</span>
-              <p class="font-display font-semibold text-white text-sm mt-0.5">IT Crew in der Halle</p>
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
+            <img src="event5.jpg" alt="Intel Extreme Masters Cologne 2024"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3
+                        bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
+              <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
+              <p class="font-display font-semibold text-white text-xs leading-snug">Intel Extreme Masters Cologne 2024</p>
             </div>
+            <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                 style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 35px rgba(0,212,255,0.12);"></div>
           </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
-        </div>
 
-        <!-- Bild 6 -->
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer
-                    aspect-video md:aspect-[4/3]">
-          <img src="event-6.jpg" alt="Group Photo / World Finals"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex items-end p-4">
-            <div>
-              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Team</span>
-              <p class="font-display font-semibold text-white text-sm mt-0.5">Group Photo — World Finals</p>
+          <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
+            <img src="event6.jpg" alt="Clash of Clans Last Chance Qualifier Katowice 2023"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3
+                        bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
+              <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
+              <p class="font-display font-semibold text-white text-xs leading-snug">Clash of Clans Last Chance Qualifier Katowice 2023</p>
             </div>
+            <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                 style="box-shadow: 0 0 0 2px rgba(0,212,255,0.55), 0 0 35px rgba(0,212,255,0.12);"></div>
           </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+
         </div>
 
       </div>
@@ -685,25 +666,25 @@
         <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-4">Events &amp; Referenzen</p>
         <div class="flex flex-wrap gap-2">
           <span class="event-badge">
-            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> IEM Cologne 24/25
+            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Cologne 2024 &amp; 2025
           </span>
           <span class="event-badge">
-            <i class="fa-solid fa-gamepad text-azure-400 text-[10px]"></i> Gamescom 23–25
+            <i class="fa-solid fa-gamepad text-azure-400 text-[10px]"></i> gamescom 2023, 2024 &amp; 2025
           </span>
           <span class="event-badge">
-            <i class="fa-solid fa-globe text-azure-400 text-[10px]"></i> EWC 25
+            <i class="fa-solid fa-globe text-azure-400 text-[10px]"></i> Esports World Cup 2025
           </span>
           <span class="event-badge">
-            <i class="fa-solid fa-bolt text-azure-400 text-[10px]"></i> Dreamhack Atlanta 25
+            <i class="fa-solid fa-bolt text-azure-400 text-[10px]"></i> Dreamhack Atlanta 2025
           </span>
           <span class="event-badge">
-            <i class="fa-solid fa-flag text-azure-400 text-[10px]"></i> EPL S19 Malta
+            <i class="fa-solid fa-flag text-azure-400 text-[10px]"></i> ESL Pro League Season 19 Malta
           </span>
           <span class="event-badge">
-            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> IEM Katowice 25
+            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Katowice 2025
           </span>
           <span class="event-badge">
-            <i class="fa-solid fa-crosshairs text-azure-400 text-[10px]"></i> Clash LCQ Katowice
+            <i class="fa-solid fa-crosshairs text-azure-400 text-[10px]"></i> Clash of Clans Last Chance Qualifier Katowice 2023
           </span>
         </div>
       </div>

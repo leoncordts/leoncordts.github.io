@@ -234,6 +234,23 @@
       position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
     }
 
+    /* ── Event badge ── */
+    .event-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
+      background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(0,212,255,0.04));
+      border: 1px solid rgba(14,165,233,0.22);
+      color: #cbd5e1; border-radius: 999px;
+      padding: 6px 14px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .event-badge:hover {
+      background: linear-gradient(135deg, rgba(14,165,233,0.18), rgba(0,212,255,0.1));
+      border-color: rgba(0,212,255,0.5);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(0,212,255,0.12);
+    }
+
     /* ── Modals ── */
     .modal-overlay { animation: modalFadeIn 0.2s ease; }
     .modal-panel   { animation: modalSlideUp 0.25s cubic-bezier(0.16,1,0.3,1); }
@@ -536,6 +553,167 @@
   <div class="section-divider max-w-4xl w-full mx-auto"></div>
 
   <!-- ═══════════════════════════════════════════
+       IMPRESSIONEN
+  ═══════════════════════════════════════════ -->
+  <section id="impressionen" class="py-28 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section header -->
+      <div class="mb-12 reveal">
+        <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
+          <span class="text-slate-600">02 /</span> Impressionen
+        </div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+          Events &amp; Einsätze
+        </h2>
+        <p class="mt-3 text-slate-400 max-w-lg">
+          Ein Blick hinter die Kulissen — von der Netzwerkverkabelung bis zur Arena-Infrastruktur auf internationalen Bühnen.
+        </p>
+      </div>
+
+      <!-- Photo grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 reveal">
+
+        <!-- Bild 1 — groß, linke Spalte oben, 2 Zeilen hoch -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer row-span-2 col-span-1
+                    aspect-[3/4] md:aspect-auto">
+          <img src="event-1.jpg" alt="EWC 25 Eingang"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                      flex items-end p-4"
+               style="box-shadow: inset 0 0 0 1px rgba(0,212,255,0.25);">
+            <div>
+              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Event</span>
+              <p class="font-display font-semibold text-white text-sm mt-0.5">EWC 25 Eingang</p>
+            </div>
+          </div>
+          <!-- Cyan border glow on hover -->
+          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+        </div>
+
+        <!-- Bild 2 — rechts oben -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer
+                    aspect-video md:aspect-[4/3]">
+          <img src="event-2.jpg" alt="Hardware Setup / Switches"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                      flex items-end p-4">
+            <div>
+              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Setup</span>
+              <p class="font-display font-semibold text-white text-sm mt-0.5">Hardware Setup / Switches</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+        </div>
+
+        <!-- Bild 3 -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer
+                    aspect-video md:aspect-[4/3]">
+          <img src="event-3.jpg" alt="Action Shot / Infrastrukturbau"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                      flex items-end p-4">
+            <div>
+              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Build</span>
+              <p class="font-display font-semibold text-white text-sm mt-0.5">Infrastrukturbau</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+        </div>
+
+        <!-- Bild 4 — breit, 2 Spalten -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer
+                    col-span-2 md:col-span-2 aspect-video">
+          <img src="event-4.jpg" alt="Arena Panorama / IEM Katowice"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                      flex items-end p-5">
+            <div>
+              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Arena</span>
+              <p class="font-display font-semibold text-white text-base mt-0.5">IEM Katowice — Arena Panorama</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 40px rgba(0,212,255,0.15);"></div>
+        </div>
+
+        <!-- Bild 5 -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer
+                    aspect-video md:aspect-[4/3]">
+          <img src="event-5.jpg" alt="IT Crew in der Halle"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                      flex items-end p-4">
+            <div>
+              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Crew</span>
+              <p class="font-display font-semibold text-white text-sm mt-0.5">IT Crew in der Halle</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+        </div>
+
+        <!-- Bild 6 -->
+        <div class="relative overflow-hidden rounded-xl group cursor-pointer
+                    aspect-video md:aspect-[4/3]">
+          <img src="event-6.jpg" alt="Group Photo / World Finals"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                      flex items-end p-4">
+            <div>
+              <span class="font-mono text-[10px] text-azure-400 tracking-widest uppercase">Team</span>
+              <p class="font-display font-semibold text-white text-sm mt-0.5">Group Photo — World Finals</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+               style="box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 30px rgba(0,212,255,0.15);"></div>
+        </div>
+
+      </div>
+
+      <!-- Event badge cloud -->
+      <div class="mt-10 reveal reveal-delay-2">
+        <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-4">Events &amp; Referenzen</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="event-badge">
+            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> IEM Cologne 24/25
+          </span>
+          <span class="event-badge">
+            <i class="fa-solid fa-gamepad text-azure-400 text-[10px]"></i> Gamescom 23–25
+          </span>
+          <span class="event-badge">
+            <i class="fa-solid fa-globe text-azure-400 text-[10px]"></i> EWC 25
+          </span>
+          <span class="event-badge">
+            <i class="fa-solid fa-bolt text-azure-400 text-[10px]"></i> Dreamhack Atlanta 25
+          </span>
+          <span class="event-badge">
+            <i class="fa-solid fa-flag text-azure-400 text-[10px]"></i> EPL S19 Malta
+          </span>
+          <span class="event-badge">
+            <i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> IEM Katowice 25
+          </span>
+          <span class="event-badge">
+            <i class="fa-solid fa-crosshairs text-azure-400 text-[10px]"></i> Clash LCQ Katowice
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider max-w-4xl w-full mx-auto"></div>
+
+  <!-- ═══════════════════════════════════════════
        ÜBER MICH
   ═══════════════════════════════════════════ -->
   <section id="ueber-mich" class="py-28 px-6">
@@ -546,7 +724,7 @@
         <!-- Left: Text -->
         <div class="reveal">
           <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-            <span class="text-slate-600">02 /</span> Über mich
+            <span class="text-slate-600">03 /</span> Über mich
           </div>
           <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">
             Mensch hinter den Systemen
@@ -619,11 +797,11 @@
           <!-- Stats row -->
           <div class="grid grid-cols-3 gap-4 mt-5">
             <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
-              <div class="font-display font-bold text-2xl text-white">5+</div>
+              <div class="font-display font-bold text-2xl text-white">3+</div>
               <div class="font-mono text-xs text-slate-500 mt-1">Jahre Erfahrung</div>
             </div>
             <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
-              <div class="font-display font-bold text-2xl text-white">30+</div>
+              <div class="font-display font-bold text-2xl text-white">50+</div>
               <div class="font-mono text-xs text-slate-500 mt-1">Events betreut</div>
             </div>
             <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
@@ -650,7 +828,7 @@
         <!-- Left: info -->
         <div class="reveal">
           <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-            <span class="text-slate-600">03 /</span> Kontakt
+            <span class="text-slate-600">04 /</span> Kontakt
           </div>
           <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">
             Projekt in Sicht?<br/>

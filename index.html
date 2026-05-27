@@ -219,6 +219,16 @@
       position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
     }
 
+    /* ── Modals ── */
+    .modal-overlay { animation: modalFadeIn 0.2s ease; }
+    .modal-panel   { animation: modalSlideUp 0.25s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes modalFadeIn   { from { opacity:0; } to { opacity:1; } }
+    @keyframes modalSlideUp  { from { opacity:0; transform:translateY(20px) scale(0.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+    .modal-body::-webkit-scrollbar { width: 5px; }
+    .modal-body::-webkit-scrollbar-track { background: transparent; }
+    .modal-body::-webkit-scrollbar-thumb { background: rgba(14,165,233,0.25); border-radius: 99px; }
+    .modal-body::-webkit-scrollbar-thumb:hover { background: rgba(14,165,233,0.5); }
+
     /* ── Mobile nav ── */
     #mobile-menu { display: none; }
     #mobile-menu.open { display: flex; }
@@ -806,38 +816,25 @@
           </ul>
         </div>
 
-        <!-- Legal – important for Germany -->
+        <!-- Legal -->
         <div>
           <h4 class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-4">Rechtliches</h4>
           <ul class="space-y-2">
             <li>
-              <a href="#impressum" id="impressum"
-                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2">
+              <button onclick="openModal('modal-impressum')"
+                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2 cursor-pointer">
                 <i class="fa-solid fa-file-lines text-xs text-slate-600"></i>
                 Impressum
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#datenschutz" id="datenschutz"
-                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2">
+              <button onclick="openModal('modal-datenschutz')"
+                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2 cursor-pointer">
                 <i class="fa-solid fa-shield-halved text-xs text-slate-600"></i>
                 Datenschutzerklärung
-              </a>
-            </li>
-            <li>
-              <a href="#agb"
-                 class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2">
-                <i class="fa-solid fa-scale-balanced text-xs text-slate-600"></i>
-                AGB
-              </a>
+              </button>
             </li>
           </ul>
-          <div class="mt-4 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20">
-            <p class="font-mono text-xs text-amber-500/70">
-              ⚠ Impressum &amp; Datenschutz sind Pflichtangaben gemäß §5 TMG / DSGVO.
-              Bitte mit einem Anwalt befüllen.
-            </p>
-          </div>
         </div>
 
       </div>
@@ -853,6 +850,223 @@
     </div>
   </footer>
 
+  <!-- ═══════════════════════════════════════════
+       MODAL: IMPRESSUM
+  ═══════════════════════════════════════════ -->
+  <div id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="modal-impressum-title"
+       class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+       style="display:none;">
+    <!-- Backdrop -->
+    <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal('modal-impressum')"></div>
+    <!-- Panel -->
+    <div class="modal-panel relative w-full max-w-2xl max-h-[85vh] flex flex-col
+                rounded-2xl border border-azure-500/20
+                bg-[#050d1a] shadow-2xl"
+         style="box-shadow: 0 0 0 1px rgba(14,165,233,0.15), 0 32px 80px rgba(0,0,0,0.7);">
+      <!-- Header -->
+      <div class="flex items-center justify-between px-7 py-5 border-b border-white/5 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-azure-500/10 border border-azure-500/20
+                      flex items-center justify-center text-azure-400 text-sm">
+            <i class="fa-solid fa-file-lines"></i>
+          </div>
+          <h2 id="modal-impressum-title" class="font-display font-bold text-lg text-white">Impressum</h2>
+        </div>
+        <button onclick="closeModal('modal-impressum')"
+                class="w-9 h-9 rounded-lg bg-white/5 border border-white/10
+                       flex items-center justify-center text-slate-400
+                       hover:text-white hover:bg-white/10 hover:border-white/20
+                       transition-all duration-200"
+                aria-label="Modal schließen">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <!-- Scrollable body -->
+      <div class="overflow-y-auto px-7 py-6 space-y-6 text-sm text-slate-300 leading-relaxed modal-body">
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Angaben gemäß § 5 TMG</h3>
+          <p class="text-slate-300">Leon Cordts<br/>
+          Leon Cordts – IT Solutions<br/>
+          Ostenthaler Str. 315a<br/>
+          51069 Köln</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Kontakt</h3>
+          <p>Telefon: <a href="tel:+491747610436" class="text-azure-400 hover:underline">+49 174 7610436</a><br/>
+          E-Mail: <a href="mailto:kontakt@leoncordts.de" class="text-azure-400 hover:underline">kontakt@leoncordts.de</a></p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Umsatzsteuer</h3>
+          <p>In Gründung / USt-IdNr. beim Finanzamt beantragt. Als Kleinunternehmer im Sinne von § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet.</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV</h3>
+          <p>Leon Cordts<br/>
+          Ostenthaler Str. 315a<br/>
+          51069 Köln</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">EU-Streitschlichtung</h3>
+          <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+          <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer"
+             class="text-azure-400 hover:underline break-all">https://ec.europa.eu/consumers/odr/</a><br/>
+          Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+        </section>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Verbraucherstreitbeilegung / Universalschlichtungsstelle</h3>
+          <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Haftung für Inhalte</h3>
+          <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+          <p class="mt-2">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+        </section>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Haftung für Links</h3>
+          <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+        </section>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">Urheberrecht</h3>
+          <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: DATENSCHUTZERKLÄRUNG
+  ═══════════════════════════════════════════ -->
+  <div id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="modal-datenschutz-title"
+       class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+       style="display:none;">
+    <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal('modal-datenschutz')"></div>
+    <div class="modal-panel relative w-full max-w-2xl max-h-[85vh] flex flex-col
+                rounded-2xl border border-azure-500/20
+                bg-[#050d1a] shadow-2xl"
+         style="box-shadow: 0 0 0 1px rgba(14,165,233,0.15), 0 32px 80px rgba(0,0,0,0.7);">
+      <!-- Header -->
+      <div class="flex items-center justify-between px-7 py-5 border-b border-white/5 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-azure-500/10 border border-azure-500/20
+                      flex items-center justify-center text-azure-400 text-sm">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h2 id="modal-datenschutz-title" class="font-display font-bold text-lg text-white">Datenschutzerklärung</h2>
+        </div>
+        <button onclick="closeModal('modal-datenschutz')"
+                class="w-9 h-9 rounded-lg bg-white/5 border border-white/10
+                       flex items-center justify-center text-slate-400
+                       hover:text-white hover:bg-white/10 hover:border-white/20
+                       transition-all duration-200"
+                aria-label="Modal schließen">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <!-- Scrollable body -->
+      <div class="overflow-y-auto px-7 py-6 space-y-6 text-sm text-slate-300 leading-relaxed modal-body">
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">1. Datenschutz auf einen Blick</h3>
+          <h4 class="font-semibold text-slate-200 mb-1">Allgemeine Hinweise</h4>
+          <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+          <h4 class="font-semibold text-slate-200 mt-4 mb-1">Datenerfassung auf dieser Website</h4>
+          <p><strong class="text-slate-200">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br/>
+          Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle" in dieser Datenschutzerklärung entnehmen.</p>
+          <p class="mt-2"><strong class="text-slate-200">Wie erfassen wir Ihre Daten?</strong><br/>
+          Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen, z. B. per E-Mail. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+          <p class="mt-2"><strong class="text-slate-200">Wofür nutzen wir Ihre Daten?</strong><br/>
+          Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Bearbeitung Ihrer Anfragen verwendet werden.</p>
+          <p class="mt-2"><strong class="text-slate-200">Welche Rechte haben Sie bezüglich Ihrer Daten?</strong><br/>
+          Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">2. Hosting &amp; technischer Betrieb</h3>
+          <h4 class="font-semibold text-slate-200 mb-1">GitHub Pages</h4>
+          <p>Diese Website wird auf GitHub Pages gehostet. Anbieter ist die GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
+          <p class="mt-2">Wenn Sie diese Website besuchen, erfasst GitHub Pages automatisch sog. Server-Logfiles. Diese enthalten u. a.: IP-Adresse des anfragenden Geräts, Datum und Uhrzeit des Abrufs, aufgerufene URL, übertragene Datenmenge sowie den HTTP-Statuscode. Die Verarbeitung dieser Daten ist technisch notwendig für den Betrieb der Website und basiert auf Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+          <p class="mt-2">Die Datenschutzerklärung von GitHub finden Sie unter: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline break-all">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a></p>
+          <p class="mt-2">Die Übermittlung von Daten in die USA erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission.</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">3. Verantwortliche Stelle</h3>
+          <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+          <p class="mt-2">Leon Cordts<br/>
+          Leon Cordts – IT Solutions<br/>
+          Ostenthaler Str. 315a<br/>
+          51069 Köln<br/>
+          Telefon: <a href="tel:+491747610436" class="text-azure-400 hover:underline">+49 174 7610436</a><br/>
+          E-Mail: <a href="mailto:kontakt@leoncordts.de" class="text-azure-400 hover:underline">kontakt@leoncordts.de</a></p>
+          <p class="mt-2">Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">4. Datenerfassung durch Kontaktaufnahme per E-Mail</h3>
+          <p>Wenn Sie uns per E-Mail kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage, E-Mail-Adresse) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+          <p class="mt-2">Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), sofern diese abgefragt wurde.</p>
+          <p class="mt-2">Die von Ihnen an uns per E-Mail-Kontakt übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere gesetzliche Aufbewahrungsfristen – bleiben unberührt.</p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">5. Ihre Rechte als betroffene Person</h3>
+          <p>Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+          <ul class="mt-2 space-y-1 pl-4 list-disc list-outside marker:text-azure-400">
+            <li><strong class="text-slate-200">Auskunftsrecht</strong> (Art. 15 DSGVO)</li>
+            <li><strong class="text-slate-200">Recht auf Berichtigung</strong> (Art. 16 DSGVO)</li>
+            <li><strong class="text-slate-200">Recht auf Löschung</strong> (Art. 17 DSGVO)</li>
+            <li><strong class="text-slate-200">Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
+            <li><strong class="text-slate-200">Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+            <li><strong class="text-slate-200">Widerspruchsrecht</strong> (Art. 21 DSGVO)</li>
+            <li><strong class="text-slate-200">Recht auf Widerruf der Einwilligung</strong> (Art. 7 Abs. 3 DSGVO)</li>
+          </ul>
+          <p class="mt-3">Sie haben außerdem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren. Zuständige Aufsichtsbehörde in NRW ist:</p>
+          <p class="mt-2 text-slate-400">Landesbeauftragte für Datenschutz und Informationsfreiheit NRW<br/>
+          Postfach 20 04 44, 40102 Düsseldorf<br/>
+          <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline">www.ldi.nrw.de</a></p>
+        </section>
+
+        <div class="section-divider w-full"></div>
+
+        <section>
+          <h3 class="font-display font-semibold text-white text-base mb-3">6. Keine Cookies &amp; kein Tracking</h3>
+          <p>Diese Website verwendet keine Cookies und setzt keine Analyse- oder Tracking-Tools (wie Google Analytics o. Ä.) ein. Es werden keine Nutzerprofile erstellt.</p>
+        </section>
+
+        <p class="text-xs text-slate-600 pt-2">Stand: Juni 2025</p>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Toast notification -->
   <div id="toast">
     <i class="fa-solid fa-check-circle mr-2"></i>
@@ -863,6 +1077,30 @@
        JAVASCRIPT
   ═══════════════════════════════════════════ -->
   <script>
+    // ── Modals ──
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      // reset scroll position each open
+      const body = modal.querySelector('.modal-body');
+      if (body) body.scrollTop = 0;
+    }
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        ['modal-impressum', 'modal-datenschutz'].forEach(id => {
+          const m = document.getElementById(id);
+          if (m && m.style.display !== 'none') closeModal(id);
+        });
+      }
+    });
+
     // ── Year ──
     document.getElementById('year').textContent = new Date().getFullYear();
 

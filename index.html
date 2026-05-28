@@ -295,7 +295,7 @@
             Fernwartung &amp; Soforthilfe
           </h2>
           <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl" data-i18n="remote.body">
-            Schnelle Unterst&#252;tzung ohne Anfahrt. Laden Sie sich einfach das RustDesk Support-Tool herunter, damit wir Ihr Problem gemeinsam direkt am Bildschirm l&#246;sen k&#246;nnen. Sicher, verschl&#252;sselt und unkompliziert.
+            Schnelle Unterst&#252;tzung ohne Anfahrt. Laden Sie sich einfach unser Support-Tool herunter, damit wir Ihr Problem gemeinsam direkt am Bildschirm l&#246;sen k&#246;nnen. Sicher, verschl&#252;sselt und unkompliziert.
           </p>
         </div>
 
@@ -384,21 +384,88 @@
       </div>
     </div>
 
-    <!-- Badge cloud -->
+    <!-- Event list (rebuilt) -->
     <div class="mt-10 reveal reveal-delay-2 space-y-6">
       <div>
-        <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-3 flex items-center gap-2">
+        <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-5 flex items-center gap-2">
           <i class="fa-solid fa-calendar-days text-azure-400/50"></i>
           <span data-i18n="imp.eventsLabel">Event-Referenzen</span>
         </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="event-badge"><i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Cologne 2024 &amp; 2025</span>
-          <span class="event-badge"><i class="fa-solid fa-gamepad text-azure-400 text-[10px]"></i> gamescom 2023, 2024 &amp; 2025</span>
-          <span class="event-badge"><i class="fa-solid fa-globe text-azure-400 text-[10px]"></i> Esports World Cup 2025</span>
-          <span class="event-badge"><i class="fa-solid fa-bolt text-azure-400 text-[10px]"></i> Dreamhack Atlanta 2025</span>
-          <span class="event-badge"><i class="fa-solid fa-flag text-azure-400 text-[10px]"></i> ESL Pro League Season 19 Malta</span>
-          <span class="event-badge"><i class="fa-solid fa-trophy text-azure-400 text-[10px]"></i> Intel Extreme Masters Katowice 2025</span>
-          <span class="event-badge"><i class="fa-solid fa-crosshairs text-azure-400 text-[10px]"></i> Clash of Clans Last Chance Qualifier Katowice 2023</span>
+
+        <div class="grid sm:grid-cols-2 gap-2.5">
+
+          <!-- 1 — IT Lead gamescom 2025 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-gamepad text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.1">gamescom 2025</span>
+            <span class="ml-auto shrink-0 font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-0.5 rounded-full tracking-wide">IT Lead</span>
+          </div>
+
+          <!-- 2 — IT Lead Chess.com @ EWC 2025 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-globe text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.2">Chess.com @ Esports World Cup 2025</span>
+            <span class="ml-auto shrink-0 font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-0.5 rounded-full tracking-wide">IT Lead</span>
+          </div>
+
+          <!-- 3 — IT Lead Prime League DACH Finale 2025 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-trophy text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.3">Prime League DACH Finale 2025</span>
+            <span class="ml-auto shrink-0 font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-0.5 rounded-full tracking-wide">IT Lead</span>
+          </div>
+
+          <!-- 4 — IEM Cologne 2024 & 2025 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-trophy text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.4">Intel Extreme Masters Cologne 2024 &amp; 2025</span>
+          </div>
+
+          <!-- 5 — ESL One Birmingham 2026 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-flag text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.5">ESL One Birmingham 2026</span>
+          </div>
+
+          <!-- 6 — IEM Katowice 2025 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-trophy text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.6">Intel Extreme Masters Katowice 2025</span>
+          </div>
+
+          <!-- 7 — Dreamhack Atlanta 2025 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-bolt text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.7">Dreamhack Atlanta 2025</span>
+          </div>
+
+          <!-- 8 — ESL Pro League S19 Malta -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-flag text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.8">ESL Pro League Season 19 Malta</span>
+          </div>
+
+          <!-- 9 — gamescom 2023 & 2024 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-gamepad text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.9">gamescom 2023 &amp; 2024</span>
+          </div>
+
+          <!-- 10 — Clash of Clans LCQ Katowice 2023 -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
+            <i class="fa-solid fa-crosshairs text-azure-400 text-sm shrink-0 w-5 text-center"></i>
+            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.10">Clash of Clans Last Chance Qualifier Katowice 2023</span>
+          </div>
+
+          <!-- 11 — Soon: EWC 2026 Paris -->
+          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422]/60 border border-azure-500/10 opacity-60 sm:col-span-2">
+            <span class="relative shrink-0 w-5 flex items-center justify-center">
+              <span class="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse-slow"></span>
+            </span>
+            <span class="text-sm text-slate-400 leading-snug italic" data-i18n="ev.11">Esports World Cup 2026 &mdash; Paris</span>
+            <span class="ml-auto shrink-0 font-mono text-[10px] text-[#00d4ff] border border-[#00d4ff]/40 bg-[#00d4ff]/8 px-2 py-0.5 rounded-full tracking-wide" data-i18n="ev.soon">Soon</span>
+          </div>
+
         </div>
       </div>
       <div class="section-divider w-full max-w-full"></div>
@@ -735,6 +802,18 @@
       'imp.title':         'Events & Einsatze',
       'imp.sub':           'Ein Blick hinter die Kulissen — von der Netzwerkverkabelung bis zur Arena-Infrastruktur auf internationalen Buhnen.',
       'imp.eventsLabel':   'Event-Referenzen',
+      'ev.1':  'gamescom 2025',
+      'ev.2':  'Chess.com @ Esports World Cup 2025',
+      'ev.3':  'Prime League DACH Finale 2025',
+      'ev.4':  'Intel Extreme Masters Cologne 2024 & 2025',
+      'ev.5':  'ESL One Birmingham 2026',
+      'ev.6':  'Intel Extreme Masters Katowice 2025',
+      'ev.7':  'Dreamhack Atlanta 2025',
+      'ev.8':  'ESL Pro League Season 19 Malta',
+      'ev.9':  'gamescom 2023 & 2024',
+      'ev.10': 'Clash of Clans Last Chance Qualifier Katowice 2023',
+      'ev.11': 'Esports World Cup 2026 — Paris',
+      'ev.soon': 'Bald',
       'imp.expertiseLabel':'Expertise & Qualifikationen',
       'exp.fisi':   'Fachinformatiker Systemintegration (i.A. @ ESL FACEIT Group)',
       'exp.infra':  'IT-Integration & Infrastruktur-Support',
@@ -753,7 +832,7 @@
       'remote.title': 'Fernwartung & Soforthilfe',
       'remote.body':  'Schnelle Unterstützung ohne Anfahrt. Laden Sie sich einfach unser Support-Tool herunter, damit wir Ihr Problem gemeinsam direkt am Bildschirm lösen können. Sicher, verschlüsselt und unkompliziert.',
       'remote.btn':   'Support-Tool herunterladen',
-      'remote.hint':  'Kostenlos · Direkt startklar',
+      'remote.hint':  'Kostenlos · Keine Installation nötig',
       'contact.title':     'Projekt in Sicht?',
       'contact.title2':    'Melden Sie sich.',
       'contact.desc':      'Ob Infrastruktur-Projekt, Event-Support oder kurzfristige Verstärkung — ich freue mich auf Ihre Anfrage und melde mich in der Regel innerhalb von 24 Stunden.',
@@ -835,6 +914,18 @@
       'imp.title':         'Events & Deployments',
       'imp.sub':           'A behind-the-scenes look — from network cabling to arena infrastructure on international stages.',
       'imp.eventsLabel':   'Event References',
+      'ev.1':  'gamescom 2025',
+      'ev.2':  'Chess.com @ Esports World Cup 2025',
+      'ev.3':  'Prime League DACH Finals 2025',
+      'ev.4':  'Intel Extreme Masters Cologne 2024 & 2025',
+      'ev.5':  'ESL One Birmingham 2026',
+      'ev.6':  'Intel Extreme Masters Katowice 2025',
+      'ev.7':  'Dreamhack Atlanta 2025',
+      'ev.8':  'ESL Pro League Season 19 Malta',
+      'ev.9':  'gamescom 2023 & 2024',
+      'ev.10': 'Clash of Clans Last Chance Qualifier Katowice 2023',
+      'ev.11': 'Esports World Cup 2026 — Paris',
+      'ev.soon': 'Soon',
       'imp.expertiseLabel':'Expertise & Qualifications',
       'exp.fisi':   'IT Systems Specialist (Apprenticeship @ ESL FACEIT Group)',
       'exp.infra':  'IT Integration & Infrastructure Support',
@@ -851,9 +942,9 @@
       'stats.events':   'Events supported',
       'stats.reliable': 'Reliable',
       'remote.title': 'Remote Support',
-      'remote.body':  'Quick assistance without travel costs. Simply download the RustDesk support tool so we can solve your problem together directly on your screen. Secure, encrypted, and straightforward.',
+      'remote.body':  'Quick assistance without travel costs. Simply download our support tool so we can solve your problem together directly on your screen. Secure, encrypted, and straightforward.',
       'remote.btn':   'Download Support Tool',
-      'remote.hint':  'Free · Ready to use',
+      'remote.hint':  'Free · No installation required',
       'contact.title':     'Project in sight?',
       'contact.title2':    "Let's talk.",
       'contact.desc':      'Whether infrastructure project, event support or short-notice reinforcement — I look forward to your enquiry and will typically respond within 24 hours.',

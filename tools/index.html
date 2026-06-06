@@ -22,21 +22,11 @@
           colors: {
             navy:  { 950:'#020b18', 900:'#050d1a', 800:'#071422', 700:'#0a1c2e', 600:'#0e2640' },
             azure: { 400:'#38bdf8', 500:'#0ea5e9', 600:'#0284c7' },
-            cyan:  { glow:'#00d4ff' }
           },
           fontFamily: {
             display: ['Syne','sans-serif'],
             mono:    ['JetBrains Mono','monospace'],
             body:    ['DM Sans','sans-serif'],
-          },
-          animation: {
-            'fade-up':    'fadeUp 0.7s ease forwards',
-            'fade-in':    'fadeIn 1s ease forwards',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4,0,0.6,1) infinite',
-          },
-          keyframes: {
-            fadeUp: { '0%':{ opacity:0, transform:'translateY(24px)' }, '100%':{ opacity:1, transform:'translateY(0)' } },
-            fadeIn: { '0%':{ opacity:0 }, '100%':{ opacity:1 } },
           },
         }
       }
@@ -47,36 +37,34 @@
     body { background-color:#020b18; color:#cbd5e1; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
     .grid-bg { background-image:linear-gradient(rgba(14,165,233,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.05) 1px,transparent 1px); background-size:48px 48px; }
     .glow-text { text-shadow:0 0 40px rgba(0,212,255,0.45),0 0 80px rgba(0,212,255,0.15); }
-    .glow-box  { box-shadow:0 0 0 1px rgba(14,165,233,0.25),0 8px 48px rgba(14,165,233,0.08); }
-    .glow-box:hover { box-shadow:0 0 0 1px rgba(0,212,255,0.5),0 8px 64px rgba(0,212,255,0.18); }
-    .btn-glow  { box-shadow:0 0 24px rgba(14,165,233,0.4); }
-    .btn-glow:hover { box-shadow:0 0 40px rgba(0,212,255,0.65); }
-    .noise { position:relative; }
-    .noise::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:0; opacity:0.025; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
     .nav-link { position:relative; font-family:'DM Sans',sans-serif; font-size:0.875rem; letter-spacing:0.02em; color:#94a3b8; transition:color 0.25s; }
     .nav-link::after { content:''; position:absolute; left:0; bottom:-3px; height:1px; width:0; background:#00d4ff; transition:width 0.3s ease; }
     .nav-link:hover { color:#e2e8f0; }
     .nav-link:hover::after { width:100%; }
     .nav-link.active { color:#38bdf8; }
     .nav-link.active::after { width:100%; }
-    .tool-card { background:linear-gradient(135deg,#071422 0%,#050d1a 100%); border:1px solid rgba(14,165,233,0.18); border-radius:1rem; transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease; text-decoration:none; display:block; }
-    .tool-card:hover { transform:translateY(-6px); border-color:rgba(0,212,255,0.45); box-shadow:0 12px 60px rgba(0,212,255,0.12); }
-    .icon-wrap { width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(0,212,255,0.08)); border:1px solid rgba(14,165,233,0.3); display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:#38bdf8; transition:background 0.3s,box-shadow 0.3s; }
-    .tool-card:hover .icon-wrap { background:linear-gradient(135deg,rgba(14,165,233,0.35),rgba(0,212,255,0.15)); box-shadow:0 0 20px rgba(0,212,255,0.3); }
-    .skill-tag { font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.25); color:#38bdf8; border-radius:4px; padding:3px 10px; }
+    .tool-card { background:linear-gradient(135deg,#071422 0%,#050d1a 100%); border:1px solid rgba(14,165,233,0.18); border-radius:1rem; transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease; text-decoration:none; display:flex; flex-direction:column; }
+    .tool-card:hover { transform:translateY(-5px); border-color:rgba(0,212,255,0.4); box-shadow:0 12px 48px rgba(0,212,255,0.1); }
+    .icon-wrap { width:48px; height:48px; border-radius:10px; background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(0,212,255,0.08)); border:1px solid rgba(14,165,233,0.3); display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:#38bdf8; transition:background 0.3s,box-shadow 0.3s; flex-shrink:0; }
+    .tool-card:hover .icon-wrap { background:linear-gradient(135deg,rgba(14,165,233,0.35),rgba(0,212,255,0.15)); box-shadow:0 0 18px rgba(0,212,255,0.3); }
+    .skill-tag { font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.05em; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.2); color:#38bdf8; border-radius:4px; padding:2px 8px; white-space:nowrap; }
     .orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; }
     .section-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(14,165,233,0.3) 30%,rgba(0,212,255,0.4) 50%,rgba(14,165,233,0.3) 70%,transparent); margin:0 auto; }
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
+    .cat-badge { display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:1px solid; margin-bottom:1.5rem; }
+    /* Filter buttons */
+    .filter-btn { font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; padding:6px 16px; border-radius:20px; border:1px solid rgba(14,165,233,0.25); color:#64748b; background:transparent; cursor:pointer; transition:all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { border-color:rgba(0,212,255,0.6); color:#38bdf8; background:rgba(14,165,233,0.08); }
   </style>
 </head>
-<body class="noise">
+<body>
 
 <!-- NAVIGATION -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3 group">
-      <img src="/logo.png" alt="Leon Cordts IT Solutions Logo" class="h-10 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90" style="filter:drop-shadow(0 0 8px rgba(0,212,255,0.35));" />
+      <img src="/logo.png" alt="Leon Cordts IT Solutions" class="h-10 w-auto object-contain transition-opacity group-hover:opacity-90" style="filter:drop-shadow(0 0 8px rgba(0,212,255,0.35));" />
       <span class="font-display font-semibold text-white text-sm tracking-wide hidden sm:block">Leon Cordts &ndash; IT Solutions</span>
     </a>
     <div class="hidden md:flex items-center gap-6">
@@ -84,9 +72,9 @@
       <a href="/#ueber-mich"  class="nav-link">&#220;ber mich</a>
       <a href="/#kontakt"     class="nav-link">Kontakt</a>
       <a href="/tools/"       class="nav-link active">Tools</a>
-      <a href="/#kontakt" class="ml-1 px-4 py-2 rounded-lg text-xs font-display font-semibold bg-gradient-to-r from-azure-600 to-azure-500 text-white hover:from-azure-500 hover:to-[#00d4ff] transition-all duration-300 btn-glow">Kontakt aufnehmen</a>
+      <a href="/#kontakt" class="ml-1 px-4 py-2 rounded-lg text-xs font-display font-semibold bg-gradient-to-r from-azure-600 to-azure-500 text-white hover:opacity-90 transition-all">Kontakt aufnehmen</a>
     </div>
-    <button id="hamburger" class="md:hidden text-slate-400 hover:text-white transition-colors p-2"><i class="fa-solid fa-bars text-lg"></i></button>
+    <button id="hamburger" class="md:hidden text-slate-400 hover:text-white p-2"><i class="fa-solid fa-bars text-lg"></i></button>
   </div>
   <div id="mobile-menu" class="hidden md:hidden flex-col gap-1 px-6 pb-4 bg-navy-900/98 backdrop-blur-lg border-b border-azure-500/10">
     <a href="/#leistungen" class="nav-link block py-3 border-b border-white/5">Leistungen</a>
@@ -97,137 +85,322 @@
 </nav>
 
 <!-- HERO -->
-<section class="relative pt-32 pb-16 px-6 grid-bg overflow-hidden">
+<section class="relative pt-32 pb-12 px-6 grid-bg overflow-hidden">
   <div class="orb w-96 h-96 top-0 -right-32 opacity-15" style="background:radial-gradient(circle,#0ea5e9,transparent 70%);"></div>
   <div class="orb w-64 h-64 bottom-0 -left-24 opacity-10" style="background:radial-gradient(circle,#00d4ff,transparent 70%);"></div>
   <div class="max-w-6xl mx-auto relative z-10">
-    <div class="animate-fade-up" style="animation-delay:0.1s;opacity:0;animation-fill-mode:forwards;">
-      <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-        <span class="text-slate-600">00 /</span> Tools
-      </div>
+    <div style="animation:fadeUp 0.7s ease 0.1s both;">
+      <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3"><span class="text-slate-600">00 /</span> Tools</div>
       <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white glow-text mb-4">Kostenlose Tools</h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed">
-        Praktische IT- und SEO-Werkzeuge, die ich f&#252;r meine Arbeit entwickelt habe &#8212; jetzt kostenlos f&#252;r Sie nutzbar.
+      <p class="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-8">
+        Praktische IT-Werkzeuge &#8212; lokal im Browser, kein Account, keine Kosten.
+        <span class="font-mono text-azure-400 ml-2" id="tool-count">20 Tools</span>
       </p>
+      <!-- Category Filter -->
+      <div class="flex flex-wrap gap-2" id="filters">
+        <button class="filter-btn active" data-cat="all">Alle</button>
+        <button class="filter-btn" data-cat="seo-sicherheit">&#128275; SEO &amp; Sicherheit</button>
+        <button class="filter-btn" data-cat="web-dev">&#128187; Web &amp; Developer</button>
+        <button class="filter-btn" data-cat="text">&#128196; Text &amp; Produktivit&#228;t</button>
+        <button class="filter-btn" data-cat="medien">&#127916; Medien &amp; Konverter</button>
+        <button class="filter-btn" data-cat="system">&#9881;&#65039; System &amp; Hardware</button>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider max-w-4xl w-full mx-auto"></div>
+<div class="section-divider max-w-5xl w-full mx-auto"></div>
 
-<!-- TOOLS GRID -->
-<section class="py-20 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<main class="py-16 px-6 max-w-6xl mx-auto space-y-20">
 
-      <!-- SEO Checker Card -->
-      <a href="https://leon-seo-checker.vercel.app" target="_blank" rel="noopener noreferrer" class="tool-card p-7 reveal">
-        <div class="flex items-start justify-between mb-5">
+  <!-- ═══ SEO & SICHERHEIT ════════════════════════════════════════════ -->
+  <section class="tool-section" data-cat="seo-sicherheit">
+    <div class="cat-badge reveal" style="background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.35);color:#818cf8;">
+      <i class="fa-solid fa-shield-halved text-xs"></i> SEO &amp; Sicherheit
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <a href="https://leon-seo-checker.vercel.app" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
           <div class="icon-wrap"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-          <span class="font-mono text-[10px] font-bold text-navy-950 bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider shadow-[0_0_12px_rgba(0,212,255,0.5)]">Kostenlos</span>
+          <span class="font-mono text-[10px] font-bold text-navy-950 bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">Kostenlos</span>
         </div>
-        <h2 class="font-display font-bold text-xl text-white mb-2">SEO-Checker</h2>
-        <p class="font-mono text-xs text-azure-400 mb-4 tracking-wide">Website-Analyse in Sekunden</p>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Analysiert Ihre Website auf 27 SEO-Faktoren: Meta-Tags, Open Graph, Seitenstruktur, technische SEO und Barrierefreiheit &#8212; mit konkreten Handlungsempfehlungen und PDF-Export.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="skill-tag">Meta-Tags</span>
-          <span class="skill-tag">Open Graph</span>
-          <span class="skill-tag">Technik</span>
-          <span class="skill-tag">PDF-Export</span>
-        </div>
-        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono mt-auto">
-          <span>Tool starten</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">SEO-Checker</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">27 Pr&#252;fpunkte &middot; PDF-Export</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Meta-Tags, Open Graph, Schema.org, technische SEO &mdash; mit Handlungsempfehlungen und PDF-Report.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Meta-Tags</span><span class="skill-tag">Open Graph</span><span class="skill-tag">PDF</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
       </a>
 
-      <!-- Security Auditor Card -->
-      <a href="https://leon-seo-checker.vercel.app/tools/security-auditor" target="_blank" rel="noopener noreferrer" class="tool-card p-7 reveal" style="border-color:rgba(239,68,68,0.25);">
-        <div class="flex items-start justify-between mb-5">
-          <div class="icon-wrap" style="background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(239,68,68,0.05));border-color:rgba(239,68,68,0.3);color:#f87171;">
-            <i class="fa-solid fa-shield-virus"></i>
-          </div>
-          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-red-400 px-2 py-1 rounded-full tracking-wider shadow-[0_0_12px_rgba(239,68,68,0.5)]">NEU</span>
+      <a href="https://leon-seo-checker.vercel.app/tools/security-auditor" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(239,68,68,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#f87171;border-color:rgba(239,68,68,0.3);background:linear-gradient(135deg,rgba(239,68,68,0.18),rgba(239,68,68,0.05));"><i class="fa-solid fa-shield-virus"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-red-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
         </div>
-        <h2 class="font-display font-bold text-xl text-white mb-2">Security Auditor</h2>
-        <p class="font-mono text-xs mb-4 tracking-wide" style="color:#f87171;">Website-Sicherheit in Sekunden</p>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Tiefgehender Sicherheits-Scan: SSL/TLS, HTTP-Security-Header, Information Disclosure (versteckte Dateien), DNS Blacklist &#8212; mit Security-Score und PDF-Report.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="skill-tag">SSL/TLS</span>
-          <span class="skill-tag">HTTP-Header</span>
-          <span class="skill-tag">Blacklist-Check</span>
-          <span class="skill-tag">PDF-Report</span>
-        </div>
-        <div class="flex items-center gap-2 text-sm font-mono mt-auto" style="color:#f87171;">
-          <span>Scan starten</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Security Auditor</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#f87171;">SSL &middot; HTTP-Header &middot; Blacklist</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">SSL/TLS, Security-Header, DNS-Blacklist-Check &mdash; mit Security-Score und PDF-Report.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">SSL/TLS</span><span class="skill-tag">HTTP-Header</span><span class="skill-tag">PDF</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#f87171;"><span>Scan starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
       </a>
 
-      <!-- Abo-Rechner Card -->
-      <a href="https://leon-seo-checker.vercel.app/tools/abo-rechner" target="_blank" rel="noopener noreferrer" class="tool-card p-7 reveal" style="border-color:rgba(34,197,94,0.25);">
-        <div class="flex items-start justify-between mb-5">
-          <div class="icon-wrap" style="background:linear-gradient(135deg,rgba(34,197,94,0.18),rgba(34,197,94,0.05));border-color:rgba(34,197,94,0.3);color:#4ade80;">
-            <i class="fa-solid fa-piggy-bank"></i>
-          </div>
-          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-green-400 px-2 py-1 rounded-full tracking-wider shadow-[0_0_12px_rgba(34,197,94,0.5)]">NEU</span>
+      <a href="https://leon-seo-checker.vercel.app/tools/agb-filter" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(59,130,246,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#60a5fa;border-color:rgba(59,130,246,0.3);background:linear-gradient(135deg,rgba(59,130,246,0.18),rgba(59,130,246,0.05));"><i class="fa-solid fa-file-contract"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-blue-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
         </div>
-        <h2 class="font-display font-bold text-xl text-white mb-2">Abo-Spar-Rechner</h2>
-        <p class="font-mono text-xs mb-4 tracking-wide" style="color:#4ade80;">Smart Hacks · Bis zu 80% sparen</p>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Berechne dein Einsparpotenzial bei Netflix, Spotify, YouTube Premium und Adobe &#8212; mit schrittweisen Anleitungen f&#252;r clevere Optimierungsstrategien.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="skill-tag"><i class="fa-brands fa-youtube mr-1"></i>YouTube</span>
-          <span class="skill-tag"><i class="fa-brands fa-spotify mr-1"></i>Spotify</span>
-          <span class="skill-tag"><i class="fa-solid fa-film mr-1"></i>Netflix</span>
-          <span class="skill-tag"><i class="fa-brands fa-adobe mr-1"></i>Adobe</span>
-        </div>
-        <div class="flex items-center gap-2 text-sm font-mono mt-auto" style="color:#4ade80;">
-          <span>Jetzt sparen</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">AGB &amp; Cookie-Filter</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#60a5fa;">100% lokal &middot; DSGVO-konform</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Erkennt versteckte Kostenfallen, Datenweitergabe und Rechteabtretungen in AGB und Cookie-Richtlinien.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Kostenfallen</span><span class="skill-tag">Datenschutz</span><span class="skill-tag">Lokal</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#60a5fa;"><span>Jetzt scannen</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
       </a>
 
-      <!-- AGB & Cookie-Bullshit-Filter Card -->
-      <a href="https://leon-seo-checker.vercel.app/tools/agb-filter" target="_blank" rel="noopener noreferrer" class="tool-card p-7 reveal" style="border-color:rgba(59,130,246,0.25);">
-        <div class="flex items-start justify-between mb-5">
-          <div class="icon-wrap" style="background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(20,184,166,0.08));border-color:rgba(59,130,246,0.3);color:#60a5fa;">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-blue-400 px-2 py-1 rounded-full tracking-wider shadow-[0_0_12px_rgba(59,130,246,0.5)]">NEU</span>
+      <a href="https://leon-seo-checker.vercel.app/tools/password-generator" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(168,85,247,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#c084fc;border-color:rgba(168,85,247,0.3);background:linear-gradient(135deg,rgba(168,85,247,0.18),rgba(168,85,247,0.05));"><i class="fa-solid fa-key"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-purple-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
         </div>
-        <h2 class="font-display font-bold text-xl text-white mb-2">AGB & Cookie-Filter</h2>
-        <p class="font-mono text-xs mb-4 tracking-wide" style="color:#60a5fa;">100% lokal &middot; DSGVO-konform &middot; 0&nbsp;&euro;</p>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Kopiere AGB oder Datenschutztexte hinein &mdash; das Tool erkennt versteckte Kostenfallen, aggressive Datenweitergabe und Rechteabtretungen. Vollst&auml;ndig lokal im Browser, kein Server.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="skill-tag">Kostenfallen</span>
-          <span class="skill-tag">Datenschutz</span>
-          <span class="skill-tag">Rechteabtretung</span>
-          <span class="skill-tag">100% lokal</span>
-        </div>
-        <div class="flex items-center gap-2 text-sm font-mono mt-auto" style="color:#60a5fa;">
-          <span>Jetzt scannen</span>
-          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Passwort-Generator</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#c084fc;">Kryptografisch sicher &middot; 0 Server</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Generiert sichere Passw&#246;rter via <code class="text-xs">crypto.getRandomValues()</code> &mdash; mit L&#228;ngen-Slider und Zeichensatz-Auswahl.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">crypto API</span><span class="skill-tag">Lokal</span><span class="skill-tag">Sicher</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#c084fc;"><span>Passwort erstellen</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
       </a>
 
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ═══ WEB & DEVELOPER TOOLS ═══════════════════════════════════════ -->
+  <section class="tool-section" data-cat="web-dev">
+    <div class="cat-badge reveal" style="background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.35);color:#22d3ee;">
+      <i class="fa-solid fa-code text-xs"></i> Web &amp; Developer Tools
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <a href="https://leon-seo-checker.vercel.app/tools/color-converter" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-palette"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">HEX &#8596; RGB Konverter</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Farben sofort umrechnen</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Konvertiert zwischen HEX, RGB, HSL und RGBA &mdash; mit Live-Farbvorschau.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">HEX</span><span class="skill-tag">RGB</span><span class="skill-tag">HSL</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/css-formatter" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-brands fa-css3-alt"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">CSS Minifier &amp; Formatter</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Minify &middot; Beautify &middot; Sofort</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">CSS-Code minifizieren oder sch&#246;n formatieren &mdash; mit einem Klick.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Minify</span><span class="skill-tag">Beautify</span><span class="skill-tag">CSS</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/json-validator" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-brackets-curly"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">JSON Validator &amp; Formatter</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Validieren &middot; Formatieren &middot; Lokal</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">JSON auf Syntaxfehler pr&#252;fen, perfekt einr&#252;cken und per Klick kopieren.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">JSON</span><span class="skill-tag">Lint</span><span class="skill-tag">Format</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/yaml-json-converter" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-right-left"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">YAML &#8596; JSON Konverter</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Bidirektional &middot; Sofort</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">YAML zu JSON und zur&#252;ck &mdash; f&#252;r Config-Files, CI/CD-Pipelines und APIs.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">YAML</span><span class="skill-tag">JSON</span><span class="skill-tag">Config</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/xml-json-converter" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-file-code"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">XML &#8596; JSON Konverter</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Bidirektional &middot; Lokal</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">XML-Strukturen in JSON umwandeln und umgekehrt &mdash; ohne Upload, direkt im Browser.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">XML</span><span class="skill-tag">JSON</span><span class="skill-tag">Parse</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/csv-json-converter" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-table"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">CSV &#8596; JSON Konverter</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Tabellen blitzschnell konvertieren</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">CSV-Tabellen in JSON-Arrays umwandeln &mdash; ideal f&#252;r Datenimporte und APIs.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">CSV</span><span class="skill-tag">JSON</span><span class="skill-tag">Import</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/base64-decoder" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-lock-open"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Base64 En-/Decoder</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Encode &middot; Decode &middot; Sofort</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Text oder Bin&#228;rdaten in Base64 kodieren und dekodieren &mdash; lokal, ohne Upload.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Base64</span><span class="skill-tag">Encode</span><span class="skill-tag">Decode</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/markdown-to-html" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-brands fa-markdown"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Markdown &#8594; HTML</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Live-Vorschau &middot; Split-Screen</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Markdown in Echtzeit zu HTML rendern &mdash; mit visueller Vorschau und rohem HTML-Code.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Markdown</span><span class="skill-tag">HTML</span><span class="skill-tag">Preview</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/ascii-art-generator" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-font"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">ASCII Art Generator</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">Text &#8594; ASCII &middot; Multi-Font</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Wandelt Text in riesige ASCII-Blockbuchstaben um &mdash; verschiedene Fonts w&#228;hlbar.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">ASCII</span><span class="skill-tag">figlet</span><span class="skill-tag">Fonts</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/subnet-calculator" target="_blank" rel="noopener" class="tool-card p-6 reveal">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap"><i class="fa-solid fa-network-wired"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Subnet-Kalkulator</h2>
+        <p class="font-mono text-xs text-azure-400 mb-3 tracking-wide">IP-Netze berechnen</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">CIDR-Notationen aufschl&#252;sseln, Netzwerkadresse, Broadcast und Host-Range berechnen.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">CIDR</span><span class="skill-tag">IPv4</span><span class="skill-tag">Netzwerk</span></div>
+        <div class="flex items-center gap-2 text-azure-400 text-sm font-mono"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ TEXT & PRODUKTIVITÄT ════════════════════════════════════════ -->
+  <section class="tool-section" data-cat="text">
+    <div class="cat-badge reveal" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.35);color:#4ade80;">
+      <i class="fa-solid fa-file-lines text-xs"></i> Text &amp; Produktivit&#228;t
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <a href="https://leon-seo-checker.vercel.app/tools/word-counter" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(34,197,94,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#4ade80;border-color:rgba(34,197,94,0.3);background:linear-gradient(135deg,rgba(34,197,94,0.18),rgba(34,197,94,0.05));"><i class="fa-solid fa-calculator"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-green-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Zeichen- &amp; Wortzhler</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#4ade80;">W&#246;rter &middot; Zeichen &middot; S&#228;tze &middot; Live</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Z&#228;hlt W&#246;rter, Zeichen, S&#228;tze und Abs&#228;tze in Echtzeit &mdash; mit Lesedauer-Sch&#228;tzung.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">W&#246;rter</span><span class="skill-tag">Zeichen</span><span class="skill-tag">Live</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#4ade80;"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/list-shuffler" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(34,197,94,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#4ade80;border-color:rgba(34,197,94,0.3);background:linear-gradient(135deg,rgba(34,197,94,0.18),rgba(34,197,94,0.05));"><i class="fa-solid fa-shuffle"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-green-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">List Randomizer &amp; Shuffler</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#4ade80;">Mischen &middot; Sortieren &middot; Nummerieren</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Listen zuf&#228;llig mischen, sortieren oder nummerieren &mdash; f&#252;r Verlosungen, Teams und mehr.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Shuffle</span><span class="skill-tag">Sort</span><span class="skill-tag">Random</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#4ade80;"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/diff-checker" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(34,197,94,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#4ade80;border-color:rgba(34,197,94,0.3);background:linear-gradient(135deg,rgba(34,197,94,0.18),rgba(34,197,94,0.05));"><i class="fa-solid fa-code-compare"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-green-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Text Diff-Checker</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#4ade80;">&#196;nderungen sofort sehen</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Zwei Texte vergleichen &mdash; hinzugef&#252;gte und gel&#246;schte Passagen farbig markiert.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Diff</span><span class="skill-tag">Vergleich</span><span class="skill-tag">Lokal</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#4ade80;"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ MEDIEN & KONVERTER ═══════════════════════════════════════════ -->
+  <section class="tool-section" data-cat="medien">
+    <div class="cat-badge reveal" style="background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.35);color:#fbbf24;">
+      <i class="fa-solid fa-photo-film text-xs"></i> Medien &amp; Konverter
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <a href="https://leon-seo-checker.vercel.app/tools/abo-rechner" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(245,158,11,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#fbbf24;border-color:rgba(245,158,11,0.3);background:linear-gradient(135deg,rgba(245,158,11,0.18),rgba(245,158,11,0.05));"><i class="fa-solid fa-piggy-bank"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-amber-400 px-2 py-1 rounded-full tracking-wider">BELIEBT</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Abo-Spar-Rechner</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#fbbf24;">Smart Hacks &middot; Bis zu 80% sparen</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Einsparpotenzial bei Netflix, Spotify, YouTube Premium und Adobe berechnen &mdash; mit Schritt-f&#252;r-Schritt-Anleitung.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">Netflix</span><span class="skill-tag">Spotify</span><span class="skill-tag">Adobe</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#fbbf24;"><span>Jetzt sparen</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/storage-converter" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(245,158,11,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#fbbf24;border-color:rgba(245,158,11,0.3);background:linear-gradient(135deg,rgba(245,158,11,0.18),rgba(245,158,11,0.05));"><i class="fa-solid fa-hard-drive"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-amber-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">Speichergr&#246;&#223;en-Konverter</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#fbbf24;">GB vs GiB &middot; Echtzeit</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Zwischen Dezimal (GB, MB) und Bin&#228;r (GiB, MiB) konvertieren &mdash; alle Einheiten gleichzeitig.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">GB/GiB</span><span class="skill-tag">MB/MiB</span><span class="skill-tag">TB/TiB</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#fbbf24;"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+      <a href="https://leon-seo-checker.vercel.app/tools/exif-stripper" target="_blank" rel="noopener" class="tool-card p-6 reveal" style="border-color:rgba(245,158,11,0.2);">
+        <div class="flex items-start justify-between mb-4">
+          <div class="icon-wrap" style="color:#fbbf24;border-color:rgba(245,158,11,0.3);background:linear-gradient(135deg,rgba(245,158,11,0.18),rgba(245,158,11,0.05));"><i class="fa-solid fa-image"></i></div>
+          <span class="font-mono text-[10px] font-bold text-[#020b18] bg-amber-400 px-2 py-1 rounded-full tracking-wider">NEU</span>
+        </div>
+        <h2 class="font-display font-bold text-lg text-white mb-1">EXIF-Daten Radierer</h2>
+        <p class="font-mono text-xs mb-3 tracking-wide" style="color:#fbbf24;">Metadaten entfernen &middot; Lokal</p>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4 flex-1">Entfernt GPS-Koordinaten, Kameramodell und andere EXIF-Metadaten aus Fotos &mdash; 100% lokal.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="skill-tag">EXIF</span><span class="skill-tag">GPS</span><span class="skill-tag">Privatsph&#228;re</span></div>
+        <div class="flex items-center gap-2 text-sm font-mono" style="color:#fbbf24;"><span>Tool starten</span><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/5 bg-navy-900/60 backdrop-blur-sm">
+<footer class="border-t border-white/5 bg-navy-900/60 backdrop-blur-sm mt-8">
   <div class="max-w-6xl mx-auto px-6 py-10">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="Leon Cordts IT Solutions Logo" class="h-8 w-auto object-contain" style="filter:drop-shadow(0 0 6px rgba(0,212,255,0.3));" />
+        <img src="/logo.png" alt="Leon Cordts IT Solutions" class="h-8 w-auto object-contain" style="filter:drop-shadow(0 0 6px rgba(0,212,255,0.3));" />
         <span class="font-display font-semibold text-white text-sm">Leon Cordts &ndash; IT Solutions</span>
       </div>
       <div class="flex items-center gap-6">
@@ -236,7 +409,7 @@
       </div>
     </div>
     <div class="mt-6 pt-6 border-t border-white/5">
-      <p class="font-mono text-xs text-slate-600 text-center">&#169; <span id="year"></span> Leon Cordts &ndash; IT Solutions</p>
+      <p class="font-mono text-xs text-slate-600 text-center">&#169; <span id="year"></span> Leon Cordts &ndash; IT Solutions &middot; Alle Tools kostenlos &middot; Keine Daten werden &#252;bertragen</p>
     </div>
   </div>
 </footer>
@@ -244,31 +417,42 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Mobile menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-  // Navbar scroll effect
+  // Navbar scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      navbar.style.background = 'rgba(5,13,26,0.95)';
-      navbar.style.backdropFilter = 'blur(12px)';
-      navbar.style.borderBottom = '1px solid rgba(14,165,233,0.12)';
-    } else {
-      navbar.style.background = '';
-      navbar.style.backdropFilter = '';
-      navbar.style.borderBottom = '';
-    }
+    navbar.style.background = window.scrollY > 20 ? 'rgba(5,13,26,0.95)' : '';
+    navbar.style.backdropFilter = window.scrollY > 20 ? 'blur(12px)' : '';
+    navbar.style.borderBottom = window.scrollY > 20 ? '1px solid rgba(14,165,233,0.12)' : '';
+  });
+
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click', () =>
+    document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+  // Category filter
+  const filters = document.querySelectorAll('.filter-btn');
+  const sections = document.querySelectorAll('.tool-section');
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      sections.forEach(s => {
+        s.style.display = (cat === 'all' || s.dataset.cat === cat) ? '' : 'none';
+      });
+    });
   });
 
   // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+
+<style>
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+</style>
 </body>
 </html>

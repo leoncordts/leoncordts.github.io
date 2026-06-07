@@ -210,7 +210,7 @@ export default function P2PTransferPage() {
   }
 
   // Share link helpers
-  const shareUrl = myId ? `${typeof window !== "undefined" ? window.location.origin : "https://leon-seo-checker.vercel.app"}/tools/p2p-transfer?connect=${myId}` : "";
+  const shareUrl = myId ? `${typeof window !== "undefined" ? window.location.origin : "https://leons-tools.vercel.app"}/tools/p2p-transfer?connect=${myId}` : "";
 
   function copyLink() {
     navigator.clipboard.writeText(shareUrl);

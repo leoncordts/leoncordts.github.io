@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 function hexToRgb(hex: string): { r: number; g: number; b: number } | null {
   const clean = hex.replace("#", "");
@@ -34,6 +34,11 @@ export default function ColorConverterPage() {
   const [copied, setCopied] = useState<string | null>(null);
   const [hexError, setHexError] = useState(false);
   const [rgbError, setRgbError] = useState(false);
+  const [eyedropperSupported, setEyedropperSupported] = useState(false);
+
+  useEffect(() => {
+    setEyedropperSupported(typeof window !== "undefined" && "EyeDropper" in window);
+  }, []);
 
   const copy = useCallback((text: string, key: string) => {
     navigator.clipboard.writeText(text);
@@ -69,6 +74,18 @@ export default function ColorConverterPage() {
     }
   }
 
+  async function openEyeDropper() {
+    if (!eyedropperSupported) return;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const dropper = new (window as any).EyeDropper();
+      const result = await dropper.open();
+      onPickerChange(result.sRGBHex);
+    } catch {
+      // user cancelled
+    }
+  }
+
   function onPickerChange(val: string) {
     setHex(val.toUpperCase());
     const result = hexToRgb(val);
@@ -100,6 +117,8 @@ export default function ColorConverterPage() {
         .copy-btn.success { background: rgba(34,197,94,0.2); border-color: rgba(34,197,94,0.4); color: #4ade80; }
         .picker-btn { width: 48px; height: 48px; border-radius: 0.5rem; border: 2px solid rgba(14,165,233,0.3); cursor: pointer; background: transparent; padding: 2px; overflow: hidden; }
         .picker-btn input[type="color"] { width: 100%; height: 100%; border: none; cursor: pointer; border-radius: 4px; }
+        .dropper-btn { width: 48px; height: 48px; border-radius: 0.5rem; border: 2px solid rgba(14,165,233,0.3); cursor: pointer; background: rgba(7,20,34,0.8); color: #38bdf8; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .dropper-btn:hover { background: rgba(14,165,233,0.2); border-color: rgba(0,212,255,0.5); }
       `}</style>
 
       {/* Nav */}
@@ -155,12 +174,17 @@ export default function ColorConverterPage() {
               {hexError && <p style={{ color: "#f87171", fontSize: "0.72rem", marginTop: "0.35rem", fontFamily: "'JetBrains Mono',monospace" }}>Ungültiger HEX-Wert</p>}
             </div>
 
-            {/* Arrows + Color Picker */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", paddingTop: "1.2rem" }}>
+            {/* Arrows + Color Picker + Eyedropper */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem", paddingTop: "1.2rem" }}>
               <div style={{ fontSize: "1.4rem", color: "#38bdf8" }}>⇄</div>
-              <div className="picker-btn">
-                <input type="color" value={isValidHex(hex) ? (hex.startsWith("#") ? hex : "#" + hex) : "#3B82F6"} onChange={(e) => onPickerChange(e.target.value)} title="Color Picker" />
+              <div className="picker-btn" title="Color Picker">
+                <input type="color" value={isValidHex(hex) ? (hex.startsWith("#") ? hex : "#" + hex) : "#3B82F6"} onChange={(e) => onPickerChange(e.target.value)} />
               </div>
+              {eyedropperSupported && (
+                <button className="dropper-btn" onClick={openEyeDropper} title="Pipette: Farbe vom Bildschirm aufnehmen">
+                  🩸
+                </button>
+              )}
             </div>
 
             {/* RGB */}

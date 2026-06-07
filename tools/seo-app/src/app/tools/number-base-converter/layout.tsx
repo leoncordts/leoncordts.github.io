@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Zahlensystem Konverter | Leon Cordts",
-  description: "Dezimal, Hexadezimal, Binär und Oktal umrechnen — lokal im Browser.",
+  description: "Zahlen zwischen Binär, Oktal, Dezimal und Hexadezimal umrechnen — lokal, sofort.",
 };
-export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }
+
+export default function NumberBaseConverterLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}

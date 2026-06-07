@@ -62,6 +62,7 @@ export default function P2PTransferPage() {
     if (code) {
       setMode("receiver");
       setPeerId(code.toUpperCase());
+      setStatus("init"); // Override any status set by sender init race
     }
   }, []);
 
@@ -131,10 +132,18 @@ export default function P2PTransferPage() {
   useEffect(() => {
     if (mode === "sender") {
       setStatus("init");
-      initPeer(randomId()).then(() => setStatus("waiting"));
+      setMyId("");
+      initPeer(randomId()).then(() => setStatus("waiting")).catch(() => {});
+    } else {
+      // Receiver: destroy any leftover sender peer, reset to clean idle
+      if (peerRef.current) {
+        try { peerRef.current.destroy(); } catch {}
+        peerRef.current = null;
+      }
+      // Don't override status here — URL effect may have already set "init"
     }
     return () => {
-      peerRef.current?.destroy();
+      try { peerRef.current?.destroy(); } catch {}
       peerRef.current = null;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -184,8 +193,8 @@ export default function P2PTransferPage() {
     readNext();
   }
 
-  function resetAll() {
-    peerRef.current?.destroy();
+  function resetAll(nextMode?: Mode) {
+    try { peerRef.current?.destroy(); } catch {}
     peerRef.current = null;
     connRef.current = null;
     setStatus("init");
@@ -193,8 +202,10 @@ export default function P2PTransferPage() {
     setDownloadUrl(null);
     setFile(null);
     setErrorMsg("");
-    if (mode === "sender") {
-      initPeer(randomId()).then(() => setStatus("waiting"));
+    // Use nextMode if provided (avoids stale closure), else fall back to current mode
+    const effectiveMode = nextMode ?? mode;
+    if (effectiveMode === "sender") {
+      initPeer(randomId()).then(() => setStatus("waiting")).catch(() => {});
     }
   }
 
@@ -254,7 +265,7 @@ export default function P2PTransferPage() {
         <div style={{ display:"flex", gap:"0.5rem", marginBottom:"1rem" }}>
           {(["sender","receiver"] as const).map(m => (
             <button key={m} className={`tab-btn ${mode === m ? "active" : ""}`}
-              onClick={() => { setMode(m); resetAll(); }}>
+              onClick={() => { setMode(m); resetAll(m); }}>
               {m === "sender" ? "📤 Senden" : "📥 Empfangen"}
             </button>
           ))}
@@ -329,7 +340,7 @@ export default function P2PTransferPage() {
           )}
 
           {/* ── RECEIVER ── */}
-          {isReceiver && (status === "init" || status === "connecting") && (
+          {isReceiver && (status === "init" || status === "waiting" || status === "connecting") && (
             <div style={{ display:"flex", flexDirection:"column", gap:"0.85rem" }}>
               <p style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:"0.65rem", color:"#38bdf8", letterSpacing:"0.1em", textTransform:"uppercase", textAlign:"center" }}>
                 Code vom Sender eingeben
@@ -380,7 +391,7 @@ export default function P2PTransferPage() {
                   ↓ {downloadName} herunterladen
                 </a>
               )}
-              <button onClick={resetAll} style={{ background:"transparent", border:"1px solid rgba(14,165,233,0.2)", borderRadius:"0.5rem", color:"#475569", cursor:"pointer", padding:"0.5rem", fontFamily:"'JetBrains Mono',monospace", fontSize:"0.72rem" }}>
+              <button onClick={() => resetAll(mode)} style={{ background:"transparent", border:"1px solid rgba(14,165,233,0.2)", borderRadius:"0.5rem", color:"#475569", cursor:"pointer", padding:"0.5rem", fontFamily:"'JetBrains Mono',monospace", fontSize:"0.72rem" }}>
                 Neu starten
               </button>
             </div>
@@ -392,7 +403,7 @@ export default function P2PTransferPage() {
               <p style={{ color:"#f87171", fontFamily:"'JetBrains Mono',monospace", fontSize:"0.82rem" }}>
                 ⚠ {errorMsg || "Verbindungsfehler."}
               </p>
-              <button onClick={resetAll} style={{ background:"transparent", border:"1px solid rgba(239,68,68,0.3)", borderRadius:"0.5rem", color:"#f87171", cursor:"pointer", padding:"0.5rem", fontFamily:"'JetBrains Mono',monospace", fontSize:"0.72rem" }}>
+              <button onClick={() => resetAll(mode)} style={{ background:"transparent", border:"1px solid rgba(239,68,68,0.3)", borderRadius:"0.5rem", color:"#f87171", cursor:"pointer", padding:"0.5rem", fontFamily:"'JetBrains Mono',monospace", fontSize:"0.72rem" }}>
                 Erneut versuchen
               </button>
             </div>

@@ -96,6 +96,23 @@
         Praktische IT-Werkzeuge &#8212; lokal im Browser, kein Account, keine Kosten.
         <span class="font-mono text-azure-400 ml-2" id="tool-count">88 Tools</span>
       </p>
+      <!-- Smart Search -->
+      <div class="relative mb-5 max-w-xl" style="animation:fadeUp 0.7s ease 0.2s both;">
+        <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input
+          id="tool-search"
+          type="text"
+          placeholder='Tool suchen — z.B. "Bild verkleinern", "qr" oder "passwort"…'
+          autocomplete="off"
+          class="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-10 py-3 text-sm text-white placeholder-slate-600 focus:outline-none transition-all"
+          style="font-family:'DM Sans',sans-serif;"
+          onfocus="this.style.borderColor='rgba(56,189,248,0.5)';this.style.background='rgba(255,255,255,0.07)'"
+          onblur="this.style.borderColor='';this.style.background=''"
+        />
+        <button id="search-clear" onclick="clearSearch()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors text-xl leading-none hidden">&#215;</button>
+      </div>
+      <div id="no-results" class="hidden text-slate-500 text-sm font-mono mb-4">Kein Tool gefunden — versuch einen anderen Begriff.</div>
+
       <!-- Category Filter -->
       <div class="flex flex-wrap gap-2" id="filters">
         <button class="filter-btn active" data-cat="all">Alle</button>
@@ -1273,6 +1290,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7/dist/fuse.min.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1289,17 +1307,79 @@
     document.getElementById('mobile-menu').classList.toggle('hidden'));
 
   // Category filter
-  const filters = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.tool-section');
-  filters.forEach(btn => {
+  let activeCat = 'all';
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filters.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const cat = btn.dataset.cat;
-      sections.forEach(s => {
-        s.style.display = (cat === 'all' || s.dataset.cat === cat) ? '' : 'none';
-      });
+      activeCat = btn.dataset.cat;
+      applyFilters();
     });
+  });
+
+  // Build Fuse index from DOM
+  const allCards = Array.from(document.querySelectorAll('.tool-card'));
+  const cardData = allCards.map(card => ({
+    el: card,
+    name: card.querySelector('h2')?.textContent?.trim() ?? '',
+    desc: card.querySelector('p.text-slate-400, p.flex-1')?.textContent?.trim() ?? '',
+    tags: Array.from(card.querySelectorAll('.skill-tag')).map(t => t.textContent).join(' '),
+  }));
+
+  const fuse = new Fuse(cardData, {
+    keys: [
+      { name: 'name', weight: 3 },
+      { name: 'tags', weight: 2 },
+      { name: 'desc', weight: 1 },
+    ],
+    threshold: 0.38,
+    ignoreLocation: true,
+    minMatchCharLength: 2,
+  });
+
+  let matchedEls = null; // null = show all
+
+  function applyFilters() {
+    const noResults = document.getElementById('no-results');
+    let visible = 0;
+    sections.forEach(section => {
+      const catMatch = activeCat === 'all' || section.dataset.cat === activeCat;
+      const cards = section.querySelectorAll('.tool-card');
+      let sectionVisible = 0;
+      cards.forEach(card => {
+        const searchMatch = matchedEls === null || matchedEls.has(card);
+        const show = catMatch && searchMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) { visible++; sectionVisible++; }
+      });
+      section.style.display = sectionVisible > 0 ? '' : 'none';
+    });
+    noResults.classList.toggle('hidden', visible > 0);
+  }
+
+  function clearSearch() {
+    document.getElementById('tool-search').value = '';
+    document.getElementById('search-clear').classList.add('hidden');
+    matchedEls = null;
+    applyFilters();
+  }
+
+  let debounceTimer;
+  document.getElementById('tool-search').addEventListener('input', function() {
+    const q = this.value.trim();
+    document.getElementById('search-clear').classList.toggle('hidden', !q);
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      if (!q) {
+        matchedEls = null;
+      } else {
+        const results = fuse.search(q);
+        matchedEls = new Set(results.map(r => r.item.el));
+      }
+      applyFilters();
+    }, 120);
   });
 
   // Reveal on scroll

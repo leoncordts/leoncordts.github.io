@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import Link from "next/link";
+import Fuse from "fuse.js";
 
 type Tool = {
   slug: string;
@@ -111,6 +112,18 @@ const TOOLS: Tool[] = [
 
 const CATEGORIES = ["Alle", ...Array.from(new Set(TOOLS.map((t) => t.category)))];
 
+const fuse = new Fuse(TOOLS, {
+  keys: [
+    { name: "name", weight: 3 },
+    { name: "desc", weight: 1.5 },
+    { name: "category", weight: 1 },
+  ],
+  threshold: 0.4,
+  includeScore: true,
+  ignoreLocation: true,
+  minMatchCharLength: 2,
+});
+
 const CATEGORY_COLORS: Record<string, string> = {
   "SEO & Web": "text-cyan-400 border-cyan-400/30 bg-cyan-400/10",
   Developer: "text-violet-400 border-violet-400/30 bg-violet-400/10",
@@ -140,14 +153,20 @@ const ACTIVE_COLORS: Record<string, string> = {
 export default function ToolsCatalog() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("Alle");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const filtered = useMemo(() => {
-    const q = search.toLowerCase().trim();
-    return TOOLS.filter((t) => {
-      const matchCat = activeCategory === "Alle" || t.category === activeCategory;
-      const matchSearch = !q || t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.category.toLowerCase().includes(q);
-      return matchCat && matchSearch;
-    });
+    const q = search.trim();
+    let results: Tool[];
+    if (!q) {
+      results = TOOLS;
+    } else {
+      results = fuse.search(q).map((r) => r.item);
+    }
+    if (activeCategory !== "Alle") {
+      results = results.filter((t) => t.category === activeCategory);
+    }
+    return results;
   }, [search, activeCategory]);
 
   return (
@@ -158,12 +177,21 @@ export default function ToolsCatalog() {
           <div className="flex-1 relative">
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-sm">🔍</span>
             <input
+              ref={inputRef}
               type="text"
-              placeholder="Tool suchen…"
+              placeholder="Tool suchen — z.B. &quot;Bild verkleinern&quot; oder &quot;qr&quot;…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 rounded-lg pl-9 pr-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#38bdf8]/50 focus:bg-white/8 transition-all"
+              className="w-full bg-white/5 border border-white/10 rounded-lg pl-9 pr-8 py-2 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#38bdf8]/50 focus:bg-white/8 transition-all"
             />
+            {search && (
+              <button
+                onClick={() => { setSearch(""); inputRef.current?.focus(); }}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/70 transition-colors text-base leading-none"
+              >
+                ×
+              </button>
+            )}
           </div>
           <span className="text-white/30 text-sm tabular-nums shrink-0">
             {filtered.length} Tools

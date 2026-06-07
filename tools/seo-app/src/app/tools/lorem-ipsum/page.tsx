@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 const WORDS = [
   "lorem","ipsum","dolor","sit","amet","consectetur","adipiscing","elit","sed","do",
@@ -69,7 +69,9 @@ export default function LoremIpsumPage() {
     return result;
   }, [mode, count, startClassic]);
 
-  const [text, setText] = useState(() => generate());
+  const [text, setText] = useState(CLASSIC);
+
+  useEffect(() => { setText(generate()); }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const refresh = () => setText(generate());
 

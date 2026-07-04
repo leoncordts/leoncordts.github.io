@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n-title="page.title">Leon Cordts - IT Solutions | Technik fur Zuhause &amp; Ihr Business</title>
+  <title data-i18n-title="page.title">Leon Cordts – IT Solutions | Technik für Zuhause &amp; Ihr Business</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -11,555 +11,345 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="favicon.png?v=1" />
   <meta name="description" data-i18n-meta-desc="page.desc" content="Professioneller IT-Support aus Köln." />
+  <meta name="theme-color" content="#17191d" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://leoncordts.github.io" />
+  <meta property="og:url" content="https://leoncordts.de" />
   <meta property="og:title" content="Leon Cordts - IT Solutions" />
-  <meta property="og:description" content="Ihr Partner fur IT-Infrastruktur &amp; Event-Support in Köln." />
-  <meta property="og:image" content="PLATZHALTER_LOGO_URL" />
+  <meta property="og:description" content="Ihr Partner für IT-Infrastruktur &amp; Event-Support in Köln." />
+  <meta property="og:image" content="https://leoncordts.de/android-chrome-512x512.png" />
   <meta property="og:locale" content="de_DE" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Leon Cordts - IT Solutions" />
-  <meta name="twitter:description" content="Ihr Partner fur IT-Infrastruktur &amp; Event-Support in Köln." />
+  <meta name="twitter:description" content="Ihr Partner für IT-Infrastruktur &amp; Event-Support in Köln." />
   <meta name="twitter:image" content="https://leoncordts.de/android-chrome-512x512.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy:  { 950:'#020b18', 900:'#050d1a', 800:'#071422', 700:'#0a1c2e', 600:'#0e2640' },
-            azure: { 400:'#38bdf8', 500:'#0ea5e9', 600:'#0284c7' },
-            cyan:  { glow:'#00d4ff' }
-          },
-          fontFamily: {
-            display: ['Syne','sans-serif'],
-            mono:    ['JetBrains Mono','monospace'],
-            body:    ['DM Sans','sans-serif'],
-          },
-          animation: {
-            'fade-up':    'fadeUp 0.7s ease forwards',
-            'fade-in':    'fadeIn 1s ease forwards',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4,0,0.6,1) infinite',
-            'blink':      'blink 1.2s step-end infinite',
-          },
-          keyframes: {
-            fadeUp: { '0%':{ opacity:0, transform:'translateY(24px)' }, '100%':{ opacity:1, transform:'translateY(0)' } },
-            fadeIn: { '0%':{ opacity:0 }, '100%':{ opacity:1 } },
-            blink:  { '0%,100%':{ opacity:1 }, '50%':{ opacity:0 } },
-          },
-        }
-      }
-    }
-  </script>
-  <style>
-    * { box-sizing: border-box; }
-    body { background-color:#020b18; color:#cbd5e1; font-family:'DM Sans',sans-serif; overflow-x:hidden; }
-    .grid-bg { background-image:linear-gradient(rgba(14,165,233,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,0.05) 1px,transparent 1px); background-size:48px 48px; }
-    .glow-text { text-shadow:0 0 40px rgba(0,212,255,0.45),0 0 80px rgba(0,212,255,0.15); }
-    .glow-box  { box-shadow:0 0 0 1px rgba(14,165,233,0.25),0 8px 48px rgba(14,165,233,0.08); }
-    .glow-box:hover { box-shadow:0 0 0 1px rgba(0,212,255,0.5),0 8px 64px rgba(0,212,255,0.18); }
-    .btn-glow  { box-shadow:0 0 24px rgba(14,165,233,0.4); }
-    .btn-glow:hover { box-shadow:0 0 40px rgba(0,212,255,0.65); }
-    .scanlines::after { content:''; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px); }
-    .noise { position:relative; }
-    .noise::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:0; opacity:0.025; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-    .nav-link { position:relative; font-family:'DM Sans',sans-serif; font-size:0.875rem; letter-spacing:0.02em; color:#94a3b8; transition:color 0.25s; }
-    .nav-link::after { content:''; position:absolute; left:0; bottom:-3px; height:1px; width:0; background:#00d4ff; transition:width 0.3s ease; }
-    .nav-link:hover { color:#e2e8f0; }
-    .nav-link:hover::after { width:100%; }
-    .service-card { background:linear-gradient(135deg,#071422 0%,#050d1a 100%); border:1px solid rgba(14,165,233,0.18); border-radius:1rem; transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease; }
-    .service-card:hover { transform:translateY(-6px); border-color:rgba(0,212,255,0.45); box-shadow:0 12px 60px rgba(0,212,255,0.12); }
-    .service-card .icon-wrap { width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(0,212,255,0.08)); border:1px solid rgba(14,165,233,0.3); display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:#38bdf8; transition:background 0.3s,box-shadow 0.3s; }
-    .service-card:hover .icon-wrap { background:linear-gradient(135deg,rgba(14,165,233,0.35),rgba(0,212,255,0.15)); box-shadow:0 0 20px rgba(0,212,255,0.3); }
-    .skill-tag { font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.06em; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.25); color:#38bdf8; border-radius:4px; padding:3px 10px; transition:background 0.2s,border-color 0.2s; }
-    .skill-tag:hover { background:rgba(14,165,233,0.2); border-color:rgba(0,212,255,0.5); }
-    .terminal { background:#030c17; border:1px solid rgba(14,165,233,0.2); border-radius:10px; font-family:'JetBrains Mono',monospace; font-size:0.82rem; }
-    .terminal-bar { background:#071422; border-bottom:1px solid rgba(14,165,233,0.15); border-radius:10px 10px 0 0; padding:10px 16px; display:flex; align-items:center; gap:7px; }
-    .dot { width:11px; height:11px; border-radius:50%; }
-    .form-input { background:#071422; border:1px solid rgba(14,165,233,0.2); border-radius:8px; color:#e2e8f0; font-family:'DM Sans',sans-serif; font-size:0.9rem; padding:12px 16px; width:100%; transition:border-color 0.2s,box-shadow 0.2s; outline:none; }
-    .form-input:focus { border-color:rgba(0,212,255,0.55); box-shadow:0 0 0 3px rgba(0,212,255,0.08); }
-    .form-input::placeholder { color:#475569; }
-    .section-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(14,165,233,0.3) 30%,rgba(0,212,255,0.4) 50%,rgba(14,165,233,0.3) 70%,transparent); margin:0 auto; }
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .reveal-delay-1 { transition-delay:0.1s; }
-    .reveal-delay-2 { transition-delay:0.2s; }
-    .reveal-delay-3 { transition-delay:0.3s; }
-    .cursor::after { content:'|'; animation:blink 1.2s step-end infinite; color:#00d4ff; }
-    .orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; }
-    .expertise-badge { display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:0.72rem; background:rgba(30,41,59,0.7); border:1px solid rgba(100,116,139,0.28); color:#94a3b8; border-radius:999px; padding:6px 14px; transition:background 0.2s,border-color 0.2s,color 0.2s,box-shadow 0.2s; }
-    .expertise-badge:hover { background:rgba(30,41,59,0.95); border-color:rgba(148,163,184,0.5); color:#e2e8f0; box-shadow:0 0 14px rgba(100,116,139,0.12); }
-    .event-badge { display:inline-flex; align-items:center; gap:6px; font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:500; background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(0,212,255,0.04)); border:1px solid rgba(14,165,233,0.22); color:#cbd5e1; border-radius:999px; padding:6px 14px; transition:background 0.2s,border-color 0.2s,color 0.2s,box-shadow 0.2s; }
-    .event-badge:hover { background:linear-gradient(135deg,rgba(14,165,233,0.18),rgba(0,212,255,0.1)); border-color:rgba(0,212,255,0.5); color:#fff; box-shadow:0 0 16px rgba(0,212,255,0.12); }
-    .lang-btn { font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; padding:5px 10px; border-radius:6px; border:1px solid rgba(14,165,233,0.2); color:#64748b; background:transparent; cursor:pointer; transition:all 0.2s; }
-    .lang-btn.active { color:#38bdf8; border-color:rgba(14,165,233,0.5); background:rgba(14,165,233,0.08); }
-    .lang-btn:hover:not(.active) { color:#94a3b8; border-color:rgba(14,165,233,0.35); }
-    .lang-divider { color:#1e3a52; font-family:'JetBrains Mono',monospace; font-size:0.7rem; }
-    .modal-overlay { animation:modalFadeIn 0.2s ease; }
-    .modal-panel   { animation:modalSlideUp 0.25s cubic-bezier(0.16,1,0.3,1); }
-    @keyframes modalFadeIn  { from{opacity:0} to{opacity:1} }
-    @keyframes modalSlideUp { from{opacity:0;transform:translateY(20px) scale(0.98)} to{opacity:1;transform:translateY(0) scale(1)} }
-    .modal-body::-webkit-scrollbar { width:5px; }
-    .modal-body::-webkit-scrollbar-track { background:transparent; }
-    .modal-body::-webkit-scrollbar-thumb { background:rgba(14,165,233,0.25); border-radius:99px; }
-    .modal-body::-webkit-scrollbar-thumb:hover { background:rgba(14,165,233,0.5); }
-    #mobile-menu { display:none; }
-    #mobile-menu.open { display:flex; }
-    #toast { position:fixed; bottom:2rem; right:2rem; z-index:9999; background:#071422; border:1px solid rgba(0,212,255,0.4); color:#38bdf8; font-family:'JetBrains Mono',monospace; font-size:0.8rem; padding:12px 20px; border-radius:8px; box-shadow:0 8px 32px rgba(0,212,255,0.15); transform:translateY(20px); opacity:0; transition:all 0.3s ease; pointer-events:none; }
-    #toast.show { transform:translateY(0); opacity:1; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="noise">
+<body>
 
 <!-- NAVIGATION -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-3 group">
-      <img src="logo.png" alt="Leon Cordts IT Solutions Logo" class="h-10 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90" style="filter:drop-shadow(0 0 8px rgba(0,212,255,0.35));" />
-      <span class="font-display font-semibold text-white text-sm tracking-wide hidden sm:block">Leon Cordts &ndash; IT Solutions</span>
+<nav id="navbar" class="site-nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand">
+      <img src="logo.png" alt="Leon Cordts IT Solutions Logo" />
+      <span>Leon Cordts &ndash; IT Solutions</span>
     </a>
-    <div class="hidden md:flex items-center gap-6">
+    <div class="nav-links">
       <a href="#leistungen" class="nav-link" data-i18n="nav.services">Leistungen</a>
-      <a href="#ueber-mich"  class="nav-link" data-i18n="nav.about">&#220;ber mich</a>
-      <a href="#kontakt"     class="nav-link" data-i18n="nav.contact">Kontakt</a>
-      <a href="/tools/"       class="nav-link">Tools</a>
-      <div class="flex items-center gap-1 ml-1">
+      <a href="#ueber-mich" class="nav-link" data-i18n="nav.about">&Uuml;ber mich</a>
+      <a href="#kontakt" class="nav-link" data-i18n="nav.contact">Kontakt</a>
+      <a href="/tools/" class="nav-link">Tools</a>
+      <div class="lang-switch">
         <button id="lang-de" class="lang-btn active" onclick="setLang('de')">DE</button>
         <span class="lang-divider">|</span>
         <button id="lang-en" class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
-      <a href="#kontakt" class="ml-1 px-4 py-2 rounded-lg text-xs font-display font-semibold bg-gradient-to-r from-azure-600 to-azure-500 text-white hover:from-azure-500 hover:to-[#00d4ff] transition-all duration-300 btn-glow" data-i18n="nav.cta">Kontakt aufnehmen</a>
+      <a href="#kontakt" class="btn btn-primary nav-cta" data-i18n="nav.cta">Kontakt aufnehmen</a>
     </div>
-    <div class="flex items-center gap-3 md:hidden">
-      <div class="flex items-center gap-1">
+    <div class="nav-mobile-controls">
+      <div class="lang-switch">
         <button id="lang-de-mob" class="lang-btn active" onclick="setLang('de')">DE</button>
         <span class="lang-divider">|</span>
         <button id="lang-en-mob" class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
-      <button id="hamburger" class="text-slate-400 hover:text-white transition-colors p-2"><i class="fa-solid fa-bars text-lg"></i></button>
+      <button id="hamburger" class="hamburger" aria-label="Menü">
+        <svg class="icon icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden flex-col gap-1 px-6 pb-4 bg-navy-900/98 backdrop-blur-lg border-b border-azure-500/10">
-    <a href="#leistungen" class="nav-link block py-3 border-b border-white/5" data-i18n="nav.services">Leistungen</a>
-    <a href="#ueber-mich"  class="nav-link block py-3 border-b border-white/5" data-i18n="nav.about">&#220;ber mich</a>
-    <a href="#kontakt"     class="nav-link block py-3 border-b border-white/5" data-i18n="nav.contact">Kontakt</a>
-    <a href="/tools/"       class="nav-link block py-3">Tools</a>
+  <div class="mobile-menu">
+    <a href="#leistungen" class="nav-link" data-i18n="nav.services">Leistungen</a>
+    <a href="#ueber-mich" class="nav-link" data-i18n="nav.about">&Uuml;ber mich</a>
+    <a href="#kontakt" class="nav-link" data-i18n="nav.contact">Kontakt</a>
+    <a href="/tools/" class="nav-link">Tools</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="home" class="relative min-h-screen flex items-center justify-center grid-bg scanlines overflow-hidden">
-  <div class="orb w-96 h-96 top-20 -left-32 opacity-20" style="background:radial-gradient(circle,#0ea5e9,transparent 70%);"></div>
-  <div class="orb w-80 h-80 bottom-20 -right-24 opacity-15" style="background:radial-gradient(circle,#00d4ff,transparent 70%);"></div>
-  <div class="orb w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10" style="background:radial-gradient(circle,#0284c7,transparent 70%);"></div>
-  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 bg-azure-500/10 border border-azure-500/25 text-azure-400 font-mono text-xs tracking-wider animate-fade-in" style="animation-delay:0.1s;opacity:0;animation-fill-mode:forwards;">
-      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow"></span>
-      <span data-i18n="hero.badge">Verf&#252;gbar f&#252;r neue Projekte</span>
-    </div>
-    <div class="animate-fade-up" style="animation-delay:0.25s;opacity:0;animation-fill-mode:forwards;">
-      <h1 class="font-display font-extrabold leading-none text-5xl sm:text-7xl lg:text-8xl text-white glow-text">Leon Cordts</h1>
-      <div class="font-display font-semibold tracking-tight text-2xl sm:text-4xl lg:text-5xl text-azure-400 mt-2 mb-5" style="text-shadow:0 0 30px rgba(56,189,248,0.35);">IT Solutions</div>
-    </div>
-    <div class="font-display text-slate-200 text-lg sm:text-xl mb-6 tracking-wide animate-fade-up" style="animation-delay:0.4s;opacity:0;animation-fill-mode:forwards;">
-      <span data-i18n="hero.motto1">Technik, die einfach funktioniert.</span><br class="hidden sm:block"/>
-      <span class="text-slate-400" data-i18n="hero.motto2">F&#252;r Zuhause und Ihr Business.</span>
-    </div>
-    <p class="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed mb-10 animate-fade-up" style="animation-delay:0.55s;opacity:0;animation-fill-mode:forwards;" data-i18n="hero.desc">
-      Fachinformatiker aus K&#246;ln. Ich l&#246;se IT-Probleme f&#252;r Privathaushalte und Unternehmen. Vom schnellen Einrichten Ihres neuen Laptops oder Routers bis zur Planung komplexer Firmennetzwerke und internationaler E-Sports Events. Ich sorge daf&#252;r, dass Ihre IT l&#228;uft &#8212; zuverl&#228;ssig, verst&#228;ndlich und sicher.
+<section id="home" class="hero">
+  <div class="container">
+    <p class="hero-badge">
+      <span class="status-dot"></span>
+      <span data-i18n="hero.badge">Verf&uuml;gbar f&uuml;r neue Projekte</span>
     </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay:0.7s;opacity:0;animation-fill-mode:forwards;">
-      <a href="#kontakt" class="px-7 py-3.5 rounded-xl font-display font-semibold text-sm text-white bg-gradient-to-r from-azure-600 to-azure-500 hover:from-azure-500 hover:to-[#00d4ff] transition-all duration-300 btn-glow flex items-center gap-2">
-        <i class="fa-solid fa-paper-plane"></i><span data-i18n="hero.cta1">Kontakt aufnehmen</span>
-      </a>
-      <a href="#leistungen" class="px-7 py-3.5 rounded-xl font-display font-semibold text-sm text-slate-300 hover:text-white border border-slate-700 hover:border-azure-500/50 transition-all duration-300 flex items-center gap-2">
-        <i class="fa-solid fa-chevron-down text-xs"></i><span data-i18n="hero.cta2">Leistungen ansehen</span>
-      </a>
-    </div>
-    <div class="mt-20 flex justify-center animate-fade-in" style="animation-delay:1.4s;opacity:0;animation-fill-mode:forwards;">
-      <div class="flex flex-col items-center gap-2 text-slate-600 text-xs font-mono">
-        <span>scroll</span>
-        <div class="w-px h-10 bg-gradient-to-b from-azure-500/40 to-transparent animate-pulse-slow"></div>
-      </div>
+    <h1>Leon Cordts</h1>
+    <p class="hero-role">IT Solutions</p>
+    <p class="hero-motto">
+      <span data-i18n="hero.motto1">Technik, die einfach funktioniert.</span>
+      <span class="dim" data-i18n="hero.motto2">F&uuml;r Zuhause und Ihr Business.</span>
+    </p>
+    <p class="hero-desc" data-i18n="hero.desc">
+      Fachinformatiker aus K&ouml;ln. Ich l&ouml;se IT-Probleme f&uuml;r Privathaushalte und Unternehmen. Vom schnellen Einrichten Ihres neuen Laptops oder Routers bis zur Planung komplexer Firmennetzwerke und internationaler E-Sports Events. Ich sorge daf&uuml;r, dass Ihre IT l&auml;uft &mdash; zuverl&auml;ssig, verst&auml;ndlich und sicher.
+    </p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn btn-primary" data-i18n="hero.cta1">Kontakt aufnehmen</a>
+      <a href="#leistungen" class="btn btn-ghost" data-i18n="hero.cta2">Leistungen ansehen</a>
     </div>
   </div>
 </section>
-
-<div class="section-divider max-w-4xl w-full mx-auto"></div>
 
 <!-- LEISTUNGEN -->
-<section id="leistungen" class="py-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-16 reveal">
-      <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-        <span class="text-slate-600">01 /</span> <span data-i18n="nav.services">Leistungen</span>
-      </div>
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white" data-i18n="services.title">Was ich f&#252;r Sie tue</h2>
-      <p class="mt-3 text-slate-400 max-w-lg" data-i18n="services.sub">Drei Kernbereiche &#8212; pr&#228;zise umgesetzt mit jahrelanger Erfahrung in der IT-Branche.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
+<section id="leistungen" class="section">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="nav.services">Leistungen</p>
+      <h2 data-i18n="services.title">Was ich f&uuml;r Sie tue</h2>
+      <p class="section-sub" data-i18n="services.sub">Drei Kernbereiche &mdash; pr&auml;zise umgesetzt mit jahrelanger Erfahrung in der IT-Branche.</p>
+    </header>
+    <div class="service-grid">
 
       <!-- Card 1 -->
-      <div class="service-card p-7 reveal reveal-delay-1 relative overflow-hidden">
-        <div class="absolute top-4 right-4 font-mono text-[10px] font-bold text-navy-950 bg-[#00d4ff] border border-[#00d4ff] px-2 py-1 rounded-full tracking-wider shadow-[0_0_12px_rgba(0,212,255,0.5)]" data-i18n="badge.c1">20% Neukunden-Rabatt</div>
-        <div class="icon-wrap mb-6"><i class="fa-solid fa-house-laptop"></i></div>
-        <h3 class="font-display font-bold text-xl text-white mb-1" data-i18n="c1.title">Zuhause &amp; Privat-IT</h3>
-        <p class="font-mono text-xs text-azure-400 mb-4 tracking-wide" data-i18n="c1.sub">Professionelle IT-Hilfe. Fair, transparent &amp; günstig.</p>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="c1.desc">Laptop- &amp; PC-Einrichtung, zuverl&#228;ssige Router- &amp; WLAN-Optimierung f&#252;r l&#252;ckenlosen Empfang, Smart Home Vernetzung, Datensicherung, Virenschutz und schnelle Hilfe bei Software-Problemen.</p>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c1.li1">Laptop &amp; PC einrichten oder reparieren</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c1.li2">Router &amp; WLAN optimieren</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c1.li3">Smart Home &amp; Ger&#228;te vernetzen</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c1.li4">Datensicherung &amp; Virenschutz</span></li>
-        </ul>
-        <div class="flex flex-wrap gap-2">
-          <span class="skill-tag" data-i18n="c1.t1">PC / Mac Hilfe</span>
-          <span class="skill-tag">Router / WLAN</span>
-          <span class="skill-tag" data-i18n="c1.t3">IT-Sicherheit</span>
-          <span class="skill-tag">Smart Home</span>
-          <span class="skill-tag" data-i18n="c1.t5">Fehlersuche</span>
+      <article class="service-card">
+        <span class="card-flag" data-i18n="badge.c1">20% Neukunden-Rabatt</span>
+        <div class="card-icon">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <p class="mt-4 text-sm text-slate-500 italic" data-i18n="c1.pricing">Transparente Preise ab 59 &euro; / Std. (abzgl. 20&thinsp;% Rabatt)</p>
-      </div>
+        <h3 data-i18n="c1.title">Zuhause &amp; Privat-IT</h3>
+        <p class="card-sub" data-i18n="c1.sub">Professionelle IT-Hilfe. Fair, transparent &amp; g&uuml;nstig.</p>
+        <p class="card-desc" data-i18n="c1.desc">Laptop- &amp; PC-Einrichtung, zuverl&auml;ssige Router- &amp; WLAN-Optimierung f&uuml;r l&uuml;ckenlosen Empfang, Smart Home Vernetzung, Datensicherung, Virenschutz und schnelle Hilfe bei Software-Problemen.</p>
+        <ul class="check-list">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c1.li1">Laptop &amp; PC einrichten oder reparieren</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c1.li2">Router &amp; WLAN optimieren</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c1.li3">Smart Home &amp; Ger&auml;te vernetzen</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c1.li4">Datensicherung &amp; Virenschutz</span></li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag" data-i18n="c1.t1">PC / Mac Hilfe</span>
+          <span class="tag">Router / WLAN</span>
+          <span class="tag" data-i18n="c1.t3">IT-Sicherheit</span>
+          <span class="tag">Smart Home</span>
+          <span class="tag" data-i18n="c1.t5">Fehlersuche</span>
+        </div>
+        <p class="card-pricing" data-i18n="c1.pricing">Transparente Preise ab 59 &euro; / Std. (abzgl. 20&thinsp;% Rabatt)</p>
+      </article>
 
       <!-- Card 2 -->
-      <div class="service-card p-7 reveal reveal-delay-2 relative overflow-hidden">
-        <div class="absolute top-4 right-4 font-mono text-[10px] font-bold text-navy-950 bg-[#00d4ff] border border-[#00d4ff] px-2 py-1 rounded-full tracking-wider shadow-[0_0_12px_rgba(0,212,255,0.5)]" data-i18n="badge.c2">Kostenloser IT-Check</div>
-        <div class="icon-wrap mb-6"><i class="fa-solid fa-building"></i></div>
-        <h3 class="font-display font-bold text-xl text-white mb-3" data-i18n="c2.title">Klein- &amp; Mittelstands-IT</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="c2.desc">Planung, Aufbau und Betrieb skalierbarer IT-Systeme f&#252;r Unternehmen &#8212; von der Netzwerkinfrastruktur bis zur Server-Administration und Cloud-Integration.</p>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c2.li1">Firmennetzwerk planen &amp; aufbauen</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c2.li2">Microsoft 365 Einrichtung &amp; Verwaltung</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c2.li3">IT-Security &amp; VPN-L&#246;sungen</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c2.li4">Backup-Konzepte &amp; Disaster Recovery</span></li>
-        </ul>
-        <div class="flex flex-wrap gap-2">
-          <span class="skill-tag" data-i18n="c2.t1">Firmennetzwerk</span>
-          <span class="skill-tag">Microsoft 365</span>
-          <span class="skill-tag">IT-Security</span>
-          <span class="skill-tag">Backup</span>
-          <span class="skill-tag">VPN</span>
+      <article class="service-card">
+        <span class="card-flag" data-i18n="badge.c2">Kostenloser IT-Check</span>
+        <div class="card-icon">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/></svg>
         </div>
-        <p class="mt-4 text-sm text-slate-500 italic" data-i18n="c2.pricing">Faire B2B-Konditionen ab 69 &euro; / Std. inkl. kostenlosem Erst-Check.</p>
-      </div>
+        <h3 data-i18n="c2.title">Klein- &amp; Mittelstands-IT</h3>
+        <p class="card-desc" data-i18n="c2.desc">Planung, Aufbau und Betrieb skalierbarer IT-Systeme f&uuml;r Unternehmen &mdash; von der Netzwerkinfrastruktur bis zur Server-Administration und Cloud-Integration.</p>
+        <ul class="check-list">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c2.li1">Firmennetzwerk planen &amp; aufbauen</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c2.li2">Microsoft 365 Einrichtung &amp; Verwaltung</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c2.li3">IT-Security &amp; VPN-L&ouml;sungen</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c2.li4">Backup-Konzepte &amp; Disaster Recovery</span></li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag" data-i18n="c2.t1">Firmennetzwerk</span>
+          <span class="tag">Microsoft 365</span>
+          <span class="tag">IT-Security</span>
+          <span class="tag">Backup</span>
+          <span class="tag">VPN</span>
+        </div>
+        <p class="card-pricing" data-i18n="c2.pricing">Faire B2B-Konditionen ab 69 &euro; / Std. inkl. kostenlosem Erst-Check.</p>
+      </article>
 
       <!-- Card 3 -->
-      <div class="service-card p-7 reveal reveal-delay-3">
-        <div class="icon-wrap mb-6"><i class="fa-solid fa-bolt"></i></div>
-        <h3 class="font-display font-bold text-xl text-white mb-3" data-i18n="c3.title">Event-Support</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6" data-i18n="c3.desc">Technischer On-Site-Support f&#252;r Gro&#223;veranstaltungen &#8212; zuverl&#228;ssig, schnell und erfahren mit den Anforderungen internationaler Live-Events und E-Sports-Turniere.</p>
-        <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c3.li1">E-Sports-Turniere &amp; Gaming-Events</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c3.li2">Live-Event-Infrastruktur (LAN-Setup)</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c3.li3">Echtzeit-Troubleshooting vor Ort</span></li>
-          <li class="flex items-start gap-2 text-sm text-slate-300"><i class="fa-solid fa-check text-azure-400 mt-0.5 text-xs shrink-0"></i><span data-i18n="c3.li4">Hardware-Bereitstellung &amp; -Support</span></li>
-        </ul>
-        <div class="flex flex-wrap gap-2">
-          <span class="skill-tag">E-Sports</span>
-          <span class="skill-tag">Live-Events</span>
-          <span class="skill-tag">LAN-Setup</span>
-          <span class="skill-tag">On-Site</span>
-          <span class="skill-tag">Troubleshooting</span>
+      <article class="service-card">
+        <div class="card-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-      </div>
+        <h3 data-i18n="c3.title">Event-Support</h3>
+        <p class="card-desc" data-i18n="c3.desc">Technischer On-Site-Support f&uuml;r Gro&szlig;veranstaltungen &mdash; zuverl&auml;ssig, schnell und erfahren mit den Anforderungen internationaler Live-Events und E-Sports-Turniere.</p>
+        <ul class="check-list">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c3.li1">E-Sports-Turniere &amp; Gaming-Events</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c3.li2">Live-Event-Infrastruktur (LAN-Setup)</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c3.li3">Echtzeit-Troubleshooting vor Ort</span></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="c3.li4">Hardware-Bereitstellung &amp; -Support</span></li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">E-Sports</span>
+          <span class="tag">Live-Events</span>
+          <span class="tag">LAN-Setup</span>
+          <span class="tag">On-Site</span>
+          <span class="tag">Troubleshooting</span>
+        </div>
+      </article>
 
     </div>
   </div>
 </section>
-
-<div class="section-divider max-w-4xl w-full mx-auto"></div>
 
 <!-- FERNWARTUNG -->
-<section id="fernwartung" class="py-16 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal rounded-2xl border border-[#00d4ff]/20 bg-gradient-to-br from-[#071422] to-[#050d1a] p-8 sm:p-10"
-         style="box-shadow:0 0 0 1px rgba(0,212,255,0.08),0 8px 48px rgba(0,212,255,0.06);">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-
-        <!-- Icon -->
-        <div class="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl text-[#00d4ff]"
-             style="background:linear-gradient(135deg,rgba(0,212,255,0.12),rgba(14,165,233,0.05));border:1px solid rgba(0,212,255,0.25);box-shadow:0 0 24px rgba(0,212,255,0.1);">
-          <i class="fa-solid fa-headset"></i>
-        </div>
-
-        <!-- Text -->
-        <div class="flex-1 min-w-0">
-          <div class="font-mono text-[#00d4ff] text-xs tracking-widest uppercase mb-2 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-slow inline-block"></span>
-            Remote
-          </div>
-          <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mb-3" data-i18n="remote.title">
-            Fernwartung &amp; Soforthilfe
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-2xl" data-i18n="remote.body">
-            Schnelle Unterst&#252;tzung ohne Anfahrt. Laden Sie sich einfach unser Support-Tool herunter, damit wir Ihr Problem gemeinsam direkt am Bildschirm l&#246;sen k&#246;nnen. Sicher, verschl&#252;sselt und unkompliziert.
-          </p>
-        </div>
-
-        <!-- Button -->
-        <div class="shrink-0 w-full sm:w-auto">
-          <a href="https://rustdesk.com/" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-xl font-display font-semibold text-sm text-[#020b18] bg-[#00d4ff] hover:bg-white transition-colors duration-200"
-             style="box-shadow:0 0 24px rgba(0,212,255,0.4);">
-            <i class="fa-solid fa-download text-sm"></i>
-            <span data-i18n="remote.btn">Support-Tool herunterladen</span>
-          </a>
-          <p class="mt-2 text-center text-xs text-slate-600 font-mono" data-i18n="remote.hint">Kostenlos &middot; Direkt startklar n&#246;tig</p>
-        </div>
-
+<section id="fernwartung" class="section">
+  <div class="container">
+    <div class="remote-panel">
+      <div class="remote-icon">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1v-6a9 9 0 0 1 18 0v6a1 1 0 0 1-1 1h-2a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+      </div>
+      <div class="remote-text">
+        <p class="eyebrow"><span class="status-dot"></span> Remote</p>
+        <h2 data-i18n="remote.title">Fernwartung &amp; Soforthilfe</h2>
+        <p data-i18n="remote.body">Schnelle Unterst&uuml;tzung ohne Anfahrt. Laden Sie sich einfach unser Support-Tool herunter, damit wir Ihr Problem gemeinsam direkt am Bildschirm l&ouml;sen k&ouml;nnen. Sicher, verschl&uuml;sselt und unkompliziert.</p>
+      </div>
+      <div class="remote-action">
+        <a href="https://rustdesk.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span data-i18n="remote.btn">Support-Tool herunterladen</span>
+        </a>
+        <p class="remote-hint" data-i18n="remote.hint">Kostenlos &middot; Direkt startklar</p>
       </div>
     </div>
   </div>
 </section>
-
-<div class="section-divider max-w-4xl w-full mx-auto"></div>
 
 <!-- IMPRESSIONEN -->
-<section id="impressionen" class="py-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="mb-12 reveal">
-      <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-        <span class="text-slate-600">02 /</span> <span data-i18n="imp.label">Impressionen</span>
-      </div>
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-white" data-i18n="imp.title">Events &amp; Eins&#228;tze</h2>
-      <p class="mt-3 text-slate-400 max-w-lg" data-i18n="imp.sub">Ein Blick hinter die Kulissen &#8212; von der Netzwerkverkabelung bis zur Arena-Infrastruktur auf internationalen B&#252;hnen.</p>
-    </div>
+<section id="impressionen" class="section">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow" data-i18n="imp.label">Impressionen</p>
+      <h2 data-i18n="imp.title">Events &amp; Eins&auml;tze</h2>
+      <p class="section-sub" data-i18n="imp.sub">Ein Blick hinter die Kulissen &mdash; von der Netzwerkverkabelung bis zur Arena-Infrastruktur auf internationalen B&uuml;hnen.</p>
+    </header>
 
-    <!-- Photo grid — event names are proper nouns, not translated -->
-    <div class="grid grid-cols-1 gap-3 sm:gap-4 reveal">
-      <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[21/9] w-full">
-        <img src="event-1.jpg" alt="Esports World Cup Riyadh 2025" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <div class="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
-          <p class="font-mono text-xs text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-          <p class="font-display font-semibold text-white text-base sm:text-lg leading-tight">Esports World Cup Riyadh 2025</p>
-        </div>
-        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow:0 0 0 2px rgba(0,212,255,0.55),0 0 50px rgba(0,212,255,0.12);"></div>
+    <!-- Foto-Grid — Eventnamen sind Eigennamen, nicht übersetzt -->
+    <div class="gallery">
+      <figure class="ar-wide">
+        <img src="event-1.jpg" alt="Esports World Cup Riyadh 2025" loading="lazy" />
+        <figcaption>
+          <p class="cap-label">Event</p>
+          <p class="cap-title">Esports World Cup Riyadh 2025</p>
+        </figcaption>
+      </figure>
+      <div class="gallery-row two">
+        <figure class="ar-video">
+          <img src="event-2.jpg" alt="Intel Extreme Masters Katowice 2025" loading="lazy" />
+          <figcaption>
+            <p class="cap-label">Event</p>
+            <p class="cap-title">Intel Extreme Masters Katowice 2025</p>
+          </figcaption>
+        </figure>
+        <figure class="ar-video">
+          <img src="event-3.jpg" alt="gamescom 2023" loading="lazy" />
+          <figcaption>
+            <p class="cap-label">Event</p>
+            <p class="cap-title">gamescom 2023</p>
+          </figcaption>
+        </figure>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-video">
-          <img src="event-2.jpg" alt="Intel Extreme Masters Katowice 2025" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
-            <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-            <p class="font-display font-semibold text-white text-sm leading-tight">Intel Extreme Masters Katowice 2025</p>
-          </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow:0 0 0 2px rgba(0,212,255,0.55),0 0 40px rgba(0,212,255,0.12);"></div>
-        </div>
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-video">
-          <img src="event-3.jpg" alt="gamescom 2023" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
-            <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-            <p class="font-display font-semibold text-white text-sm leading-tight">gamescom 2023</p>
-          </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow:0 0 0 2px rgba(0,212,255,0.55),0 0 40px rgba(0,212,255,0.12);"></div>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
-          <img src="event-4.jpg" alt="Intel Extreme Masters Katowice 2025" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
-            <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-            <p class="font-display font-semibold text-white text-xs leading-snug">Intel Extreme Masters Katowice 2025</p>
-          </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow:0 0 0 2px rgba(0,212,255,0.55),0 0 35px rgba(0,212,255,0.12);"></div>
-        </div>
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
-          <img src="event-5.jpg" alt="gamescom 2025" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
-            <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-            <p class="font-display font-semibold text-white text-xs leading-snug">gamescom 2025</p>
-          </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow:0 0 0 2px rgba(0,212,255,0.55),0 0 35px rgba(0,212,255,0.12);"></div>
-        </div>
-        <div class="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]">
-          <img src="event-6.jpg" alt="Clash World Finals @ Dreamhack Atlanta 2025" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-[#020b18]/95 via-[#020b18]/50 to-transparent">
-            <p class="font-mono text-[10px] text-azure-400 tracking-widest uppercase mb-0.5">Event</p>
-            <p class="font-display font-semibold text-white text-xs leading-snug">Clash World Finals @ Dreamhack Atlanta 2025</p>
-          </div>
-          <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow:0 0 0 2px rgba(0,212,255,0.55),0 0 35px rgba(0,212,255,0.12);"></div>
-        </div>
+      <div class="gallery-row three">
+        <figure class="ar-photo">
+          <img src="event-4.jpg" alt="Intel Extreme Masters Katowice 2025" loading="lazy" />
+          <figcaption>
+            <p class="cap-label">Event</p>
+            <p class="cap-title">Intel Extreme Masters Katowice 2025</p>
+          </figcaption>
+        </figure>
+        <figure class="ar-photo">
+          <img src="event-5.jpg" alt="gamescom 2025" loading="lazy" />
+          <figcaption>
+            <p class="cap-label">Event</p>
+            <p class="cap-title">gamescom 2025</p>
+          </figcaption>
+        </figure>
+        <figure class="ar-photo">
+          <img src="event-6.jpg" alt="Clash World Finals @ Dreamhack Atlanta 2025" loading="lazy" />
+          <figcaption>
+            <p class="cap-label">Event</p>
+            <p class="cap-title">Clash World Finals @ Dreamhack Atlanta 2025</p>
+          </figcaption>
+        </figure>
       </div>
     </div>
 
-    <!-- Event list (rebuilt) -->
-    <div class="mt-10 reveal reveal-delay-2 space-y-6">
-      <div>
-        <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-5 flex items-center gap-2">
-          <i class="fa-solid fa-calendar-days text-azure-400/50"></i>
-          <span data-i18n="imp.eventsLabel">Event-Referenzen</span>
-        </p>
+    <!-- Event-Referenzen -->
+    <p class="list-label" data-i18n="imp.eventsLabel">Event-Referenzen</p>
+    <ul class="event-grid">
+      <li class="event-row"><span data-i18n="ev.1">gamescom 2025</span><span class="event-tag">IT Lead</span></li>
+      <li class="event-row"><span data-i18n="ev.2">Chess.com @ Esports World Cup 2025</span><span class="event-tag">IT Lead</span></li>
+      <li class="event-row"><span data-i18n="ev.3">Prime League DACH Finale 2025</span><span class="event-tag">IT Lead</span></li>
+      <li class="event-row"><span data-i18n="ev.4">Intel Extreme Masters Cologne 2024 &amp; 2025</span></li>
+      <li class="event-row"><span data-i18n="ev.5">ESL One Birmingham 2026</span></li>
+      <li class="event-row"><span data-i18n="ev.6">Intel Extreme Masters Katowice 2025</span></li>
+      <li class="event-row"><span data-i18n="ev.7">Dreamhack Atlanta 2025</span></li>
+      <li class="event-row"><span data-i18n="ev.8">ESL Pro League Season 19 Malta 2024</span></li>
+      <li class="event-row"><span data-i18n="ev.9">gamescom 2023 &amp; 2024</span></li>
+      <li class="event-row"><span data-i18n="ev.10">Clash of Clans Last Chance Qualifier Katowice 2023</span></li>
+      <li class="event-row upcoming"><span data-i18n="ev.11">Esports World Cup 2026 &mdash; Paris</span><span class="event-tag" data-i18n="ev.soon">Bald</span></li>
+    </ul>
 
-        <div class="grid sm:grid-cols-2 gap-2.5">
-
-          <!-- 1 — IT Lead gamescom 2025 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-gamepad text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.1">gamescom 2025</span>
-            <span class="ml-auto shrink-0 font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-0.5 rounded-full tracking-wide">IT Lead</span>
-          </div>
-
-          <!-- 2 — IT Lead Chess.com @ EWC 2025 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-globe text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.2">Chess.com @ Esports World Cup 2025</span>
-            <span class="ml-auto shrink-0 font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-0.5 rounded-full tracking-wide">IT Lead</span>
-          </div>
-
-          <!-- 3 — IT Lead Prime League DACH Finale 2025 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-trophy text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.3">Prime League DACH Finale 2025</span>
-            <span class="ml-auto shrink-0 font-mono text-[10px] font-bold text-[#020b18] bg-[#00d4ff] px-2 py-0.5 rounded-full tracking-wide">IT Lead</span>
-          </div>
-
-          <!-- 4 — IEM Cologne 2024 & 2025 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-trophy text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.4">Intel Extreme Masters Cologne 2024 &amp; 2025</span>
-          </div>
-
-          <!-- 5 — ESL One Birmingham 2026 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-flag text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.5">ESL One Birmingham 2026</span>
-          </div>
-
-          <!-- 6 — IEM Katowice 2025 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-trophy text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.6">Intel Extreme Masters Katowice 2025</span>
-          </div>
-
-          <!-- 7 — Dreamhack Atlanta 2025 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-bolt text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.7">Dreamhack Atlanta 2025</span>
-          </div>
-
-          <!-- 8 — ESL Pro League S19 Malta 2024 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-flag text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.8">ESL Pro League Season 19 Malta 2024</span>
-          </div>
-
-          <!-- 9 — gamescom 2023 & 2024 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-gamepad text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.9">gamescom 2023 &amp; 2024</span>
-          </div>
-
-          <!-- 10 — Clash of Clans LCQ Katowice 2023 -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422] border border-azure-500/15 hover:border-azure-500/35 transition-colors duration-200">
-            <i class="fa-solid fa-crosshairs text-azure-400 text-sm shrink-0 w-5 text-center"></i>
-            <span class="text-sm text-slate-200 leading-snug" data-i18n="ev.10">Clash of Clans Last Chance Qualifier Katowice 2023</span>
-          </div>
-
-          <!-- 11 — Soon: EWC 2026 Paris -->
-          <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#071422]/60 border border-azure-500/10 opacity-60 sm:col-span-2">
-            <span class="relative shrink-0 w-5 flex items-center justify-center">
-              <span class="w-2 h-2 rounded-full bg-[#00d4ff] animate-pulse-slow"></span>
-            </span>
-            <span class="text-sm text-slate-400 leading-snug italic" data-i18n="ev.11">Esports World Cup 2026 &mdash; Paris</span>
-            <span class="ml-auto shrink-0 font-mono text-[10px] text-[#00d4ff] border border-[#00d4ff]/40 bg-[#00d4ff]/8 px-2 py-0.5 rounded-full tracking-wide" data-i18n="ev.soon">Soon</span>
-          </div>
-
-        </div>
-      </div>
-      <div class="section-divider w-full max-w-full"></div>
-      <div>
-        <p class="font-mono text-xs text-slate-600 tracking-widest uppercase mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-microchip text-slate-500/60"></i>
-          <span data-i18n="imp.expertiseLabel">Expertise &amp; Qualifikationen</span>
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="expertise-badge"><i class="fa-solid fa-graduation-cap text-[10px]"></i> <span data-i18n="exp.fisi">Fachinformatiker Systemintegration (i.A. @ ESL FACEIT Group)</span></span>
-          <span class="expertise-badge"><i class="fa-solid fa-network-wired text-[10px]"></i> <span data-i18n="exp.infra">IT-Integration &amp; Infrastruktur-Support</span></span>
-          <span class="expertise-badge"><i class="fa-brands fa-python text-[10px]"></i> <span data-i18n="exp.python">Python Automation (Admin-Skripte)</span></span>
-          <span class="expertise-badge"><i class="fa-solid fa-sitemap text-[10px]"></i> <span data-i18n="exp.net">Network Engineering (VLAN, Routing, Switching)</span></span>
-          <span class="expertise-badge"><i class="fa-solid fa-cloud text-[10px]"></i> <span data-i18n="exp.m365">Microsoft 365 &amp; Google Workspace Administration</span></span>
-          <span class="expertise-badge"><i class="fa-solid fa-earth-americas text-[10px]"></i> <span data-i18n="exp.en">English &#8212; Fluent (US High School &amp; Work/Travel)</span></span>
-        </div>
-      </div>
+    <!-- Expertise -->
+    <p class="list-label" data-i18n="imp.expertiseLabel">Expertise &amp; Qualifikationen</p>
+    <div class="badge-row">
+      <span class="badge" data-i18n="exp.fisi">Fachinformatiker Systemintegration (i.A. @ ESL FACEIT Group)</span>
+      <span class="badge" data-i18n="exp.infra">IT-Integration &amp; Infrastruktur-Support</span>
+      <span class="badge" data-i18n="exp.python">Python Automation (Admin-Skripte)</span>
+      <span class="badge" data-i18n="exp.net">Network Engineering (VLAN, Routing, Switching)</span>
+      <span class="badge" data-i18n="exp.m365">Microsoft 365 &amp; Google Workspace Administration</span>
+      <span class="badge" data-i18n="exp.en">English &mdash; Fluent (US High School &amp; Work/Travel)</span>
     </div>
   </div>
 </section>
 
-<div class="section-divider max-w-4xl w-full mx-auto"></div>
-
-<!-- UBER MICH -->
-<section id="ueber-mich" class="py-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div class="reveal">
-        <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-          <span class="text-slate-600">03 /</span> <span data-i18n="nav.about">&#220;ber mich</span>
+<!-- ÜBER MICH -->
+<section id="ueber-mich" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="eyebrow" data-i18n="nav.about">&Uuml;ber mich</p>
+        <header class="section-head" style="margin-bottom:1.6rem;">
+          <h2 data-i18n="about.title">Mensch hinter den Systemen</h2>
+        </header>
+        <div class="about-copy">
+          <p data-i18n-html="about.p1">Ich bin Leon Cordts, Fachinformatiker f&uuml;r Systemintegration aus K&ouml;ln. Mit meinem Einzelunternehmen biete ich IT-L&ouml;sungen an, die wirklich funktionieren &ndash; egal, ob es um die strategische Planung eines Firmennetzwerks oder schnelle Hilfe bei technischen Herausforderungen im privaten Alltag geht.</p>
+          <p data-i18n-html="about.p2">Dass meine Systeme auch unter extremem Druck stabil bleiben, beweise ich regelm&auml;&szlig;ig auf den gro&szlig;en B&uuml;hnen: Als <strong>IT Lead</strong> f&uuml;r Projekte wie die <strong>Event Arena der gamescom 2025</strong>, das <strong>Prime League DACH Finale 2025</strong> oder f&uuml;r <strong>Chess.com</strong> beim <strong>Esports World Cup 2025</strong> sorge ich im Hintergrund f&uuml;r reibungslose Abl&auml;ufe.</p>
+          <p data-i18n-html="about.p3">Diese Erfahrung aus dem High-End-Bereich bringe ich in jedes Projekt ein. Ob ich ein Unternehmen bei der Infrastruktur berate oder eine Privatperson bei der Einrichtung ihrer Ger&auml;te unterst&uuml;tze: Meine Kunden sch&auml;tzen meine schnelle Auffassungsgabe, saubere Dokumentation und die F&auml;higkeit, in jeder Situation die Ruhe zu bewahren.</p>
         </div>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6" data-i18n="about.title">Mensch hinter den Systemen</h2>
-        <div class="space-y-4 text-slate-400 leading-relaxed">
-          <p data-i18n-html="about.p1">Ich bin Leon Cordts, Fachinformatiker f&#252;r Systemintegration aus K&#246;ln. Mit meinem Einzelunternehmen biete ich IT-L&#246;sungen an, die wirklich funktionieren &ndash; egal, ob es um die strategische Planung eines Firmennetzwerks oder schnelle Hilfe bei technischen Herausforderungen oder PC-Reparaturen im privaten Alltag geht.</p>
-          <p data-i18n-html="about.p2">Dass meine Systeme auch unter extremem Druck stabil bleiben, beweise ich regelm&#228;&#223;ig auf den gro&#223;en B&#252;hnen: Als <strong class="text-white">IT Lead</strong> f&#252;r Projekte wie die <strong class="text-white">Event Arena der gamescom 2025</strong>, das <strong class="text-white">Prime League DACH Finale 2025</strong> oder f&#252;r <strong class="text-white">Chess.com</strong> beim <strong class="text-white">Esports World Cup 2025</strong> sorge ich im Hintergrund f&#252;r reibungslose Abl&#228;ufe.</p>
-          <p data-i18n-html="about.p3">Diese Erfahrung aus dem High-End-Bereich bringe ich in jedes Projekt ein. Ob ich ein Unternehmen bei der Infrastruktur berate oder eine Privatperson bei der Einrichtung ihrer Ger&#228;te unterst&#252;tze: Meine Kunden sch&#228;tzen meine schnelle Auffassungsgabe, saubere Dokumentation und die F&#228;higkeit, in jeder Situation die Ruhe zu bewahren.</p>
+        <div class="tag-row about-tags">
+          <span class="tag">Netzwerktechnik</span>
+          <span class="tag">Windows Server</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Virtualisierung</span>
+          <span class="tag">IT-Security Basics</span>
+          <span class="tag">KI</span>
+          <span class="tag">PowerShell</span>
+          <span class="tag">E-Sports</span>
         </div>
-        <div class="flex flex-wrap gap-2 mt-8">
-          <span class="skill-tag">Netzwerktechnik</span>
-          <span class="skill-tag">Windows Server</span>
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">Virtualisierung</span>
-          <span class="skill-tag">IT-Security Basics</span>
-          <span class="skill-tag">KI</span>
-          <span class="skill-tag">PowerShell</span>
-          <span class="skill-tag">E-Sports</span>
-        </div>
-        <div class="flex items-center gap-2 mt-8 text-sm text-slate-500 font-mono">
-          <i class="fa-solid fa-location-dot text-azure-400"></i>
-          <span data-i18n="about.location">K&#246;ln, Nordrhein-Westfalen, Deutschland</span>
-        </div>
+        <p class="about-location">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-i18n="about.location">K&ouml;ln, Nordrhein-Westfalen, Deutschland</span>
+        </p>
       </div>
-      <div class="reveal reveal-delay-2">
+      <div>
         <div class="terminal">
           <div class="terminal-bar">
-            <div class="dot bg-red-500/70"></div>
-            <div class="dot bg-yellow-500/70"></div>
-            <div class="dot bg-green-500/70"></div>
-            <span class="text-slate-600 text-xs ml-2">leon@it-solutions ~ profile.sh</span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="term-title">leon@it-solutions ~ profile.sh</span>
           </div>
-          <div class="p-6 space-y-2 text-sm">
-            <p><span class="text-azure-400">$</span> <span class="text-slate-300">whoami</span></p>
-            <p class="text-green-400 pl-4">Leon Cordts &#8211; IT Solutions</p>
-            <p class="mt-3"><span class="text-azure-400">$</span> <span class="text-slate-300">cat profile.json</span></p>
-            <div class="pl-4 mt-1 text-slate-400 space-y-0.5">
-              <p><span class="text-azure-400">{</span></p>
-              <p class="pl-4"><span class="text-purple-400">"role"</span><span class="text-white">:</span> <span class="text-amber-300">"Fachinformatiker FISI"</span><span class="text-white">,</span></p>
-              <p class="pl-4"><span class="text-purple-400">"location"</span><span class="text-white">:</span> <span class="text-amber-300">"K&#246;ln, DE"</span><span class="text-white">,</span></p>
-              <p class="pl-4"><span class="text-purple-400">"status"</span><span class="text-white">:</span> <span class="text-green-400">"available"</span><span class="text-white">,</span></p>
-              <p class="pl-4"><span class="text-purple-400">"focus"</span><span class="text-white">: [</span></p>
-              <p class="pl-8"><span class="text-amber-300">"IT-Infrastruktur"</span><span class="text-white">,</span></p>
-              <p class="pl-8"><span class="text-amber-300">"Event-Support"</span><span class="text-white">,</span></p>
-              <p class="pl-8"><span class="text-amber-300">"Network Engineering"</span></p>
-              <p class="pl-4"><span class="text-white">],</span></p>
-              <p class="pl-4"><span class="text-purple-400">"coffee"</span><span class="text-white">:</span> <span class="text-green-400">true</span></p>
-              <p><span class="text-azure-400">}</span></p>
-            </div>
-            <p class="mt-3"><span class="text-azure-400">$</span> <span class="text-slate-300 cursor">_</span></p>
+          <div class="terminal-body">
+            <p><span class="t-prompt">$</span> <span class="t-cmd">whoami</span></p>
+            <p class="indent-1 t-out">Leon Cordts &ndash; IT Solutions</p>
+            <p class="t-gap"><span class="t-prompt">$</span> <span class="t-cmd">cat profile.json</span></p>
+            <p class="indent-1">{</p>
+            <p class="indent-2"><span class="t-key">"role"</span>: <span class="t-str">"Fachinformatiker FISI"</span>,</p>
+            <p class="indent-2"><span class="t-key">"location"</span>: <span class="t-str">"K&ouml;ln, DE"</span>,</p>
+            <p class="indent-2"><span class="t-key">"status"</span>: <span class="t-ok">"available"</span>,</p>
+            <p class="indent-2"><span class="t-key">"focus"</span>: [ <span class="t-str">"IT-Infrastruktur"</span>, <span class="t-str">"Event-Support"</span>, <span class="t-str">"Network Engineering"</span> ],</p>
+            <p class="indent-2"><span class="t-key">"coffee"</span>: <span class="t-ok">true</span></p>
+            <p class="indent-1">}</p>
+            <p class="t-gap"><span class="t-prompt">$</span> <span class="t-cursor"></span></p>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-4 mt-5">
-          <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
-            <div class="font-display font-bold text-2xl text-white">5+</div>
-            <div class="font-mono text-xs text-slate-500 mt-1" data-i18n="stats.years">Jahre Erfahrung</div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">5+</div>
+            <div class="stat-label" data-i18n="stats.years">Jahre Erfahrung</div>
           </div>
-          <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
-            <div class="font-display font-bold text-2xl text-white">20+</div>
-            <div class="font-mono text-xs text-slate-500 mt-1" data-i18n="stats.events">Events betreut</div>
+          <div class="stat">
+            <div class="stat-value">20+</div>
+            <div class="stat-label" data-i18n="stats.events">Events betreut</div>
           </div>
-          <div class="text-center p-4 rounded-xl bg-navy-800/80 border border-azure-500/15">
-            <div class="font-display font-bold text-2xl text-white">100%</div>
-            <div class="font-mono text-xs text-slate-500 mt-1" data-i18n="stats.reliable">Zuverl&#228;ssig</div>
+          <div class="stat">
+            <div class="stat-value">100%</div>
+            <div class="stat-label" data-i18n="stats.reliable">Zuverl&auml;ssig</div>
           </div>
         </div>
       </div>
@@ -567,556 +357,169 @@
   </div>
 </section>
 
-<div class="section-divider max-w-4xl w-full mx-auto"></div>
-
 <!-- KONTAKT -->
-<section id="kontakt" class="py-28 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-      <div class="reveal">
-        <div class="font-mono text-azure-400 text-xs tracking-widest uppercase mb-3">
-          <span class="text-slate-600">04 /</span> <span data-i18n="nav.contact">Kontakt</span>
+<section id="kontakt" class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow" data-i18n="nav.contact">Kontakt</p>
+        <div class="contact-head">
+          <h2><span data-i18n="contact.title">Hilfe gesucht?</span><br/><span class="accent" data-i18n="contact.title2">Melden Sie sich.</span></h2>
         </div>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-6">
-          <span data-i18n="contact.title">Hilfe gesucht?</span><br/>
-          <span class="text-azure-400" data-i18n="contact.title2">Melden Sie sich.</span>
-        </h2>
-        <p class="text-slate-400 leading-relaxed mb-10" data-i18n="contact.desc">Ob professionelles Firmennetzwerk, Event-Support oder Unterst&#252;tzung im privaten Alltag &#8212; ich freue mich auf Ihre Anfrage. Rufen Sie mich f&#252;r eine direkte Beratung gerne an oder senden Sie mir eine Nachricht. Ich melde mich in der Regel innerhalb weniger Stunden bei Ihnen.</p>
-        <div class="space-y-4">
-          <a href="mailto:kontakt@leoncordts.de" class="flex items-center gap-4 p-4 rounded-xl bg-navy-800/60 border border-azure-500/15 hover:border-azure-500/40 transition-all duration-300 group glow-box">
-            <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20 flex items-center justify-center text-azure-400 group-hover:bg-azure-500/20 transition-colors"><i class="fa-solid fa-envelope text-sm"></i></div>
-            <div>
-              <div class="font-mono text-xs text-slate-500 mb-0.5">E-Mail</div>
-              <div class="text-sm text-slate-200">kontakt@leoncordts.de</div>
-            </div>
-            <i class="fa-solid fa-arrow-right ml-auto text-slate-700 group-hover:text-azure-400 transition-colors text-xs"></i>
-          </a>
-          <a href="tel:+492214758054" class="flex items-center gap-4 p-4 rounded-xl bg-navy-800/60 border border-azure-500/15 hover:border-azure-500/40 transition-all duration-300 group glow-box">
-            <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20 flex items-center justify-center text-azure-400 group-hover:bg-azure-500/20 transition-colors"><i class="fa-solid fa-phone text-sm"></i></div>
-            <div>
-              <div class="font-mono text-xs text-slate-500 mb-0.5" data-i18n="contact.telLabel">Telefon</div>
-              <div class="text-sm text-slate-200">+49 221 4758054</div>
-            </div>
-            <i class="fa-solid fa-arrow-right ml-auto text-slate-700 group-hover:text-azure-400 transition-colors text-xs"></i>
-          </a>
-          <div class="flex items-center gap-4 p-4 rounded-xl bg-navy-800/60 border border-azure-500/15">
-            <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20 flex items-center justify-center text-azure-400"><i class="fa-solid fa-location-dot text-sm"></i></div>
-            <div>
-              <div class="font-mono text-xs text-slate-500 mb-0.5" data-i18n="contact.locLabel">Standort</div>
-              <div class="text-sm text-slate-200" data-i18n="contact.locVal">K&#246;ln, NRW &#8212; Remote &amp; vor Ort</div>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 p-4 rounded-xl bg-navy-800/60 border border-azure-500/15">
-            <div class="w-10 h-10 rounded-lg bg-azure-500/10 border border-azure-500/20 flex items-center justify-center text-azure-400"><i class="fa-solid fa-clock text-sm"></i></div>
-            <div>
-              <div class="font-mono text-xs text-slate-500 mb-0.5" data-i18n="contact.respLabel">Reaktionszeit</div>
-              <div class="text-sm text-slate-200" data-i18n="contact.respVal">In der Regel &lt; 2 Stunden</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <form action="https://formsubmit.co/kontakt@leoncordts.de" method="POST" class="glow-box rounded-2xl p-8 bg-navy-800/40 border border-azure-500/20 space-y-5">
-          <input type="hidden" name="_next"     value="https://leoncordts.github.io" />
-          <input type="hidden" name="_captcha"  value="false" />
-          <input type="hidden" name="_subject"  value="Neue Kontaktanfrage - leoncordts.de" />
-          <input type="hidden" name="_template" value="table" />
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2" data-i18n="form.firstname">Vorname</label>
-              <input type="text" name="Vorname" class="form-input" data-i18n-placeholder="form.ph.firstname" placeholder="Max" required />
-            </div>
-            <div>
-              <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2" data-i18n="form.lastname">Nachname</label>
-              <input type="text" name="Nachname" class="form-input" data-i18n-placeholder="form.ph.lastname" placeholder="Mustermann" />
-            </div>
-          </div>
-          <div>
-            <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2">E-Mail</label>
-            <input type="email" name="Email" class="form-input" data-i18n-placeholder="form.ph.email" placeholder="max@firma.de" required />
-          </div>
-          <div>
-            <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2" data-i18n="form.subject">Betreff</label>
-            <select id="form-subject" name="Betreff" class="form-input" style="appearance:none;cursor:pointer;" required>
-              <option value="" disabled selected data-i18n-opt="form.subjectPh">Bitte w&#228;hlen&#8230;</option>
-              <option data-i18n-opt="form.opt1">Zuhause &amp; Privat-IT</option>
-              <option data-i18n-opt="form.opt2">Klein- &amp; Mittelstands-IT</option>
-              <option data-i18n-opt="form.opt3">Event-Support</option>
-              <option data-i18n-opt="form.opt4">Sonstiges</option>
-            </select>
-          </div>
-          <div>
-            <label class="font-mono text-xs text-slate-500 tracking-wider uppercase block mb-2" data-i18n="form.message">Nachricht</label>
-            <textarea name="Nachricht" rows="5" class="form-input resize-none" data-i18n-placeholder="form.ph.message" placeholder="Beschreiben Sie kurz Ihr Projekt oder Anliegen&#8230;" required></textarea>
-          </div>
-          <label class="flex items-start gap-3 cursor-pointer group">
-            <div class="relative mt-0.5">
-              <input type="checkbox" id="privacy" name="_datenschutz" value="akzeptiert" class="sr-only peer" required />
-              <div class="w-4 h-4 rounded border border-slate-600 peer-checked:border-azure-500 peer-checked:bg-azure-500/20 transition-colors"></div>
-              <i class="fa-solid fa-check absolute top-0 left-0 w-4 h-4 text-azure-400 text-[10px] flex items-center justify-center opacity-0 peer-checked:opacity-100 transition-opacity"></i>
-            </div>
-            <span class="text-xs text-slate-500 leading-relaxed">
-              <button type="button" onclick="openModal('modal-datenschutz')" class="text-azure-400 hover:underline" data-i18n="form.privacyLink">Datenschutzerkl&#228;rung</button>
-              <span data-i18n="form.privacyText"> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</span>
+        <p class="contact-desc" data-i18n="contact.desc">Ob professionelles Firmennetzwerk, Event-Support oder Unterst&uuml;tzung im privaten Alltag &mdash; ich freue mich auf Ihre Anfrage. Rufen Sie mich f&uuml;r eine direkte Beratung gerne an oder senden Sie mir eine Nachricht. Ich melde mich in der Regel innerhalb weniger Stunden bei Ihnen.</p>
+        <div class="contact-list">
+          <a href="mailto:kontakt@leoncordts.de" class="contact-row">
+            <span class="row-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <span>
+              <span class="row-label">E-Mail</span><br/>
+              <span class="row-value">kontakt@leoncordts.de</span>
             </span>
-          </label>
-          <button type="submit" class="w-full py-3.5 rounded-xl font-display font-semibold text-sm text-white bg-gradient-to-r from-azure-600 to-azure-500 hover:from-azure-500 hover:to-[#00d4ff] transition-all duration-300 btn-glow flex items-center justify-center gap-2">
-            <i class="fa-solid fa-paper-plane"></i><span data-i18n="form.submit">Nachricht senden</span>
-          </button>
-        </form>
+            <svg class="icon row-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="tel:+492214758054" class="contact-row">
+            <span class="row-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span>
+              <span class="row-label" data-i18n="contact.telLabel">Telefon</span><br/>
+              <span class="row-value">+49 221 4758054</span>
+            </span>
+            <svg class="icon row-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div class="contact-row">
+            <span class="row-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>
+              <span class="row-label" data-i18n="contact.locLabel">Standort</span><br/>
+              <span class="row-value" data-i18n="contact.locVal">K&ouml;ln, NRW &mdash; Remote &amp; vor Ort</span>
+            </span>
+          </div>
+          <div class="contact-row">
+            <span class="row-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span>
+              <span class="row-label" data-i18n="contact.respLabel">Reaktionszeit</span><br/>
+              <span class="row-value" data-i18n="contact.respVal">In der Regel &lt; 2 Stunden</span>
+            </span>
+          </div>
+        </div>
       </div>
+      <form action="https://formsubmit.co/kontakt@leoncordts.de" method="POST" class="contact-form">
+        <input type="hidden" name="_next" value="https://leoncordts.de" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_subject" value="Neue Kontaktanfrage - leoncordts.de" />
+        <input type="hidden" name="_template" value="table" />
+        <div class="form-pair">
+          <div class="field">
+            <label for="form-firstname" data-i18n="form.firstname">Vorname</label>
+            <input id="form-firstname" type="text" name="Vorname" class="form-input" data-i18n-placeholder="form.ph.firstname" placeholder="Max" required />
+          </div>
+          <div class="field">
+            <label for="form-lastname" data-i18n="form.lastname">Nachname</label>
+            <input id="form-lastname" type="text" name="Nachname" class="form-input" data-i18n-placeholder="form.ph.lastname" placeholder="Mustermann" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="form-email">E-Mail</label>
+          <input id="form-email" type="email" name="Email" class="form-input" data-i18n-placeholder="form.ph.email" placeholder="max@firma.de" required />
+        </div>
+        <div class="field">
+          <label for="form-subject" data-i18n="form.subject">Betreff</label>
+          <select id="form-subject" name="Betreff" class="form-input" required>
+            <option value="" disabled selected data-i18n-opt="form.subjectPh">Bitte w&auml;hlen&hellip;</option>
+            <option data-i18n-opt="form.opt1">Zuhause &amp; Privat-IT</option>
+            <option data-i18n-opt="form.opt2">Klein- &amp; Mittelstands-IT</option>
+            <option data-i18n-opt="form.opt3">Event-Support</option>
+            <option data-i18n-opt="form.opt4">Sonstiges</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="form-message" data-i18n="form.message">Nachricht</label>
+          <textarea id="form-message" name="Nachricht" rows="5" class="form-input" data-i18n-placeholder="form.ph.message" placeholder="Beschreiben Sie kurz Ihr Projekt oder Anliegen&hellip;" required></textarea>
+        </div>
+        <label class="privacy-check">
+          <input type="checkbox" name="_datenschutz" value="akzeptiert" required />
+          <span>
+            <button type="button" onclick="openModal('modal-datenschutz')" class="link-btn" data-i18n="form.privacyLink">Datenschutzerkl&auml;rung</button><span data-i18n="form.privacyText"> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</span>
+          </span>
+        </label>
+        <button type="submit" class="btn btn-primary" data-i18n="form.submit">Nachricht senden</button>
+      </form>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-white/5 bg-navy-900/60 backdrop-blur-sm">
-  <div class="max-w-6xl mx-auto px-6 py-12">
-    <div class="grid md:grid-cols-3 gap-10 mb-10">
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
       <div>
-        <div class="flex items-center gap-3 mb-4">
-          <img src="logo.png" alt="Leon Cordts IT Solutions Logo" class="h-9 w-auto object-contain" style="filter:drop-shadow(0 0 6px rgba(0,212,255,0.3));" />
-          <span class="font-display font-semibold text-white">Leon Cordts</span>
+        <div class="footer-brand">
+          <img src="logo.png" alt="Leon Cordts IT Solutions Logo" />
+          <span>Leon Cordts</span>
         </div>
-        <p class="text-slate-500 text-sm leading-relaxed" data-i18n="footer.tagline">IT Solutions &#183; Einzelunternehmen<br/>K&#246;ln, Nordrhein-Westfalen</p>
-        <div class="flex gap-3 mt-5">
-          <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:text-azure-400 hover:border-azure-500/30 transition-all duration-200 text-sm"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="GitHub"   class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:text-azure-400 hover:border-azure-500/30 transition-all duration-200 text-sm"><i class="fa-brands fa-github"></i></a>
-          <a href="mailto:kontakt@leoncordts.de" aria-label="E-Mail" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 hover:text-azure-400 hover:border-azure-500/30 transition-all duration-200 text-sm"><i class="fa-solid fa-envelope"></i></a>
+        <p class="footer-tagline" data-i18n="footer.tagline">IT Solutions &middot; Einzelunternehmen</p>
+        <p class="footer-tagline">K&ouml;ln, Nordrhein-Westfalen</p>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn" class="social-link">
+            <svg class="icon icon-fill" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub" class="social-link">
+            <svg class="icon icon-fill" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="mailto:kontakt@leoncordts.de" aria-label="E-Mail" class="social-link">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          </a>
         </div>
       </div>
-      <div>
-        <h4 class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-4" data-i18n="footer.nav">Navigation</h4>
-        <ul class="space-y-2">
-          <li><a href="#home"       class="text-sm text-slate-400 hover:text-azure-400 transition-colors" data-i18n="footer.home">Home</a></li>
-          <li><a href="#leistungen" class="text-sm text-slate-400 hover:text-azure-400 transition-colors" data-i18n="nav.services">Leistungen</a></li>
-          <li><a href="#ueber-mich" class="text-sm text-slate-400 hover:text-azure-400 transition-colors" data-i18n="nav.about">&#220;ber mich</a></li>
-          <li><a href="#kontakt"    class="text-sm text-slate-400 hover:text-azure-400 transition-colors" data-i18n="nav.contact">Kontakt</a></li>
+      <div class="footer-col">
+        <h4 data-i18n="footer.nav">Navigation</h4>
+        <ul>
+          <li><a href="#home" data-i18n="footer.home">Home</a></li>
+          <li><a href="#leistungen" data-i18n="nav.services">Leistungen</a></li>
+          <li><a href="#ueber-mich" data-i18n="nav.about">&Uuml;ber mich</a></li>
+          <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
         </ul>
       </div>
-      <div>
-        <h4 class="font-mono text-xs text-slate-500 tracking-widest uppercase mb-4" data-i18n="footer.legal">Rechtliches</h4>
-        <ul class="space-y-2">
-          <li>
-            <button onclick="openModal('modal-impressum')" class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2 cursor-pointer">
-              <i class="fa-solid fa-file-lines text-xs text-slate-600"></i>
-              <span data-i18n="footer.impressum">Impressum</span>
-            </button>
-          </li>
-          <li>
-            <button onclick="openModal('modal-datenschutz')" class="text-sm text-slate-400 hover:text-azure-400 transition-colors flex items-center gap-2 cursor-pointer">
-              <i class="fa-solid fa-shield-halved text-xs text-slate-600"></i>
-              <span data-i18n="footer.datenschutz">Datenschutzerkl&#228;rung</span>
-            </button>
-          </li>
+      <div class="footer-col">
+        <h4 data-i18n="footer.legal">Rechtliches</h4>
+        <ul>
+          <li><button onclick="openModal('modal-impressum')" data-i18n="footer.impressum">Impressum</button></li>
+          <li><button onclick="openModal('modal-datenschutz')" data-i18n="footer.datenschutz">Datenschutzerkl&auml;rung</button></li>
         </ul>
       </div>
     </div>
-    <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="font-mono text-xs text-slate-600">&#169; <span id="year"></span> Leon Cordts &#8211; IT Solutions &#183; <span data-i18n="footer.rights">Alle Rechte vorbehalten</span></p>
-      <p class="font-mono text-xs text-slate-600">Made in <span class="text-azure-400">K&#246;ln</span> &#183; <span class="text-green-400/60">v1.0.0</span></p>
+    <div class="footer-base">
+      <p>&copy; <span id="year"></span> Leon Cordts &ndash; IT Solutions &middot; <span data-i18n="footer.rights">Alle Rechte vorbehalten</span></p>
+      <p>Made in <span class="hl">K&ouml;ln</span> &middot; v2.0.0</p>
     </div>
   </div>
 </footer>
 
 <!-- MODAL: IMPRESSUM -->
-<div id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="modal-impressum-title"
-     class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" style="display:none;">
-  <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal('modal-impressum')"></div>
-  <div class="modal-panel relative w-full max-w-2xl max-h-[85vh] flex flex-col rounded-2xl border border-azure-500/20 bg-[#050d1a] shadow-2xl" style="box-shadow:0 0 0 1px rgba(14,165,233,0.15),0 32px 80px rgba(0,0,0,0.7);">
-    <div class="flex items-center justify-between px-7 py-5 border-b border-white/5 shrink-0">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-azure-500/10 border border-azure-500/20 flex items-center justify-center text-azure-400 text-sm"><i class="fa-solid fa-file-lines"></i></div>
-        <h2 id="modal-impressum-title" class="font-display font-bold text-lg text-white" data-i18n="modal.impressum.title">Impressum</h2>
-      </div>
-      <button onclick="closeModal('modal-impressum')" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"><i class="fa-solid fa-xmark"></i></button>
+<div id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="modal-impressum-title" class="modal-overlay">
+  <div class="modal-backdrop" onclick="closeModal('modal-impressum')"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <h2 id="modal-impressum-title" data-i18n="modal.impressum.title">Impressum</h2>
+      <button onclick="closeModal('modal-impressum')" class="modal-close" aria-label="Schließen">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
     </div>
-    <div id="modal-impressum-body" class="overflow-y-auto px-7 py-6 space-y-6 text-sm text-slate-300 leading-relaxed modal-body"></div>
+    <div id="modal-impressum-body" class="modal-body"></div>
   </div>
 </div>
 
 <!-- MODAL: DATENSCHUTZ -->
-<div id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="modal-datenschutz-title"
-     class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" style="display:none;">
-  <div class="modal-backdrop absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal('modal-datenschutz')"></div>
-  <div class="modal-panel relative w-full max-w-2xl max-h-[85vh] flex flex-col rounded-2xl border border-azure-500/20 bg-[#050d1a] shadow-2xl" style="box-shadow:0 0 0 1px rgba(14,165,233,0.15),0 32px 80px rgba(0,0,0,0.7);">
-    <div class="flex items-center justify-between px-7 py-5 border-b border-white/5 shrink-0">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-azure-500/10 border border-azure-500/20 flex items-center justify-center text-azure-400 text-sm"><i class="fa-solid fa-shield-halved"></i></div>
-        <h2 id="modal-datenschutz-title" class="font-display font-bold text-lg text-white" data-i18n="modal.datenschutz.title">Datenschutzerkl&#228;rung</h2>
-      </div>
-      <button onclick="closeModal('modal-datenschutz')" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"><i class="fa-solid fa-xmark"></i></button>
+<div id="modal-datenschutz" role="dialog" aria-modal="true" aria-labelledby="modal-datenschutz-title" class="modal-overlay">
+  <div class="modal-backdrop" onclick="closeModal('modal-datenschutz')"></div>
+  <div class="modal-panel">
+    <div class="modal-head">
+      <h2 id="modal-datenschutz-title" data-i18n="modal.datenschutz.title">Datenschutzerkl&auml;rung</h2>
+      <button onclick="closeModal('modal-datenschutz')" class="modal-close" aria-label="Schließen">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
     </div>
-    <div id="modal-datenschutz-body" class="overflow-y-auto px-7 py-6 space-y-6 text-sm text-slate-300 leading-relaxed modal-body"></div>
+    <div id="modal-datenschutz-body" class="modal-body"></div>
   </div>
 </div>
 
-<div id="toast"><i class="fa-solid fa-check-circle mr-2"></i><span data-i18n="toast.msg">Nachricht empfangen &#8212; ich melde mich bald!</span></div>
-
-<script>
-  // ================================================================
-  // TRANSLATIONS
-  // ================================================================
-  const translations = {
-    de: {
-      'page.title':  'Leon Cordts - IT Solutions | Technik fur Zuhause & Business',
-      'page.desc':   'Professioneller IT-Support aus Köln. Von der WLAN-Einrichtung fur Privatpersonen bis zum Event-Support und Netzwerkplanung fur Unternehmen.',
-      'nav.services':'Leistungen',
-      'nav.about':   'Über mich',
-      'nav.contact': 'Kontakt',
-      'nav.cta':     'Kontakt aufnehmen',
-      'hero.badge':  'Verfügbar fur neue Projekte',
-      'hero.motto1': 'Technik, die einfach funktioniert.',
-      'hero.motto2': 'Für Zuhause und Ihr Business.',
-      'hero.desc':   'Fachinformatiker aus Köln. Ich löse IT-Probleme fur Privathaushalte und Unternehmen. Vom schnellen Einrichten Ihres neuen Laptops oder Routers bis zur Planung komplexer Firmennetzwerke und internationaler E-Sports Events. Ich sorge dafür, dass Ihre IT läuft — zuverlässig, verständlich und sicher.',
-      'hero.cta1':   'Kontakt aufnehmen',
-      'hero.cta2':   'Leistungen ansehen',
-      'services.title': 'Was ich fur Sie tue',
-      'services.sub':   'Drei Kernbereiche — präzise umgesetzt mit jahrelanger Erfahrung in der IT-Branche.',
-      'badge.c1': '20% Neukunden-Rabatt',
-      'badge.c2': 'Kostenloser IT-Check',
-      'c1.title': 'Zuhause & Privat-IT',
-      'c1.sub':   'Professionelle IT-Hilfe. Fair, transparent & günstig.',
-      'c1.desc':  'Laptop- & PC-Einrichtung, zuverlässige Router- & WLAN-Optimierung fur luckenlosem Empfang, Smart Home Vernetzung, Datensicherung, Virenschutz und schnelle Hilfe bei Software-Problemen.',
-      'c1.li1':   'Laptop & PC einrichten oder reparieren',
-      'c1.li2':   'Router & WLAN optimieren',
-      'c1.li3':   'Smart Home & Gerate vernetzen',
-      'c1.li4':   'Datensicherung & Virenschutz',
-      'c1.t1':    'PC / Mac Hilfe',
-      'c1.t3':    'IT-Sicherheit',
-      'c1.t5':    'Fehlersuche',
-      'c1.pricing': 'Transparente Preise ab 59 € / Std. (abzgl. 20 % Rabatt)',
-      'c2.title': 'Klein- & Mittelstands-IT',
-      'c2.desc':  'Planung, Aufbau und Betrieb skalierbarer IT-Systeme fur Unternehmen — von der Netzwerkinfrastruktur bis zur Server-Administration und Cloud-Integration.',
-      'c2.li1':   'Firmennetzwerk planen & aufbauen',
-      'c2.li2':   'Microsoft 365 Einrichtung & Verwaltung',
-      'c2.li3':   'IT-Security & VPN-Losungen',
-      'c2.li4':   'Backup-Konzepte & Disaster Recovery',
-      'c2.t1':    'Firmennetzwerk',
-      'c2.pricing': 'Faire B2B-Konditionen ab 69 € / Std. inkl. kostenlosem Erst-Check.',
-      'c3.title': 'Event-Support',
-      'c3.desc':  'Technischer On-Site-Support fur Großveranstaltungen — zuverlässig, schnell und erfahren mit den Anforderungen internationaler Live-Events und E-Sports-Turniere.',
-      'c3.li1':   'E-Sports-Turniere & Gaming-Events',
-      'c3.li2':   'Live-Event-Infrastruktur (LAN-Setup)',
-      'c3.li3':   'Echtzeit-Troubleshooting vor Ort',
-      'c3.li4':   'Hardware-Bereitstellung & -Support',
-      'imp.label':         'Impressionen',
-      'imp.title':         'Events & Einsatze',
-      'imp.sub':           'Ein Blick hinter die Kulissen — von der Netzwerkverkabelung bis zur Arena-Infrastruktur auf internationalen Buhnen.',
-      'imp.eventsLabel':   'Event-Referenzen',
-      'ev.1':  'gamescom 2025',
-      'ev.2':  'Chess.com @ Esports World Cup 2025',
-      'ev.3':  'Prime League DACH Finale 2025',
-      'ev.4':  'Intel Extreme Masters Cologne 2024 & 2025',
-      'ev.5':  'ESL One Birmingham 2026',
-      'ev.6':  'Intel Extreme Masters Katowice 2025',
-      'ev.7':  'Dreamhack Atlanta 2025',
-      'ev.8':  'ESL Pro League Season 19 Malta 2024',
-      'ev.9':  'gamescom 2023 & 2024',
-      'ev.10': 'Clash of Clans Last Chance Qualifier Katowice 2023',
-      'ev.11': 'Esports World Cup 2026 — Paris',
-      'ev.soon': 'Bald',
-      'imp.expertiseLabel':'Expertise & Qualifikationen',
-      'exp.fisi':   'Fachinformatiker Systemintegration (i.A. @ ESL FACEIT Group)',
-      'exp.infra':  'IT-Integration & Infrastruktur-Support',
-      'exp.python': 'Python Automation (Admin-Skripte)',
-      'exp.net':    'Network Engineering (VLAN, Routing, Switching)',
-      'exp.m365':   'Microsoft 365 & Google Workspace Administration',
-      'exp.en':     'English — Fluent (US High School & Work/Travel)',
-      'about.title':    'Mensch hinter den Systemen',
-      'about.p1':       'Ich bin Leon Cordts, Fachinformatiker für Systemintegration aus Köln. Mit meinem Einzelunternehmen biete ich IT-Lösungen an, die wirklich funktionieren – egal, ob es um die strategische Planung eines Firmennetzwerks oder schnelle Hilfe bei technischen Herausforderungen im privaten Alltag geht.',
-      'about.p2':       'Dass meine Systeme auch unter extremem Druck stabil bleiben, beweise ich regelmäßig auf den großen Bühnen: Als <strong class="text-white">IT Lead</strong> für Projekte wie die <strong class="text-white">Event Arena der gamescom 2025</strong>, das <strong class="text-white">Prime League DACH Finale 2025</strong> oder für <strong class="text-white">Chess.com</strong> beim <strong class="text-white">Esports World Cup 2025</strong> sorge ich im Hintergrund für reibungslose Abläufe.',
-      'about.p3':       'Diese Erfahrung aus dem High-End-Bereich bringe ich in jedes Projekt ein. Ob ich ein Unternehmen bei der Infrastruktur berate oder eine Privatperson bei der Einrichtung ihrer Geräte unterstütze: Meine Kunden schätzen meine schnelle Auffassungsgabe, saubere Dokumentation und die Fähigkeit, in jeder Situation die Ruhe zu bewahren.',
-      'about.location': 'Köln, Nordrhein-Westfalen, Deutschland',
-      'stats.years':    'Jahre Erfahrung',
-      'stats.events':   'Events betreut',
-      'stats.reliable': 'zuverlässig',
-      'remote.title': 'Fernwartung & Soforthilfe',
-      'remote.body':  'Schnelle Unterstützung ohne Anfahrt. Laden Sie sich einfach unser Support-Tool herunter, damit wir Ihr Problem gemeinsam direkt am Bildschirm lösen können. Sicher, verschlüsselt und unkompliziert.',
-      'remote.btn':   'Support-Tool herunterladen',
-      'remote.hint':  'Kostenlos · Direkt startklar',
-      'contact.title':     'Hilfe gesucht?',
-      'contact.title2':    'Melden Sie sich.',
-      'contact.desc':      'Ob professionelles Firmennetzwerk, Event-Support oder Unterstützung im privaten Alltag — ich freue mich auf Ihre Anfrage. Rufen Sie mich für eine direkte Beratung gerne an oder senden Sie mir eine Nachricht. Ich melde mich in der Regel innerhalb weniger Stunden bei Ihnen.',
-      'contact.telLabel':  'Telefon',
-      'contact.locLabel':  'Standort',
-      'contact.locVal':    'Köln, NRW — Remote & vor Ort',
-      'contact.respLabel': 'Reaktionszeit',
-      'contact.respVal':   'In der Regel < 2 Stunden',
-      'form.firstname':    'Vorname',
-      'form.lastname':     'Nachname',
-      'form.subject':      'Betreff',
-      'form.message':      'Nachricht',
-      'form.subjectPh':    'Bitte wahlen…',
-      'form.opt1':         'Zuhause & Privat-IT',
-      'form.opt2':         'Klein- & Mittelstands-IT',
-      'form.opt3':         'Event-Support',
-      'form.opt4':         'Sonstiges',
-      'form.ph.firstname': 'Max',
-      'form.ph.lastname':  'Mustermann',
-      'form.ph.email':     'max@firma.de',
-      'form.ph.message':   'Beschreiben Sie kurz Ihr Projekt oder Anliegen…',
-      'form.privacyLink':  'Datenschutzerklärung',
-      'form.privacyText':  ' gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.',
-      'form.submit':       'Nachricht senden',
-      'footer.tagline':    'IT Solutions · Einzelunternehmen',
-      'footer.nav':        'Navigation',
-      'footer.home':       'Home',
-      'footer.legal':      'Rechtliches',
-      'footer.impressum':  'Impressum',
-      'footer.datenschutz':'Datenschutzerklarung',
-      'footer.rights':     'Alle Rechte vorbehalten',
-      'modal.impressum.title':   'Impressum',
-      'modal.datenschutz.title': 'Datenschutzerklarung',
-      'toast.msg': 'Nachricht empfangen — ich melde mich bald!',
-    },
-    en: {
-      'page.title':  'Leon Cordts - IT Solutions | Technology that simply works',
-      'page.desc':   'Professional IT support from Cologne. From WiFi setup for home users to event support and network planning for businesses.',
-      'nav.services':'Services',
-      'nav.about':   'About',
-      'nav.contact': 'Contact',
-      'nav.cta':     'Get in touch',
-      'hero.badge':  'Available for new projects',
-      'hero.motto1': 'Technology that simply works.',
-      'hero.motto2': 'For home and your business.',
-      'hero.desc':   'IT specialist from Cologne. I solve IT problems for private households and businesses — from quickly setting up your new laptop or router to planning complex corporate networks and international esports events. I make sure your IT runs reliably, clearly and securely.',
-      'hero.cta1':   'Get in touch',
-      'hero.cta2':   'View services',
-      'services.title': 'What I do for you',
-      'services.sub':   'Three core areas — delivered precisely with years of experience in the IT industry.',
-      'badge.c1': '20% New Customer Discount',
-      'badge.c2': 'Free IT Health Check',
-      'c1.title': 'Home & Personal IT',
-      'c1.sub':   'Professional IT help. Fair, transparent & affordable.',
-      'c1.desc':  'Laptop & PC setup, reliable router & WiFi optimisation for seamless coverage, Smart Home networking, data backup, virus protection and fast help with software issues.',
-      'c1.li1':   'Set up or repair laptop & PC',
-      'c1.li2':   'Optimise router & WiFi',
-      'c1.li3':   'Smart Home & device networking',
-      'c1.li4':   'Data backup & virus protection',
-      'c1.t1':    'PC / Mac Help',
-      'c1.t3':    'IT Security',
-      'c1.t5':    'Troubleshooting',
-      'c1.pricing': 'Transparent pricing from €59 / hr (incl. 20% discount)',
-      'c2.title': 'SME IT Solutions',
-      'c2.desc':  'Planning, building and operating scalable IT systems for businesses — from network infrastructure to server administration and cloud integration.',
-      'c2.li1':   'Plan & build corporate networks',
-      'c2.li2':   'Microsoft 365 setup & administration',
-      'c2.li3':   'IT security & VPN solutions',
-      'c2.li4':   'Backup concepts & disaster recovery',
-      'c2.t1':    'Corporate Network',
-      'c2.pricing': 'Fair B2B rates from €69 / hr incl. free initial consultation.',
-      'c3.title': 'Event Support',
-      'c3.desc':  'Technical on-site support for large-scale events — reliable, fast and experienced with the demanding requirements of international live events and esports tournaments.',
-      'c3.li1':   'Esports tournaments & gaming events',
-      'c3.li2':   'Live event infrastructure (LAN setup)',
-      'c3.li3':   'Real-time troubleshooting on site',
-      'c3.li4':   'Hardware deployment & support',
-      'imp.label':         'Gallery',
-      'imp.title':         'Events & Deployments',
-      'imp.sub':           'A behind-the-scenes look — from network cabling to arena infrastructure on international stages.',
-      'imp.eventsLabel':   'Event References',
-      'ev.1':  'gamescom 2025',
-      'ev.2':  'Chess.com @ Esports World Cup 2025',
-      'ev.3':  'Prime League DACH Finals 2025',
-      'ev.4':  'Intel Extreme Masters Cologne 2024 & 2025',
-      'ev.5':  'ESL One Birmingham 2026',
-      'ev.6':  'Intel Extreme Masters Katowice 2025',
-      'ev.7':  'Dreamhack Atlanta 2025',
-      'ev.8':  'ESL Pro League Season 19 Malta 2024',
-      'ev.9':  'gamescom 2023 & 2024',
-      'ev.10': 'Clash of Clans Last Chance Qualifier Katowice 2023',
-      'ev.11': 'Esports World Cup 2026 — Paris',
-      'ev.soon': 'Soon',
-      'imp.expertiseLabel':'Expertise & Qualifications',
-      'exp.fisi':   'IT Systems Specialist (Apprenticeship @ ESL FACEIT Group)',
-      'exp.infra':  'IT Integration & Infrastructure Support',
-      'exp.python': 'Python Automation (Admin Scripts)',
-      'exp.net':    'Network Engineering (VLAN, Routing, Switching)',
-      'exp.m365':   'Microsoft 365 & Google Workspace Administration',
-      'exp.en':     'English — Fluent (US High School & Work/Travel)',
-      'about.title':    'The human behind the systems',
-      'about.p1':       "I'm Leon Cordts, a systems integration specialist based in Cologne. Through my business, I provide IT solutions that simply work – whether it's strategic planning for a corporate network or quick assistance with technical challenges in everyday life.",
-      'about.p2':       'I regularly prove that my systems remain rock-solid even under extreme pressure on the world stage: As an <strong class="text-white">IT Lead</strong> for projects like the <strong class="text-white">Event Arena at gamescom 2025</strong>, the <strong class="text-white">Prime League DACH Finals 2025</strong>, and for <strong class="text-white">Chess.com</strong> at the <strong class="text-white">Esports World Cup 2025</strong>, I ensure everything runs smoothly behind the scenes.',
-      'about.p3':       "I bring this high-end experience to every project. Whether I'm advising a company on infrastructure or supporting an individual with their device setup: My clients value my quick perception, meticulous documentation, and the ability to stay calm in any situation.",
-      'about.location': 'Cologne, North Rhine-Westphalia, Germany',
-      'stats.years':    'Years experience',
-      'stats.events':   'Events supported',
-      'stats.reliable': 'Reliable',
-      'remote.title': 'Remote Support',
-      'remote.body':  'Quick assistance without travel costs. Simply download our support tool so we can solve your problem together directly on your screen. Secure, encrypted, and straightforward.',
-      'remote.btn':   'Download Support Tool',
-      'remote.hint':  'Free · Ready to use',
-      'contact.title':     'Need help?',
-      'contact.title2':    'Get in touch.',
-      'contact.desc':      "Whether it's a professional corporate network, event support, or assistance in your daily life — I look forward to your inquiry. Feel free to call me directly for a consultation or leave a message. I usually get back to you within a few hours.",
-      'contact.telLabel':  'Phone',
-      'contact.locLabel':  'Location',
-      'contact.locVal':    'Cologne, NRW — Remote & on-site',
-      'contact.respLabel': 'Response time',
-      'contact.respVal':   'Usually < 2 hours',
-      'form.firstname':    'First name',
-      'form.lastname':     'Last name',
-      'form.subject':      'Subject',
-      'form.message':      'Message',
-      'form.subjectPh':    'Please select…',
-      'form.opt1':         'Home & Personal IT',
-      'form.opt2':         'SME IT Solutions',
-      'form.opt3':         'Event Support',
-      'form.opt4':         'Other',
-      'form.ph.firstname': 'John',
-      'form.ph.lastname':  'Smith',
-      'form.ph.email':     'john@company.com',
-      'form.ph.message':   'Briefly describe your project or enquiry…',
-      'form.privacyLink':  'Privacy Policy',
-      'form.privacyText':  ' and agree to the processing of my data to handle my enquiry.',
-      'form.submit':       'Send message',
-      'footer.tagline':    'IT Solutions · Sole trader',
-      'footer.nav':        'Navigation',
-      'footer.home':       'Home',
-      'footer.legal':      'Legal',
-      'footer.impressum':  'Legal Notice',
-      'footer.datenschutz':'Privacy Policy',
-      'footer.rights':     'All rights reserved',
-      'modal.impressum.title':   'Legal Notice',
-      'modal.datenschutz.title': 'Privacy Policy',
-      'toast.msg': "Message received — I'll be in touch soon!",
-    }
-  };
-
-  // ── Modal HTML (both languages) ──
-  const modalContent = {
-    impressum: {
-      de: `<section><h3 class="font-display font-semibold text-white text-base mb-3">Angaben gem&#228;&#223; &#167; 5 TMG</h3><p>Leon Cordts<br/>Leon Cordts &#8211; IT Solutions<br/>Odenthaler Str. 315a<br/>51069 K&#246;ln</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Kontakt</h3><p>Telefon: <a href="tel:+492214758054" class="text-azure-400 hover:underline">+49 221 4758054</a><br/>E-Mail: <a href="mailto:kontakt@leoncordts.de" class="text-azure-400 hover:underline">kontakt@leoncordts.de</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Umsatzsteuer</h3><p>In Gr&#252;ndung / USt-IdNr. beim Finanzamt beantragt. Als Kleinunternehmer im Sinne von &#167; 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Inhaltlich verantwortlich gem&#228;&#223; &#167; 18 Abs. 2 MStV</h3><p>Leon Cordts<br/>Odenthaler Str. 315a<br/>51069 K&#246;ln</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">EU-Streitschlichtung</h3><p>Die Europ&#228;ische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline">https://ec.europa.eu/consumers/odr/</a></p></section><section><h3 class="font-display font-semibold text-white text-base mb-3">Verbraucherstreitbeilegung</h3><p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Haftung f&#252;r Inhalte</h3><p>Als Diensteanbieter sind wir gem&#228;&#223; &#167; 7 Abs. 1 TMG f&#252;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &#167;&#167; 8 bis 10 TMG sind wir nicht verpflichtet, &#252;bermittelte oder gespeicherte fremde Informationen zu &#252;berwachen.</p></section><section><h3 class="font-display font-semibold text-white text-base mb-3">Urheberrecht</h3><p>Die durch den Seitenbetreiber erstellten Inhalte unterliegen dem deutschen Urheberrecht. Die Vervielf&#228;ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung au&#223;erhalb der Grenzen des Urheberrechtes bed&#252;rfen der schriftlichen Zustimmung.</p></section>`,
-      en: `<section><h3 class="font-display font-semibold text-white text-base mb-3">Information pursuant to &sect; 5 TMG</h3><p>Leon Cordts<br/>Leon Cordts &#8211; IT Solutions<br/>Odenthaler Str. 315a<br/>51069 Cologne, Germany</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Contact</h3><p>Phone: <a href="tel:+492214758054" class="text-azure-400 hover:underline">+49 221 4758054</a><br/>Email: <a href="mailto:kontakt@leoncordts.de" class="text-azure-400 hover:underline">kontakt@leoncordts.de</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">VAT</h3><p>Registration in progress. As a small business owner pursuant to &sect; 19 para. 1 UStG, no VAT is charged.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Editorially responsible pursuant to &sect; 18 para. 2 MStV</h3><p>Leon Cordts<br/>Odenthaler Str. 315a<br/>51069 Cologne, Germany</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">EU Online Dispute Resolution</h3><p>The European Commission provides an ODR platform: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline">https://ec.europa.eu/consumers/odr/</a></p></section><section><h3 class="font-display font-semibold text-white text-base mb-3">Consumer dispute resolution</h3><p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">Liability for content</h3><p>As a service provider we are responsible for our own content under general law. We are not obliged to monitor transmitted or stored third-party information.</p></section><section><h3 class="font-display font-semibold text-white text-base mb-3">Copyright</h3><p>Content created by the site operator is subject to German copyright law. Reproduction, editing and distribution require written consent.</p></section>`
-    },
-    datenschutz: {
-      de: `<section><h3 class="font-display font-semibold text-white text-base mb-3">1. Datenschutz auf einen Blick</h3><p>Die folgenden Hinweise geben einen &#220;berblick dar&#252;ber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p><p class="mt-2"><strong class="text-slate-200">Ihre Rechte:</strong> Sie haben jederzeit das Recht auf Auskunft, Berichtigung, L&#246;schung, Einschr&#228;nkung, Daten&#252;bertragbarkeit und Widerspruch sowie ein Beschwerderecht bei der Aufsichtsbeh&#246;rde.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">2. Hosting &#8211; GitHub Pages</h3><p>Diese Website wird auf GitHub Pages gehostet (GitHub, Inc., San Francisco, CA, USA). GitHub Pages erfasst automatisch Server-Logfiles (IP-Adresse, Datum/Uhrzeit, URL, HTTP-Statuscode). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p><p class="mt-2">Datenschutzerkl&#228;rung: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline break-all">docs.github.com/privacy</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">3. Verantwortliche Stelle</h3><p>Leon Cordts &#183; Odenthaler Str. 315a &#183; 51069 K&#246;ln<br/><a href="tel:+492214758054" class="text-azure-400 hover:underline">+49 221 4758054</a> &#183; <a href="mailto:kontakt@leoncordts.de" class="text-azure-400 hover:underline">kontakt@leoncordts.de</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">4. Kontaktaufnahme per E-Mail</h3><p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung gespeichert. Rechtsgrundlage: Art. 6 Abs. 1 lit. b oder f DSGVO. L&#246;schung nach Zweckentfall.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">5. Ihre Rechte</h3><ul class="mt-2 space-y-1 pl-4 list-disc list-outside marker:text-azure-400"><li><strong class="text-slate-200">Auskunft</strong> (Art. 15 DSGVO)</li><li><strong class="text-slate-200">Berichtigung</strong> (Art. 16 DSGVO)</li><li><strong class="text-slate-200">L&#246;schung</strong> (Art. 17 DSGVO)</li><li><strong class="text-slate-200">Einschr&#228;nkung</strong> (Art. 18 DSGVO)</li><li><strong class="text-slate-200">Daten&#252;bertragbarkeit</strong> (Art. 20 DSGVO)</li><li><strong class="text-slate-200">Widerspruch</strong> (Art. 21 DSGVO)</li></ul><p class="mt-3">Zust&#228;ndige Beh&#246;rde: LDI NRW &#183; <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline">www.ldi.nrw.de</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">6. Cookies &amp; Tracking</h3><p>Diese Website verwendet keine Cookies und kein Tracking. Es werden keine Nutzerprofile erstellt.</p></section><p class="text-xs text-slate-600 pt-2">Stand: Juni 2025</p>`,
-      en: `<section><h3 class="font-display font-semibold text-white text-base mb-3">1. Privacy at a glance</h3><p>The following notes provide a simple overview of what happens to your personal data when you visit this website.</p><p class="mt-2"><strong class="text-slate-200">Your rights:</strong> You have the right to obtain information, rectification, erasure, restriction, data portability and the right to object, as well as the right to lodge a complaint with a supervisory authority.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">2. Hosting &#8211; GitHub Pages</h3><p>This website is hosted on GitHub Pages (GitHub, Inc., San Francisco, CA, USA). GitHub Pages automatically collects server log files (IP address, date/time, URL, HTTP status). Legal basis: Art. 6(1)(f) GDPR.</p><p class="mt-2">Privacy statement: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline break-all">docs.github.com/privacy</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">3. Data controller</h3><p>Leon Cordts &#183; Odenthaler Str. 315a &#183; 51069 Cologne, Germany<br/><a href="tel:+492214758054" class="text-azure-400 hover:underline">+49 221 4758054</a> &#183; <a href="mailto:kontakt@leoncordts.de" class="text-azure-400 hover:underline">kontakt@leoncordts.de</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">4. Contact by email</h3><p>When you contact us by email, your details are stored to process the request. Legal basis: Art. 6(1)(b) or (f) GDPR. Data is deleted once the purpose no longer applies.</p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">5. Your rights</h3><ul class="mt-2 space-y-1 pl-4 list-disc list-outside marker:text-azure-400"><li><strong class="text-slate-200">Right of access</strong> (Art. 15 GDPR)</li><li><strong class="text-slate-200">Rectification</strong> (Art. 16 GDPR)</li><li><strong class="text-slate-200">Erasure</strong> (Art. 17 GDPR)</li><li><strong class="text-slate-200">Restriction</strong> (Art. 18 GDPR)</li><li><strong class="text-slate-200">Data portability</strong> (Art. 20 GDPR)</li><li><strong class="text-slate-200">Right to object</strong> (Art. 21 GDPR)</li></ul><p class="mt-3">Supervisory authority: LDI NRW &#183; <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" class="text-azure-400 hover:underline">www.ldi.nrw.de</a></p></section><div class="section-divider w-full"></div><section><h3 class="font-display font-semibold text-white text-base mb-3">6. Cookies &amp; tracking</h3><p>This website does not use cookies or any tracking tools. No user profiles are created.</p></section><p class="text-xs text-slate-600 pt-2">Last updated: June 2025</p>`
-    }
-  };
-
-  // ================================================================
-  // i18n ENGINE
-  // ================================================================
-  let currentLang = localStorage.getItem('lc_lang') || 'de';
-
-  function setLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('lc_lang', lang);
-    applyTranslations(lang);
-    updateLangButtons(lang);
-    document.documentElement.lang = lang;
-    updateModalContent(lang);
-  }
-
-  function applyTranslations(lang) {
-    const t = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.getAttribute('data-i18n-html');
-      if (t[key] !== undefined) el.innerHTML = t[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (t[key] !== undefined) el.placeholder = t[key];
-    });
-    document.querySelectorAll('[data-i18n-opt]').forEach(el => {
-      const key = el.getAttribute('data-i18n-opt');
-      if (t[key] !== undefined) el.textContent = t[key];
-    });
-    const titleEl = document.querySelector('[data-i18n-title]');
-    if (titleEl) { const k = titleEl.getAttribute('data-i18n-title'); if (t[k]) document.title = t[k]; }
-    const metaEl = document.querySelector('[data-i18n-meta-desc]');
-    if (metaEl) { const k = metaEl.getAttribute('data-i18n-meta-desc'); if (t[k]) metaEl.setAttribute('content', t[k]); }
-  }
-
-  function updateLangButtons(lang) {
-    ['lang-de','lang-de-mob'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('active', lang === 'de'); });
-    ['lang-en','lang-en-mob'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('active', lang === 'en'); });
-  }
-
-  function updateModalContent(lang) {
-    const ib = document.getElementById('modal-impressum-body');
-    const db = document.getElementById('modal-datenschutz-body');
-    if (ib) ib.innerHTML = modalContent.impressum[lang];
-    if (db) db.innerHTML = modalContent.datenschutz[lang];
-  }
-
-  // ================================================================
-  // MODALS
-  // ================================================================
-  function openModal(id) {
-    const m = document.getElementById(id);
-    m.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    const b = m.querySelector('.modal-body');
-    if (b) b.scrollTop = 0;
-  }
-  function closeModal(id) {
-    document.getElementById(id).style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') ['modal-impressum','modal-datenschutz'].forEach(id => {
-      const m = document.getElementById(id);
-      if (m && m.style.display !== 'none') closeModal(id);
-    });
-  });
-
-  // ── Misc ──
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.style.background = 'rgba(5,13,26,0.95)';
-      navbar.style.backdropFilter = 'blur(16px)';
-      navbar.style.borderBottom = '1px solid rgba(14,165,233,0.1)';
-    } else {
-      navbar.style.background = 'transparent';
-      navbar.style.backdropFilter = 'none';
-      navbar.style.borderBottom = 'none';
-    }
-  });
-
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-    const icon = hamburger.querySelector('i');
-    icon.className = mobileMenu.classList.contains('open') ? 'fa-solid fa-xmark text-lg' : 'fa-solid fa-bars text-lg';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.querySelector('i').className = 'fa-solid fa-bars text-lg';
-    });
-  });
-
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  const navLinks = document.querySelectorAll('.nav-link');
-  const navObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => l.style.color = '');
-        const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
-        if (active) active.style.color = '#38bdf8';
-      }
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
-
-  // ── Init ──
-  setLang(currentLang);
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>

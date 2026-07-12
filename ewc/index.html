@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#17191d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EWC Sign In">
+<meta name="robots" content="noindex">
+<title>EWC Sign In / Out</title>
+<style>
+  :root {
+    --bg: #17191d;
+    --card: #1f2228;
+    --border: #2c3038;
+    --text: #e8eaed;
+    --muted: #9aa0a8;
+    --accent: #8fb0cd;
+    --green: #4caf7d;
+    --red: #d9646a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  }
+  main { width: 100%; max-width: 420px; }
+  h1 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  label { display: block; font-size: 0.8rem; color: var(--muted); margin: 14px 0 6px; }
+  label:first-child { margin-top: 0; }
+  input, select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 1rem;
+    padding: 12px 14px;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239aa0a8' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  button {
+    font-family: inherit;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary {
+    width: 100%;
+    background: var(--accent);
+    color: #14161a;
+    font-weight: 600;
+    padding: 14px;
+    margin-top: 20px;
+  }
+  .actions { display: flex; gap: 12px; margin-top: 4px; }
+  .btn-big {
+    flex: 1;
+    padding: 26px 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-big small { font-weight: 400; font-size: 0.75rem; opacity: 0.85; }
+  .btn-in { background: linear-gradient(160deg, #3f9a70, #35825e); }
+  .btn-out { background: linear-gradient(160deg, #c85a60, #a94a50); }
+  .btn-big:active { transform: scale(0.97); }
+  .btn-big:disabled { opacity: 0.5; }
+  .who { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .who .name { font-weight: 600; }
+  .who .dept { color: var(--muted); font-size: 0.85rem; }
+  .edit-link {
+    background: none;
+    color: var(--accent);
+    font-size: 0.8rem;
+    padding: 4px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    flex-shrink: 0;
+  }
+  .clock {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-size: 2.6rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin: 18px 0 22px;
+  }
+  .clock small { display: block; font-size: 0.8rem; color: var(--muted); letter-spacing: normal; margin-top: 2px; }
+  .last { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 14px; min-height: 1em; }
+  .hidden { display: none; }
+  /* confirmation */
+  .confirm { text-align: center; padding: 34px 20px; }
+  .confirm .tick {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 18px;
+  }
+  .confirm.ok-in .tick { background: rgba(76,175,125,0.15); color: var(--green); }
+  .confirm.ok-out .tick { background: rgba(217,100,106,0.15); color: var(--red); }
+  .confirm h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
+  .confirm p { color: var(--muted); font-size: 0.85rem; margin-bottom: 22px; }
+  .confirm a {
+    display: block;
+    color: var(--accent);
+    font-size: 0.8rem;
+    margin-top: 14px;
+    text-underline-offset: 3px;
+  }
+  footer { margin-top: auto; padding-top: 30px; color: var(--muted); font-size: 0.7rem; text-align: center; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>EWC Sign In / Sign Out</h1>
+  <p class="sub">Sends the official ESL FACEIT Group daily form — one tap, current time.</p>
+
+  <!-- Setup -->
+  <section id="setup" class="card hidden">
+    <label for="f-name">First name &amp; last name</label>
+    <input id="f-name" type="text" autocomplete="name" placeholder="e.g. Leon Cordts">
+    <label for="f-dept">Department / Contractor / Supplier</label>
+    <input id="f-dept" type="text" placeholder="e.g. EFG, EF, Aggreko, PRG">
+    <label for="f-hall">Hall</label>
+    <select id="f-hall">
+      <option>Hall 1</option>
+      <option>Hall 5</option>
+      <option>Hall 6</option>
+    </select>
+    <button class="btn-primary" id="save-btn">Save</button>
+  </section>
+
+  <!-- Main -->
+  <section id="home" class="hidden">
+    <div class="card">
+      <div class="who">
+        <div>
+          <div class="name" id="show-name"></div>
+          <div class="dept" id="show-dept"></div>
+        </div>
+        <button class="edit-link" id="edit-btn">edit</button>
+      </div>
+      <label for="hall-select">Hall</label>
+      <select id="hall-select">
+        <option>Hall 1</option>
+        <option>Hall 5</option>
+        <option>Hall 6</option>
+      </select>
+    </div>
+    <div class="clock"><span id="clock-time">--:--</span><small id="clock-date"></small></div>
+    <div class="actions">
+      <button class="btn-big btn-in" id="in-btn">🟢 Sign In<small>start of shift</small></button>
+      <button class="btn-big btn-out" id="out-btn">🔴 Sign Out<small>end of shift</small></button>
+    </div>
+    <p class="last" id="last-action"></p>
+  </section>
+
+  <!-- Confirmation -->
+  <section id="done" class="card confirm hidden">
+    <div class="tick" id="done-icon">✓</div>
+    <h2 id="done-title"></h2>
+    <p id="done-detail"></p>
+    <button class="btn-primary" id="back-btn">Done</button>
+    <a id="verify-link" href="#" target="_blank" rel="noopener">Doubt it went through? Open the pre-filled form to check &amp; send manually</a>
+  </section>
+
+  <footer>Only tap when you actually arrive or leave — this submits the real current time.</footer>
+</main>
+
+<script>
+(function () {
+  var FORM_ID = "1FAIpQLSeoiO3SlfrYXXjEd42_pWBSZIeb_NdD8T0vi71ay2Ktg9LY4w";
+  var POST_URL = "https://docs.google.com/forms/d/e/" + FORM_ID + "/formResponse";
+  var VIEW_URL = "https://docs.google.com/forms/d/e/" + FORM_ID + "/viewform";
+  var ENTRIES = {
+    inOut: "entry.1926836103",   // "Sign In" | "Sign Out"
+    name: "entry.389694516",
+    dept: "entry.2087226733",
+    timeHour: "entry.1536238109_hour",
+    timeMinute: "entry.1536238109_minute",
+    hall: "entry.624855372"      // "Hall 1" | "Hall 5" | "Hall 6"
+  };
+  var STORE = "ewc-signin";
+
+  var $ = function (id) { return document.getElementById(id); };
+  var screens = { setup: $("setup"), home: $("home"), done: $("done") };
+
+  function show(name) {
+    Object.keys(screens).forEach(function (k) {
+      screens[k].classList.toggle("hidden", k !== name);
+    });
+  }
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(STORE)) || null; } catch (e) { return null; }
+  }
+  function save(data) { localStorage.setItem(STORE, JSON.stringify(data)); }
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+  function renderHome() {
+    var d = load();
+    $("show-name").textContent = d.name;
+    $("show-dept").textContent = d.dept;
+    $("hall-select").value = d.hall;
+    $("last-action").textContent = d.last || "";
+    show("home");
+  }
+
+  // Setup
+  $("save-btn").addEventListener("click", function () {
+    var name = $("f-name").value.trim();
+    var dept = $("f-dept").value.trim();
+    if (!name || !dept) { alert("Please fill in your name and department/contractor."); return; }
+    var prev = load() || {};
+    prev.name = name;
+    prev.dept = dept;
+    prev.hall = $("f-hall").value;
+    save(prev);
+    renderHome();
+  });
+
+  $("edit-btn").addEventListener("click", function () {
+    var d = load();
+    $("f-name").value = d.name;
+    $("f-dept").value = d.dept;
+    $("f-hall").value = d.hall;
+    show("setup");
+  });
+
+  // Persist hall changes immediately
+  $("hall-select").addEventListener("change", function () {
+    var d = load();
+    d.hall = this.value;
+    save(d);
+  });
+
+  // Clock
+  function tick() {
+    var now = new Date();
+    $("clock-time").textContent = pad(now.getHours()) + ":" + pad(now.getMinutes());
+    $("clock-date").textContent = now.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+  }
+  tick();
+  setInterval(tick, 5000);
+
+  function prefillUrl(action, d, now) {
+    return VIEW_URL + "?usp=pp_url" +
+      "&" + ENTRIES.inOut + "=" + encodeURIComponent(action) +
+      "&" + ENTRIES.name + "=" + encodeURIComponent(d.name) +
+      "&" + ENTRIES.dept + "=" + encodeURIComponent(d.dept) +
+      "&" + ENTRIES.timeHour + "=" + pad(now.getHours()) +
+      "&" + ENTRIES.timeMinute + "=" + pad(now.getMinutes()) +
+      "&" + ENTRIES.hall + "=" + encodeURIComponent(d.hall);
+  }
+
+  function submit(action) {
+    var d = load();
+    var now = new Date();
+    var body = new URLSearchParams();
+    body.append(ENTRIES.inOut, action);
+    body.append(ENTRIES.name, d.name);
+    body.append(ENTRIES.dept, d.dept);
+    body.append(ENTRIES.timeHour, pad(now.getHours()));
+    body.append(ENTRIES.timeMinute, pad(now.getMinutes()));
+    body.append(ENTRIES.hall, d.hall);
+    body.append("fvv", "1");
+    body.append("pageHistory", "0");
+
+    $("in-btn").disabled = true;
+    $("out-btn").disabled = true;
+
+    fetch(POST_URL, { method: "POST", mode: "no-cors", body: body }).finally(function () {
+      $("in-btn").disabled = false;
+      $("out-btn").disabled = false;
+      var t = pad(now.getHours()) + ":" + pad(now.getMinutes());
+      var isIn = action === "Sign In";
+      d.last = "Last: " + (isIn ? "signed in" : "signed out") + " at " + t + " (" + d.hall + ")";
+      save(d);
+      $("done").classList.remove("ok-in", "ok-out");
+      $("done").classList.add(isIn ? "ok-in" : "ok-out");
+      $("done-title").textContent = (isIn ? "Signed in" : "Signed out") + " at " + t;
+      $("done-detail").textContent = d.name + " · " + d.dept + " · " + d.hall;
+      $("verify-link").href = prefillUrl(action, d, now);
+      show("done");
+    });
+  }
+
+  $("in-btn").addEventListener("click", function () { submit("Sign In"); });
+  $("out-btn").addEventListener("click", function () { submit("Sign Out"); });
+  $("back-btn").addEventListener("click", renderHome);
+
+  // Boot
+  if (load() && load().name) { renderHome(); } else { show("setup"); }
+})();
+</script>
+</body>
+</html>

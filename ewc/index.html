@@ -122,34 +122,14 @@
   .clock small { display: block; font-size: 0.8rem; color: var(--muted); letter-spacing: normal; margin-top: 2px; }
   .last { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 14px; min-height: 1em; }
   .hidden { display: none; }
-  /* confirmation */
-  .confirm { text-align: center; padding: 34px 20px; }
-  .confirm .tick {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem;
-    margin: 0 auto 18px;
-  }
-  .confirm.ok-in .tick { background: rgba(76,175,125,0.15); color: var(--green); }
-  .confirm.ok-out .tick { background: rgba(217,100,106,0.15); color: var(--red); }
-  .confirm h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
-  .confirm p { color: var(--muted); font-size: 0.85rem; margin-bottom: 22px; }
-  .confirm a {
-    display: block;
-    color: var(--accent);
-    font-size: 0.8rem;
-    margin-top: 14px;
-    text-underline-offset: 3px;
-  }
-  footer { margin-top: auto; padding-top: 30px; color: var(--muted); font-size: 0.7rem; text-align: center; }
+  footer { margin-top: auto; padding-top: 30px; color: var(--muted); font-size: 0.7rem; text-align: center; line-height: 1.8; }
   footer a { color: var(--muted); }
 </style>
 </head>
 <body>
 <main>
   <h1>EWC Sign In / Sign Out</h1>
-  <p class="sub">Sends the official ESL FACEIT Group daily form — one tap, current time.</p>
+  <p class="sub">Submits the official ESL FACEIT Group daily form with the current time. After tapping, Google's own confirmation page ("Your response has been recorded") is your proof it went through.</p>
 
   <!-- Setup -->
   <section id="setup" class="card hidden">
@@ -191,16 +171,8 @@
     <p class="last" id="last-action"></p>
   </section>
 
-  <!-- Confirmation -->
-  <section id="done" class="card confirm hidden">
-    <div class="tick" id="done-icon">✓</div>
-    <h2 id="done-title"></h2>
-    <p id="done-detail"></p>
-    <button class="btn-primary" id="back-btn">Done</button>
-    <a id="verify-link" href="#" target="_blank" rel="noopener">Doubt it went through? Open the pre-filled form to check &amp; send manually</a>
-  </section>
-
-  <footer>Only tap when you actually arrive or leave — this submits the real current time.</footer>
+  <footer>Only tap when you actually arrive or leave — this submits the real current time.<br>
+  <a id="prefill-link" href="#">Prefer the original form? Open it pre-filled instead</a></footer>
 </main>
 
 <script>
@@ -219,7 +191,7 @@
   var STORE = "ewc-signin";
 
   var $ = function (id) { return document.getElementById(id); };
-  var screens = { setup: $("setup"), home: $("home"), done: $("done") };
+  var screens = { setup: $("setup"), home: $("home") };
 
   function show(name) {
     Object.keys(screens).forEach(function (k) {
@@ -280,51 +252,64 @@
   tick();
   setInterval(tick, 5000);
 
-  function prefillUrl(action, d, now) {
-    return VIEW_URL + "?usp=pp_url" +
-      "&" + ENTRIES.inOut + "=" + encodeURIComponent(action) +
-      "&" + ENTRIES.name + "=" + encodeURIComponent(d.name) +
-      "&" + ENTRIES.dept + "=" + encodeURIComponent(d.dept) +
-      "&" + ENTRIES.timeHour + "=" + pad(now.getHours()) +
-      "&" + ENTRIES.timeMinute + "=" + pad(now.getMinutes()) +
-      "&" + ENTRIES.hall + "=" + encodeURIComponent(d.hall);
+  function fieldValues(action, d, now) {
+    var v = {};
+    if (action) { v[ENTRIES.inOut] = action; }
+    v[ENTRIES.name] = d.name;
+    v[ENTRIES.dept] = d.dept;
+    v[ENTRIES.timeHour] = pad(now.getHours());
+    v[ENTRIES.timeMinute] = pad(now.getMinutes());
+    v[ENTRIES.hall] = d.hall;
+    return v;
   }
 
+  // Real POST with navigation: the browser lands on Google's own
+  // "Your response has been recorded" page — visible proof of delivery,
+  // and Google's error page shows up if the form ever changes.
   function submit(action) {
     var d = load();
     var now = new Date();
-    var body = new URLSearchParams();
-    body.append(ENTRIES.inOut, action);
-    body.append(ENTRIES.name, d.name);
-    body.append(ENTRIES.dept, d.dept);
-    body.append(ENTRIES.timeHour, pad(now.getHours()));
-    body.append(ENTRIES.timeMinute, pad(now.getMinutes()));
-    body.append(ENTRIES.hall, d.hall);
-    body.append("fvv", "1");
-    body.append("pageHistory", "0");
+    var t = pad(now.getHours()) + ":" + pad(now.getMinutes());
+    var isIn = action === "Sign In";
+    d.last = "Last: " + (isIn ? "signed in" : "signed out") + " at " + t + " (" + d.hall + ")";
+    save(d);
 
-    $("in-btn").disabled = true;
-    $("out-btn").disabled = true;
-
-    fetch(POST_URL, { method: "POST", mode: "no-cors", body: body }).finally(function () {
-      $("in-btn").disabled = false;
-      $("out-btn").disabled = false;
-      var t = pad(now.getHours()) + ":" + pad(now.getMinutes());
-      var isIn = action === "Sign In";
-      d.last = "Last: " + (isIn ? "signed in" : "signed out") + " at " + t + " (" + d.hall + ")";
-      save(d);
-      $("done").classList.remove("ok-in", "ok-out");
-      $("done").classList.add(isIn ? "ok-in" : "ok-out");
-      $("done-title").textContent = (isIn ? "Signed in" : "Signed out") + " at " + t;
-      $("done-detail").textContent = d.name + " · " + d.dept + " · " + d.hall;
-      $("verify-link").href = prefillUrl(action, d, now);
-      show("done");
+    var form = document.createElement("form");
+    form.method = "POST";
+    form.action = POST_URL;
+    var values = fieldValues(action, d, now);
+    values["fvv"] = "1";
+    values["pageHistory"] = "0";
+    Object.keys(values).forEach(function (k) {
+      var input = document.createElement("input");
+      input.type = "hidden";
+      input.name = k;
+      input.value = values[k];
+      form.appendChild(input);
     });
+    document.body.appendChild(form);
+    form.submit();
   }
 
   $("in-btn").addEventListener("click", function () { submit("Sign In"); });
   $("out-btn").addEventListener("click", function () { submit("Sign Out"); });
-  $("back-btn").addEventListener("click", renderHome);
+
+  // Fallback: open the original form pre-filled (In/Out left for the user to pick)
+  $("prefill-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    var d = load();
+    if (!d || !d.name) { show("setup"); return; }
+    var values = fieldValues(null, d, new Date());
+    var qs = Object.keys(values).map(function (k) {
+      return k + "=" + encodeURIComponent(values[k]);
+    }).join("&");
+    window.open(VIEW_URL + "?usp=pp_url&" + qs, "_blank");
+  });
+
+  // Returning via the back button (bfcache) after a submit: refresh the home screen
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted && load() && load().name) { renderHome(); }
+  });
 
   // Boot
   if (load() && load().name) { renderHome(); } else { show("setup"); }
